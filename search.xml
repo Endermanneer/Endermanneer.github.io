@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>sqlmap和hydra常用命令</title>
+      <link href="/2023/04/05/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/nmap%E5%92%8Chydra%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+      <url>/2023/04/05/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/nmap%E5%92%8Chydra%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h3 id="扫描与爆破"><a href="#扫描与爆破" class="headerlink" title="扫描与爆破"></a>扫描与爆破</h3><p>Nmap<br>重要常用命令参数</p><p><code>-sP     ping扫描</code><br>例：</p><blockquote><p>nmap -sP 10.1.1.0/24  （最后的24是采用二进制表示的掩码的位数）</p></blockquote><p><code>-p     指定端口范围</code><br>例：</p><blockquote><p>nmap -p 21,23 10.1.1.1（探测目标21，23端口情况）</p></blockquote><p><code>-sV      服务版本探测</code><br>例：</p><blockquote><p>nmap -p 23,21 10.1.1.1 -sV</p></blockquote><p><code>-O     启用操作系统探测（同时可以扫描开放的端口号以及对应的服务）</code><br>例：</p><blockquote><p>nmap -O 10.1.1.1</p></blockquote><p><code>-A     全面扫描</code></p><p><code>-oN     保存txt(保存扫描报告)</code><br>例：</p><blockquote><p>nmap -O 10.1.1.1 -oN d:\baogao.txt（保存路径）</p></blockquote><h3 id="hydra-常用命令"><a href="#hydra-常用命令" class="headerlink" title="hydra 常用命令"></a>hydra 常用命令</h3><p>(转载自<a href="https://blog.csdn.net/weixin_63286108/article/details/124700517">https://blog.csdn.net/weixin_63286108/article/details/124700517</a>)</p><p>爆破FTP服务器登录密码（已知用户名）</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l admin -P /usr/passwd.txt ftp://192.168.31.134</span><br></pre></td></tr></table></figure><p>爆破FTP服务器的用户名和密码(1)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -L /usr/uname.txt -P /usr/passwd.txt ftp://192.168.31.134</span><br></pre></td></tr></table></figure><p>爆破FTP服务器的用户名和密码(2)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -C /usr/u_and_p.txt ftp://192.168.31.134</span><br></pre></td></tr></table></figure><p>爆破远程桌面服务的用户名和密码</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -L /usr/uname.txt -P /usr/passwd.txt rdp://192.168.31.134</span><br></pre></td></tr></table></figure><p>(uname.txt、passwd.txt分别为用户名字典和密码字典)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网安基础 </category>
+          
+          <category> Nmap和hydra常用命令 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网安基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vim初学</title>
       <link href="/2023/04/05/%E5%B0%8F%E5%AF%84%E5%B7%A7/Vim%E5%88%9D%E5%AD%A6/"/>
       <url>/2023/04/05/%E5%B0%8F%E5%AF%84%E5%B7%A7/Vim%E5%88%9D%E5%AD%A6/</url>
