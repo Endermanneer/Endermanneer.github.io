@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>vim初学</title>
+      <link href="/2023/04/05/%E5%B0%8F%E5%AF%84%E5%B7%A7/Vim%E5%88%9D%E5%AD%A6/"/>
+      <url>/2023/04/05/%E5%B0%8F%E5%AF%84%E5%B7%A7/Vim%E5%88%9D%E5%AD%A6/</url>
+      
+        <content type="html"><![CDATA[<h2 id="vim的三个模式"><a href="#vim的三个模式" class="headerlink" title="vim的三个模式"></a>vim的三个模式</h2><p>vim有三个模式</p><ul><li>正常模式</li><li>编辑模式</li><li>命令行模式</li></ul><p>刚打开文件处于正常模式</p><blockquote><p>编辑模式按 esc 会退出到正常模式</p></blockquote><p>要进行编辑需要进入编辑模式</p><blockquote><p>按小写 i，此时下方会提示进入了INSERT模式</p></blockquote><p>保存修改，或不做修改退出，或对文件进行搜索等  要进入命令行模式</p><blockquote><p>正常模式直接输入 : 会进入命令行模式。同样，下方也会有提示“：”</p><p>退出（quit）：输入 :q，回车。（如果对文件做出了修改，那么会出现警示</p><p>不保存退出： 输入 :q! 表示无论如何都要退出</p><p>保存退出（write  quit）： 输入 :wq（先保存，再退出，不能写为 :qw</p></blockquote><h2 id="vim的光标移动"><a href="#vim的光标移动" class="headerlink" title="vim的光标移动"></a>vim的光标移动</h2><p>在正常模式下 h j k l 四个键可以进行光标的移动</p><blockquote><p>k：向上</p><p>j：向下</p><p>h：向左</p><p>l：向右</p></blockquote><p>正常模式下，将光标移动到字符后</p><blockquote><p>按 i ：insert 在字符前面插入字符</p><p>按 a：append 在字符后面追加字符</p><p>大写i：shift+i  插到最前面</p><p>大写a： shift+a  在最后面追加</p><p>o：（open a new line ）在本行的下面新建一行</p><p>大写o： 在本行的上面新建一行</p><p>g：在最后一行下面新建一行</p><p>gg：在最初一行上面增加一行</p><p>w： （word）跳动到下一个词的开头</p><p>e：（end）跳动到单词最后</p><p>b： （back）上一个单词开头</p></blockquote><h2 id="vim的复制、粘贴、删除"><a href="#vim的复制、粘贴、删除" class="headerlink" title="vim的复制、粘贴、删除"></a>vim的复制、粘贴、删除</h2><blockquote><p>ctrl+v： 进入视觉模式（可视化块）类似于平时使用的shift+方向键，用于选中一段文字进行操作</p><p>shift+v：同样是进入视觉模式，不同的是选中一整行，如果向下选择，会把下面的行也选中</p><p>y：复制选中</p><p>yy：（yank）复制当前行</p><p>yw：（yank word）复制当前单词</p></blockquote><blockquote><p>p：（paste）粘贴</p></blockquote><blockquote><p>d: 删除选中</p><p>dd：删除当前行</p><p>dw：（delete a word）删除当前字符</p><p>cw： 替换当前单词（删除当前字符，并且进入编辑模式）</p><p>ci：（change in）删除括号内的内容</p></blockquote><blockquote><p>.  ：重复上一次操作</p><p>u：（undo）撤销上一次操作</p><p>ctrl+r： 恢复前一次操作（不小心撤回过多使用</p></blockquote><h2 id="命令行用法"><a href="#命令行用法" class="headerlink" title="命令行用法"></a>命令行用法</h2><blockquote><p>最基本的:q :q! :wq</p></blockquote><blockquote><p>:/+要搜索的字符串： 快速搜索定位</p><p>:%s/旧字符/新字符/g：（最后的g表示gobel，全局替换）把文件中的“旧字符”全部替换成“新字符”</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小寄巧 </category>
+          
+          <category> vim初学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vim </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>各层常用协议</title>
+      <link href="/2023/04/05/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/1.%E5%90%84%E5%B1%82%E5%B8%B8%E7%94%A8%E5%8D%8F%E8%AE%AE/"/>
+      <url>/2023/04/05/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/1.%E5%90%84%E5%B1%82%E5%B8%B8%E7%94%A8%E5%8D%8F%E8%AE%AE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="各层常用协议"><a href="#各层常用协议" class="headerlink" title="各层常用协议"></a>各层常用协议</h1><h2 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h2><blockquote><p>http  https  SSH  DNS  Telnet   FTP      DHCP    SMTP   POP3   RDP     SMB    MySql<br>80    443     22     53       23    20/21      67/68      25        110      3389      445      3306</p></blockquote><h2 id="传输层协议"><a href="#传输层协议" class="headerlink" title="传输层协议"></a>传输层协议</h2><blockquote><pre><code> ​    TCP                                 UDP 传输控制协议             用户数据报协议</code></pre></blockquote><h2 id="网络层协议"><a href="#网络层协议" class="headerlink" title="网络层协议"></a>网络层协议</h2><blockquote><p>ICMP<br>Internet Control Message Protocol<br>internet控制报文协议 用于在ip主机、路由器之间传递控制消息（网络是否通，主机是否可达）。</p></blockquote><blockquote><p>IP<br>Internet Protocol<br>网际互连协议：实现大规模、异构网络的互联互通。</p></blockquote><blockquote><p>ARP<br>Address Resolution Protocol<br>地址解析协议：根据IP地址获取物理地址的协议</p></blockquote><h2 id="数据链路层协议"><a href="#数据链路层协议" class="headerlink" title="数据链路层协议"></a>数据链路层协议</h2><blockquote><p>PPP<br>Point-to-Point Protocal—–ppp点到点：数据链路层封装协议中的一种，常用于广域网，使用串行链路提供远距离数据传输服务。</p></blockquote><blockquote><p>Ethernet<br>以太网：实现链路层的数据传输和地址封装（MAC，常用于局域网。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网安基础 </category>
+          
+          <category> 各层常用协议 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网安基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux多进程编程</title>
+      <link href="/2023/04/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-Linux%E7%BC%96%E7%A8%8B/%E7%AC%AC%E4%BA%94%E7%AB%A0%E3%80%81Linux%E5%A4%9A%E8%BF%9B%E7%A8%8B/"/>
+      <url>/2023/04/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-Linux%E7%BC%96%E7%A8%8B/%E7%AC%AC%E4%BA%94%E7%AB%A0%E3%80%81Linux%E5%A4%9A%E8%BF%9B%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Linux多进程编程"><a href="#Linux多进程编程" class="headerlink" title="Linux多进程编程"></a>Linux多进程编程</h1><hr><h3 id="一、-并发概念"><a href="#一、-并发概念" class="headerlink" title="一、 并发概念"></a>一、 并发概念</h3><p>并发：</p><blockquote><p>指多个活动在同一时间段内同时进行</p></blockquote><h3 id="二、-逻辑控制流"><a href="#二、-逻辑控制流" class="headerlink" title="二、 逻辑控制流"></a>二、 逻辑控制流</h3><p>逻辑流：</p><blockquote><p>在多进程运行环境下，一个程序（或进程）按程序员意图，从main函数开始，一个一个语句，一条一条指令执行，执行轨迹为一系列程序计数器（PC）的值，给人一种每个程序都独占处理器的假象，而一般整个系统可能仅有一个CPU，各进程轮流执行，我们称进程为一个逻辑流</p></blockquote><p>实际上，每个进程的执行过程是不连续的，它们交替使用处理器</p><p>并发流：</p><blockquote><p>只要某种可能的执行模式在时间上存在重叠，它们就是并发流。</p></blockquote><p>并行流：</p><blockquote><p>如果两个流在有部分操作（或代码）同一时刻地运行在<strong>不同的</strong>处理器核或者计算机上，那么我们称它们为并行流(parallel flow)</p></blockquote><p>多任务：</p><blockquote><p>一个进程和其他进程轮流运行的概念</p></blockquote><p><strong>时间片</strong>：</p><blockquote><p>每次分配给一个进程的执行时间称之为<strong>时间片</strong>(time slice)，进程也因此划分为多个做<strong>时间分片</strong>(time slicing)</p></blockquote><h1 id="进程的基本概念"><a href="#进程的基本概念" class="headerlink" title="进程的基本概念"></a>进程的基本概念</h1><h2 id="初识进程"><a href="#初识进程" class="headerlink" title="初识进程"></a>初识进程</h2><h3 id="一、-什么是进程"><a href="#一、-什么是进程" class="headerlink" title="一、 什么是进程"></a>一、 什么是进程</h3><blockquote><p>进程是正在执行中的程序</p></blockquote><h3 id="二、-进程结构"><a href="#二、-进程结构" class="headerlink" title="二、 进程结构"></a>二、 进程结构</h3><p>进程至少包含三项内容：</p><ul><li>程序代码</li><li>数据集</li><li>进程控制块</li></ul><blockquote><p>程序代码：一般是一个包括main函数的可执行程序，程序装载到内存，进程才能启动</p></blockquote><blockquote><p>数据集：进程的处理对象，可认为是变量内容，保存从初始化、环境变量、命令行参数和文件的数据</p></blockquote><blockquote><p>PCB：保存程序代码、数据变量地址、进程其他属性，<em>PCB</em>是进程存在的唯一标志，以后操作系统就通过PCB来对进程实施管理和控制</p></blockquote><h3 id="三、进程属性（保存在PCB中"><a href="#三、进程属性（保存在PCB中" class="headerlink" title="三、进程属性（保存在PCB中"></a>三、进程属性（保存在PCB中</h3><p><img src="C:/Users/Enderman/AppData/Roaming/Typora/typora-user-images/image-20230404143547405.png"></p><p>进程描述信息：</p><blockquote><p>进程号（PID）</p><p>用户标识</p><p>用户组标识</p><p>进程族亲信息：父进程标识、兄弟进程标识</p></blockquote><p>控制信息：</p><blockquote><p>进程状态</p><p>调度信息：优先级、剩余时间片和调度策略</p><p>记时信息：CPU使用时间等</p><p>通信信息：未处理信号、管道、消息队列、共享内存等</p></blockquote><p>资源信息：</p><blockquote><p>存储器地址</p><p>打开文件的信息</p></blockquote><p>cpu现场信息：</p><blockquote><p>当前进程CPU寄存器副本：程序计数器PC、通用寄存器、标识寄存器FLAGS</p></blockquote><h3 id="PCB的实例（Linux任务结构体：task-struct"><a href="#PCB的实例（Linux任务结构体：task-struct" class="headerlink" title="PCB的实例（Linux任务结构体：task_struct"></a>PCB的实例（Linux任务结构体：task_struct</h3><p><img src="C:/Users/Enderman/AppData/Roaming/Typora/typora-user-images/image-20230404144612237.png" alt="image-20230404144612237"></p><h2 id="进程基本状态及转换"><a href="#进程基本状态及转换" class="headerlink" title="进程基本状态及转换"></a>进程基本状态及转换</h2><p>三种基本状态：</p><blockquote><ul><li>就绪</li><li>运行</li><li>阻塞</li></ul></blockquote><p>然而，在操作系统实际设计中往往增加了两种状态</p><blockquote><ul><li>创建</li><li>终止</li></ul></blockquote><p><img src="C:/Users/Enderman/AppData/Roaming/Typora/typora-user-images/image-20230404145422917.png" alt="image-20230404145422917"></p><h2 id="操作进程的工具"><a href="#操作进程的工具" class="headerlink" title="操作进程的工具"></a>操作进程的工具</h2><p>ps命令查看进程信息</p><blockquote><p>ps -ef 显示全部进程信息</p></blockquote><blockquote><p><strong>ps</strong> -ef| grep bash 从ps命令中过滤出指定进程信息</p></blockquote><blockquote><p>ps -u  命令显示当前用户拥有进程资源消耗信息</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux编程 </category>
+          
+          <category> 多进程编程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>清空缓冲区</title>
+      <link href="/2023/04/05/c%E8%AF%AD%E8%A8%80/%E6%B8%85%E7%A9%BA%E7%BC%93%E5%86%B2%E5%8C%BA/"/>
+      <url>/2023/04/05/c%E8%AF%AD%E8%A8%80/%E6%B8%85%E7%A9%BA%E7%BC%93%E5%86%B2%E5%8C%BA/</url>
+      
+        <content type="html"><![CDATA[<h2 id="清空缓冲区"><a href="#清空缓冲区" class="headerlink" title="清空缓冲区"></a>清空缓冲区</h2><hr><p>缓冲区的优点很明显，它加快了程序的运行速度，减少了硬件的读写次数，让整个计算机变得流畅起来；但是，缓冲区也带来了一些负面影响，经过前面几节的学习相信读者也见识到了。</p><p>那么，该如何消除这些负面影响呢？思路其实也很简单，在输入输出之前清空（刷新）缓冲区即可：</p><ul><li>对于输出操作，清空缓冲区会使得缓冲区中的所有数据立即显示到屏幕上；很明显，这些数据没有地方存放了，只能输出了。</li><li>对于输入操作，清空缓冲区就是丢弃残留字符，让程序直接等待用户输入，避免引发奇怪的行为。</li></ul><blockquote><p>本节的代码用到了一些暂时没有学到的知识，估计很多初学者会不理解，没关系，那就先记住吧，记不住就复制吧，总之，按照葫芦画瓢就完了。</p></blockquote><h2 id="清空输出缓冲区"><a href="#清空输出缓冲区" class="headerlink" title="清空输出缓冲区"></a>清空输出缓冲区</h2><p>清空输出缓冲区很简单，使用下面的语句即可：</p><p>fflush(stdout);</p><p>fflush() 是一个专门用来清空缓冲区的函数，stdout 是 standard output 的缩写，表示标准输出设备，也即显示器。整个语句的意思是，清空标准输出缓冲区，或者说清空显示器的缓冲区。</p><p>Windows 平台下的 printf()、puts()、putchar() 等输出函数都是不带缓冲区的，所以不用清空，下面的代码演示了如何在 Linux 和 Mac OS 平台下清空缓冲区：</p><pre><code>#include&lt;stdio.h&gt;#include&lt;unistd.h&gt;int main()&#123;    printf(&quot;C语言中文网&quot;);    fflush(stdout); //本次输出结束后立即清空缓冲区    sleep(5);    printf(&quot;http://c.biancheng.net\n&quot;);    return 0;&#125;</code></pre><p>程序运行后，第一个 pirntf() 立即输出，等待 5 秒以后，第二个 printf() 才输出，这就符合我们的惯性思维了。如果不加<code>fflush(stdout)</code>语句，程序运行后，第一个 printf() 并不会立即输出，而是等待 5 秒以后和第二个 scanf() 一起输出（已在《C语言数据输出大汇总以及轻量进阶》中进行了演示），这有点不符合我们的思维习惯。</p><h2 id="清空输入缓冲区"><a href="#清空输入缓冲区" class="headerlink" title="清空输入缓冲区"></a>清空输入缓冲区</h2><p>首先，很遗憾地说，没有一种既简洁明了又适用于所有平台的清空输入缓冲区的方案。只有一种很蹩脚的方案能适用于所有平台，那就是将输入缓冲区中的数据都读取出来，但是却不使用。</p><p>大家不要以为我很轻松地就能说出这句话，我FQ查阅了很多英文资料，又测试了很多平台和编译器才敢说的。</p><p>我们先说两种通用的方案，虽然它很蹩脚，但是却行之有效。</p><h4 id="1-使用-getchar-清空缓冲区"><a href="#1-使用-getchar-清空缓冲区" class="headerlink" title="1) 使用 getchar() 清空缓冲区"></a>1) 使用 getchar() 清空缓冲区</h4><p>getchar() 是带有缓冲区的，每次从缓冲区中读取一个字符，包括空格、制表符、换行符等空白符，只要我们让 getchar() 不停地读取，直到读完缓冲区中的所有字符，就能达到清空缓冲区的效果。请看下面的代码：</p><pre><code>int c;while((c = getchar()) != &#39;\n&#39; &amp;&amp; c != EOF);</code></pre><p>该代码不停地使用 getchar() 获取缓冲区中的字符，直到遇见换行符<code>\n</code>或者到达文件结尾才停止。由于大家所学知识不足，这段代码暂时无法理解，我也就不细说了，在实际开发中，大家按照下面的形式使用即可：</p><pre><code>include &lt;stdio.h&gt;int main()&#123;    int a = 1, b = 2;    char c;        scanf(&quot;a=%d&quot;, &amp;a);    while((c = getchar()) != &#39;\n&#39; &amp;&amp; c != EOF); //在下次读取前清空缓冲区    scanf(&quot;b=%d&quot;, &amp;b);    printf(&quot;a=%d, b=%d\n&quot;, a, b);    return 0;&#125;</code></pre><p>输入示例：</p><pre><code>a=100↙b=200↙a=100, b=200</code></pre><p>按下第一个回车键后，只有第一个 scanf() 读取成功了，第二个 scanf() 并没有开始读取，等我们再次输入并按下回车键后，第二个 scanf() 才开始读取，这就符合我们的操作习惯了。如果没有清空缓冲区的语句，按下第一个回车键后，两个 scanf() 都读取了，只是第二个 scanf() 读取失败了，让人觉得很怪异，这点已在《使用scanf从键盘输入数据》中进行了演示。</p><p>改变输入方式，再次尝试一下：</p><pre><code>a=100b=200b=300a=100, b=300</code></pre><p>你看，第一次输入的多余内容并没有起作用，就是因为它们在第二个 scanf() 之前被清空了。</p><p>这种方案的关键之处在于，getchar() 是带有缓冲区的，并且一切字符通吃，或者说一切字符都会读取，不会忽略。不过这种方案有个缺点，就是要额外定义一个变量 c，对于有强迫症的读者来说可能有点难受。 </p><h4 id="2-使用-scanf-清空缓冲区"><a href="#2-使用-scanf-清空缓冲区" class="headerlink" title="2) 使用 scanf() 清空缓冲区"></a>2) 使用 scanf() 清空缓冲区</h4><p>scanf() 还有一种高级用法，就是使用类似于正则表达式的通配符，这样它就可以读取所有的字符了，包括空格、换行符、制表符等空白符，不会再忽略它们了。并且，scanf() 还允许把读取到的数据直接丢弃，不用赋值给变量。</p><p>请看下面的语句：</p><pre><code>scanf(&quot;%*[^\n]&quot;); scanf(&quot;%*c&quot;);</code></pre><p>第一个 scanf() 将逐个读取缓冲区中<code>\n</code>之前的其它字符，% 后面的 * 表示将读取的这些字符丢弃，遇到<code>\n</code>字符时便停止读取。此时，缓冲区中尚有一个<code>\n</code>遗留，第二个 scanf() 再将这个<code>\n</code>读取并丢弃，这里的星号和第一个 scanf() 的星号作用相同。由于所有从键盘的输入都是以回车结束的，而回车会产生一个<code>\n</code>字符，所以将<code>\n</code>连同它之前的字符全部读取并丢弃之后，也就相当于清除了输入缓冲区。</p><p>相信很多读者都不明白这种写法，没关系，下节我们在讲解 scanf() 的高级用法时还会再解释。</p><p>我们来演示这种方案的效果：</p><pre><code>include &lt;stdio.h&gt;int main()&#123;    int a = 1, b = 2;    scanf(&quot;a=%d&quot;, &amp;a);    scanf(&quot;%*[^\n]&quot;); scanf(&quot;%*c&quot;); //在下次读取前清空缓冲区    scanf(&quot;b=%d&quot;, &amp;b);    printf(&quot;a=%d, b=%d\n&quot;, a, b);    return 0;&#125;</code></pre><p>输入示例 ①：</p><pre><code>a=100↙b=200↙a=100, b=200</code></pre><p>输入示例 ②：</p><pre><code>a=100b=200↙b=300↙a=100, b=300</code></pre><p>相比使用 getchar()，这种方案不用额外定义一个变量，看起来更加整洁。</p><h2 id="两种不通用、不建议的方案"><a href="#两种不通用、不建议的方案" class="headerlink" title="两种不通用、不建议的方案"></a>两种不通用、不建议的方案</h2><p>以上两种清空输入缓冲区的方案是通用的，在任何平台、任何编译器、任何情景下都奏效。除此以外，有些教材和老师可能还讲解过其它的方案，常见的有两种，分别是<code>fflush(stdin)</code>和<code>rewind(stdin)</code>。</p><h4 id="1-fflush-stdin"><a href="#1-fflush-stdin" class="headerlink" title="1) fflush(stdin)"></a>1) fflush(stdin)</h4><p>fflush(stdin) 常用于 Windows 平台，在 VC 6.0、VS2010 等较老的编译器下确实能够清空缓冲区。</p><p>C语言标准规定，当 fflush() 用于 stdout 时，必须要有清空输出缓冲区的作用；但是C语言标准并没有规定 fflush() 用于 stdin 时的作用，编译器的实现者可以自由决定，所以它的行为是未定义的。</p><p>较老的微软编译器进行了扩展，赋予了 fflush(stdin) 清空输入缓冲区的功能，例如 VC 6.0、VS2010 等；但是，较新的微软编译器又取消了这种扩展，不再支持 fflush(stdin)，例如 VS2015、VS2017 等，在这些版本的编译器下，fflush() 是无效的。</p><p>较老的 GCC 是不支持 fflush(stdin) 的，但是最新的 GCC 又开始支持 fflush(stdin) 了。</p><p>LLVM/Clang 编译器始终不支持 fflush(stdin)。</p><p>总之，fflush(stdin) 这种不标准的写法只适用于一部分编译器，通用性非常差，所以不建议使用。如果你由于个人习惯坚持使用，请测试你的编译器是否支持。</p><h4 id="2-rewind-stdin"><a href="#2-rewind-stdin" class="headerlink" title="2) rewind(stdin)"></a>2) rewind(stdin)</h4><p>rewind() 函数并没有清空缓冲区的功能，但是 rewind(stdin) 偏偏在某些编译器下会导致清空缓冲区的假象，例如 VS2015、LLVM/Clang。在 GCC 下，rewind(stdin) 是没有任何效果的。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最靠谱、最通用、最有效的清空输入缓冲区的方案就是使用 getchar() 或者 scanf() 将缓冲区中的数据逐个读取出来，其它方案都有或多或少的问题。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> c# </category>
+          
+          <category> 清空缓冲区 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> c# </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>c语言常遇到的错误集</title>
+      <link href="/2023/04/05/c%E8%AF%AD%E8%A8%80/%E5%B8%B8%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF/"/>
+      <url>/2023/04/05/c%E8%AF%AD%E8%A8%80/%E5%B8%B8%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF/</url>
+      
+        <content type="html"><![CDATA[<h4 id="当遇到数组越界类的错误时，很有可能是宏定义的maxsize出了问题"><a href="#当遇到数组越界类的错误时，很有可能是宏定义的maxsize出了问题" class="headerlink" title="当遇到数组越界类的错误时，很有可能是宏定义的maxsize出了问题"></a>当遇到数组越界类的错误时，很有可能是宏定义的maxsize出了问题</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> maxsize 10</span></span><br></pre></td></tr></table></figure><p>宏定义的maxsize过小</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> c# </category>
+          
+          <category> c语言错误集 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> c# </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>第三章 数据链路层</title>
+      <link href="/2023/04/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82_1/"/>
+      <url>/2023/04/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82_1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="第三章-数据链路层"><a href="#第三章-数据链路层" class="headerlink" title="第三章 数据链路层"></a>第三章 数据链路层</h1><hr><h2 id="本章主要内容"><a href="#本章主要内容" class="headerlink" title="本章主要内容"></a>本章主要内容</h2><ol><li>点对点信道和广播信道的特点，以及对应协议（ppp）（CSMA/CD）的特点</li><li>三个基本问题：封装成帧、透明传输、差错检测</li><li>以太网mac层的硬件地址</li><li>适配器、转发器、集线器、网桥、以太网交换机的作用以及使用场合。</li></ol><h3 id="3-1-数据链路层的几个共同问题"><a href="#3-1-数据链路层的几个共同问题" class="headerlink" title="3.1 数据链路层的几个共同问题"></a>3.1 数据链路层的几个共同问题</h3><p>链路：</p><blockquote><p>从下一个节点到相邻结点的一段物理线路，中间无其他交换结点。</p></blockquote><p>数据链路：</p><blockquote><p>物理线路以及实现一些必要的通信协议的硬件和软件</p></blockquote><h4 id="1-封装成帧"><a href="#1-封装成帧" class="headerlink" title="1. 封装成帧"></a>1. 封装成帧</h4><p>给一段数据前后分别加上首部和尾部，便于接收端从比特流中辨认帧的开始和结束位置</p><h4 id="2-透明传输"><a href="#2-透明传输" class="headerlink" title="2. 透明传输"></a>2. 透明传输</h4><p>无论什么样的比特组合的数据，都能按照原样没有差错地通过数据链路层</p><p>也就是说：如果数据中出现了和帧界定符一样的比特组合时，就要采取有效的措施来解决这个问题。</p><h4 id="3-差错检测"><a href="#3-差错检测" class="headerlink" title="3. 差错检测"></a>3. 差错检测</h4><p>传输过程会出现差错（比特差错）难以避免。若判定有差错，那就简单地丢弃这个帧。</p><hr><h3 id="3-2-点对点协议PPP"><a href="#3-2-点对点协议PPP" class="headerlink" title="3.2 点对点协议PPP"></a>3.2 点对点协议PPP</h3><p>点对点协议：</p><blockquote><p>PPP (Point-to-Point Protocol)</p></blockquote><h4 id="ppp协议的特点"><a href="#ppp协议的特点" class="headerlink" title="ppp协议的特点"></a>ppp协议的特点</h4><blockquote><p>互联网用户只有连接某个ISP才能接入互联网。PPP协议就是用户计算机和ISP进行通信时所使用的 <em>数据链路层</em> 协议</p></blockquote><p>PPP协议的组成：</p><ul><li><p>一个将IP数据报封装到串行链路的方法。</p></li><li><p>一个用于建立、配置、测试链路连接的 <strong>链路控制协议</strong> LCP(Link Control Protocol)</p></li><li><p>一套<strong>网络控制协议</strong>，这些协议用于支持不同的网络层协议，如IP</p></li></ul><h5 id="1-各字段的意义"><a href="#1-各字段的意义" class="headerlink" title="1. 各字段的意义"></a>1. 各字段的意义</h5><h5 id="2-字节填充"><a href="#2-字节填充" class="headerlink" title="2. 字节填充"></a>2. 字节填充</h5><h5 id="3-零比特填充"><a href="#3-零比特填充" class="headerlink" title="3. 零比特填充"></a>3. 零比特填充</h5><h4 id="ppp协议的工作状态"><a href="#ppp协议的工作状态" class="headerlink" title="ppp协议的工作状态"></a>ppp协议的工作状态</h4><hr><h3 id="3-3-使用广播信道的数据链路层"><a href="#3-3-使用广播信道的数据链路层" class="headerlink" title="3.3 使用广播信道的数据链路层"></a>3.3 使用广播信道的数据链路层</h3><p>关键词：以太网、局域网</p><p>局域网使用的就是广播信道。</p><h4 id="3-3-1-局域网的数据链路层"><a href="#3-3-1-局域网的数据链路层" class="headerlink" title="3.3.1 局域网的数据链路层"></a>3.3.1 局域网的数据链路层</h4><p>局域网具以下优点：</p><blockquote><ul><li><p>具有广播功能</p></li><li><p>便于系统拓展和逐渐地演变</p></li><li><p>提高了系统的可靠性、可用性、生存性</p></li></ul></blockquote><p>共享信道要解决用户合理共享信道的问题，解决方法如下：</p><blockquote><ul><li><p>静态划分信道</p><p> 频分复用、时分复用、波分复用、码分复用</p></li><li><p>动态媒体接入控制</p><p> 又称为多点接入，信道并非时在用户通信时固定分配给用户</p><ul><li>随机接入：所有用户随机发送信息，可能会产生碰撞。</li><li>受控接入：用户不能随机发送信息，必须服从一定的控制。</li></ul></li></ul></blockquote><h5 id="1-以太网的两个重要标准"><a href="#1-以太网的两个重要标准" class="headerlink" title="1. 以太网的两个重要标准"></a>1. 以太网的两个重要标准</h5><h5 id="2-适配器的作用"><a href="#2-适配器的作用" class="headerlink" title="2. 适配器的作用"></a>2. 适配器的作用</h5><h4 id="3-3-2-CSMA-DC协议"><a href="#3-3-2-CSMA-DC协议" class="headerlink" title="3.3.2 CSMA/DC协议"></a>3.3.2 CSMA/DC协议</h4><h4 id="3-3-3-使用集线器的星型拓扑"><a href="#3-3-3-使用集线器的星型拓扑" class="headerlink" title="3.3.3 使用集线器的星型拓扑"></a>3.3.3 使用集线器的星型拓扑</h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+          <category> 第三章数据链路层 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2023/04/03/hello-world/"/>
+      <url>/2023/04/03/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
