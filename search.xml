@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>http请求报文</title>
+      <link href="/2023/04/07/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/http%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87/"/>
+      <url>/2023/04/07/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/http%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87/</url>
+      
+        <content type="html"><![CDATA[<h2 id="http请求报文"><a href="#http请求报文" class="headerlink" title="http请求报文"></a>http请求报文</h2><h3 id="HTTP请求由四个部分组成"><a href="#HTTP请求由四个部分组成" class="headerlink" title="HTTP请求由四个部分组成"></a>HTTP请求由四个部分组成</h3><ul><li>请求行</li><li>请求头部</li><li>空行</li><li>请求数据</li></ul><p>请求行：Method request-URI HTTP-Version CRLF</p><blockquote><p>method：表示请求方法</p><p>Request-URI：统一的资源标识符</p><p>HTTP-Version：表示请求的HTTP协议版本</p><p>CRLF：表示回车和换行</p></blockquote><p>请求头部： 允许客户端传递关于自身的信息和希望的响应形式 </p><p>空行：表示请求头结束，请求正文开始</p><p>请求数据：</p><blockquote><p>get方法：提交数据时，参数会作为url的一部分发送给服务器</p><p>post方法：发送的数据在请求体中</p></blockquote><h3 id="URL-：统一资源定位符（也就是常说的网址）"><a href="#URL-：统一资源定位符（也就是常说的网址）" class="headerlink" title="URL ：统一资源定位符（也就是常说的网址）"></a>URL ：统一资源定位符（也就是常说的网址）</h3><p>一个完整的URL包含以下部分</p><blockquote><p><a href="http://user:pass@www.example.jp/dir/index.htm?uid=1#ch1">http://user:pass@www.example.jp:80/dir/index.htm?uid=1#ch1</a></p><p>http://  协议方案名</p><p>user:pass 登录信息（认证）</p><p><a href="http://www.example.jp/">www.example.jp</a>  服务器地址</p><p>80 端口号</p><p>/dir/index.htm  带层次的文件路径</p><p>uid=1  查询字符串</p><p>ch1  片段标识符</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网安基础 </category>
+          
+          <category> http请求报文 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网安基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>sqlmap和hydra常用命令</title>
       <link href="/2023/04/05/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/nmap%E5%92%8Chydra%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/2023/04/05/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/nmap%E5%92%8Chydra%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
@@ -59,8 +86,8 @@
     
     <entry>
       <title>各层常用协议</title>
-      <link href="/2023/04/05/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/1.%E5%90%84%E5%B1%82%E5%B8%B8%E7%94%A8%E5%8D%8F%E8%AE%AE/"/>
-      <url>/2023/04/05/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/1.%E5%90%84%E5%B1%82%E5%B8%B8%E7%94%A8%E5%8D%8F%E8%AE%AE/</url>
+      <link href="/2023/04/05/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/%E5%90%84%E5%B1%82%E5%B8%B8%E7%94%A8%E5%8D%8F%E8%AE%AE/"/>
+      <url>/2023/04/05/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/%E5%90%84%E5%B1%82%E5%B8%B8%E7%94%A8%E5%8D%8F%E8%AE%AE/</url>
       
         <content type="html"><![CDATA[<h1 id="各层常用协议"><a href="#各层常用协议" class="headerlink" title="各层常用协议"></a>各层常用协议</h1><h2 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h2><blockquote><p>http  https  SSH  DNS  Telnet   FTP      DHCP    SMTP   POP3   RDP     SMB    MySql<br>80    443     22     53       23    20/21      67/68      25        110      3389      445      3306</p></blockquote><h2 id="传输层协议"><a href="#传输层协议" class="headerlink" title="传输层协议"></a>传输层协议</h2><blockquote><pre><code> ​    TCP                                 UDP 传输控制协议             用户数据报协议</code></pre></blockquote><h2 id="网络层协议"><a href="#网络层协议" class="headerlink" title="网络层协议"></a>网络层协议</h2><blockquote><p>ICMP<br>Internet Control Message Protocol<br>internet控制报文协议 用于在ip主机、路由器之间传递控制消息（网络是否通，主机是否可达）。</p></blockquote><blockquote><p>IP<br>Internet Protocol<br>网际互连协议：实现大规模、异构网络的互联互通。</p></blockquote><blockquote><p>ARP<br>Address Resolution Protocol<br>地址解析协议：根据IP地址获取物理地址的协议</p></blockquote><h2 id="数据链路层协议"><a href="#数据链路层协议" class="headerlink" title="数据链路层协议"></a>数据链路层协议</h2><blockquote><p>PPP<br>Point-to-Point Protocal—–ppp点到点：数据链路层封装协议中的一种，常用于广域网，使用串行链路提供远距离数据传输服务。</p></blockquote><blockquote><p>Ethernet<br>以太网：实现链路层的数据传输和地址封装（MAC，常用于局域网。</p></blockquote>]]></content>
       
