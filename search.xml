@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>数据链路层</title>
+      <link href="/2023/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/"/>
+      <url>/2023/04/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</url>
+      
+        <content type="html"><![CDATA[<h1 id="第三章-数据链路层"><a href="#第三章-数据链路层" class="headerlink" title="第三章 数据链路层"></a>第三章 数据链路层</h1><hr><h2 id="本章主要内容"><a href="#本章主要内容" class="headerlink" title="本章主要内容"></a>本章主要内容</h2><ol><li>点对点信道和广播信道的特点，以及对应协议（ppp）（CSMA/CD）的特点</li><li>三个基本问题：封装成帧、透明传输、差错检测</li><li>以太网mac层的硬件地址</li><li>适配器、转发器、集线器、网桥、以太网交换机的作用以及使用场合。</li></ol><h3 id="3-1-数据链路层的几个共同问题"><a href="#3-1-数据链路层的几个共同问题" class="headerlink" title="3.1 数据链路层的几个共同问题"></a>3.1 数据链路层的几个共同问题</h3><p>链路：</p><blockquote><p>从下一个节点到相邻结点的一段物理线路，中间无其他交换结点。</p></blockquote><p>数据链路：</p><blockquote><p>物理线路以及实现一些必要的通信协议的硬件和软件</p></blockquote><h4 id="1-封装成帧"><a href="#1-封装成帧" class="headerlink" title="1. 封装成帧"></a>1. 封装成帧</h4><p>给一段数据前后分别加上首部和尾部，便于接收端从比特流中辨认帧的开始和结束位置</p><h4 id="2-透明传输"><a href="#2-透明传输" class="headerlink" title="2. 透明传输"></a>2. 透明传输</h4><p>无论什么样的比特组合的数据，都能按照原样没有差错地通过数据链路层</p><p>也就是说：如果数据中出现了和帧界定符一样的比特组合时，就要采取有效的措施来解决这个问题。</p><h4 id="3-差错检测"><a href="#3-差错检测" class="headerlink" title="3. 差错检测"></a>3. 差错检测</h4><p>传输过程会出现差错（比特差错）难以避免。若判定有差错，那就简单地丢弃这个帧。</p><hr><h3 id="3-2-点对点协议PPP"><a href="#3-2-点对点协议PPP" class="headerlink" title="3.2 点对点协议PPP"></a>3.2 点对点协议PPP</h3><p>点对点协议：</p><blockquote><p>PPP (Point-to-Point Protocol)</p></blockquote><h4 id="ppp协议的特点"><a href="#ppp协议的特点" class="headerlink" title="ppp协议的特点"></a>ppp协议的特点</h4><blockquote><p>互联网用户只有连接某个ISP才能接入互联网。PPP协议就是用户计算机和ISP进行通信时所使用的 <em>数据链路层</em> 协议</p></blockquote><p>PPP协议的组成：</p><ul><li><p>一个将IP数据报封装到串行链路的方法。</p></li><li><p>一个用于建立、配置、测试链路连接的 <strong>链路控制协议</strong> LCP(Link Control Protocol)</p></li><li><p>一套<strong>网络控制协议</strong>，这些协议用于支持不同的网络层协议，如IP</p></li></ul><h5 id="1-各字段的意义"><a href="#1-各字段的意义" class="headerlink" title="1. 各字段的意义"></a>1. 各字段的意义</h5><h5 id="2-字节填充"><a href="#2-字节填充" class="headerlink" title="2. 字节填充"></a>2. 字节填充</h5><h5 id="3-零比特填充"><a href="#3-零比特填充" class="headerlink" title="3. 零比特填充"></a>3. 零比特填充</h5><h4 id="ppp协议的工作状态"><a href="#ppp协议的工作状态" class="headerlink" title="ppp协议的工作状态"></a>ppp协议的工作状态</h4><hr><h3 id="3-3-使用广播信道的数据链路层"><a href="#3-3-使用广播信道的数据链路层" class="headerlink" title="3.3 使用广播信道的数据链路层"></a>3.3 使用广播信道的数据链路层</h3><p>关键词：以太网、局域网</p><p>局域网使用的就是广播信道。</p><h4 id="3-3-1-局域网的数据链路层"><a href="#3-3-1-局域网的数据链路层" class="headerlink" title="3.3.1 局域网的数据链路层"></a>3.3.1 局域网的数据链路层</h4><p>局域网具以下优点：</p><blockquote><ul><li><p>具有广播功能</p></li><li><p>便于系统拓展和逐渐地演变</p></li><li><p>提高了系统的可靠性、可用性、生存性</p></li></ul></blockquote><p>共享信道要解决用户合理共享信道的问题，解决方法如下：</p><blockquote><ul><li><p>静态划分信道</p><p> 频分复用、时分复用、波分复用、码分复用</p></li></ul><ul><li><p>动态媒体接入控制</p><p> 又称为多点接入，信道并非时在用户通信时固定分配给用户</p><ul><li>随机接入：所有用户随机发送信息，可能会产生碰撞。</li><li>受控接入：用户不能随机发送信息，必须服从一定的控制。</li></ul></li></ul></blockquote><h5 id="1-以太网的两个主要标准"><a href="#1-以太网的两个主要标准" class="headerlink" title="1. 以太网的两个主要标准"></a>1. 以太网的两个主要标准</h5><blockquote><ul><li>DIX Ethernet V2</li><li>IEEE 802.3</li></ul></blockquote><p>以上两个标准只有很小的差别</p><p>很多人把采用802.3标准的局域网简称为以太网</p><p>以太网采用<strong>无连接</strong>的工作方式，不必先建立连接就可以直接发送数据。</p><p>以太网提供的服务是 尽最大努力的交付  即不可靠的交付</p><h5 id="2-适配器的作用"><a href="#2-适配器的作用" class="headerlink" title="2. 适配器的作用"></a>2. 适配器的作用</h5><blockquote><p>计算机与外部局域网的连接需要通过适配器</p></blockquote><p>适配器本是主机箱内插入的一块网络接口板，这种接口板又称为网络接口卡，简称网卡。</p><p>现在计算机上已经嵌入了这种适配器，不再使用单独的网卡了</p><h4 id="3-3-2-CSMA-CD协议"><a href="#3-3-2-CSMA-CD协议" class="headerlink" title="3.3.2 CSMA/CD协议"></a>3.3.2 CSMA/CD协议</h4><blockquote><p>CSMA/CD: 载波监听多点接入/碰撞检测(Carrier Sense Multiple Access with Collision Detection)</p></blockquote><h5 id="几个概念："><a href="#几个概念：" class="headerlink" title="几个概念："></a>几个概念：</h5><p>载波监听</p><blockquote><p>边发送边监听。 不管在数据发送前还是数据发送中，每个站都必须不停地检测信道。保证不在其他站发送数据时发送数据，产生干扰。</p></blockquote><p>多点接入</p><blockquote><p>说明是总线型网路，许多计算机以多点接入的方式连接在一根总线上。</p></blockquote><p>碰撞检测</p><blockquote><p>适配器边发送数据，边检测信道上的信号电压的变化情况。当两个或者几个站同时发送数据时，总线上的电压会增大（互相叠加），表明发生了碰撞。一旦发现总线出现了碰撞，适配器就要立即停止发送数据。</p></blockquote><p>尽管有以上技术作为保证，数据在总线上仍然会出现碰撞。（数据在总线上传输是有延时的，上一秒还没监听到信号，下一秒可能信号就传到了，但己方已经把数据发出去了）</p><p>因为同一时间只能有一个站在发送信息，因此只能进行半双工通信，不能进行全双工通信。</p><p>争用期</p><blockquote><p>以太网端到端往返时间 2τ 数据发送后，经过这段时间还没有检测到碰撞，才能肯定这次发送一定不会产生碰撞。</p></blockquote><p>基本退避时间为争用期2τ 具体的争用期时间是51.2微秒</p><p>当数据发送不成功时就要重传，从0—2*k-1  这些整数中随机选出一个数，这个数乘以2τ 就是推迟重传时间（不一定要推迟，可以立即发送）</p><p>当重传16次仍然不成功，那么就丢弃该帧，并向高层报告。（这种情况表明同一时间想发送数据的站太多）</p><p>最短帧</p><p>如果发送的帧很短，那么可能会出现以下情况</p><blockquote><p>发送方发完了这个很短的帧，没有检测到碰撞，但是实际上在发送后这个帧与其他站发送的数据产生了碰撞。</p></blockquote><p>这种情况会导致发送方不知道发送失败了，因此不会重传（数据永久丢失了）</p><p>为了避免这种情况，以太网规定帧长最短不能小于64字节</p><p>最短帧是64字节</p><p>凡是小于64字节的帧都是无效帧，都应该被丢弃</p><p>帧间最小间隔</p><blockquote><p>9.6微秒 </p></blockquote><p>作用是防止接收方来不及反应，留出时间处理上一个帧的缓存</p><p>强化碰撞：</p><p>当发送数据的站检测到碰撞以后，除了立即停止发送数据以外，还需要发送人为的干扰信号，方便让所有站都知道已经发生了碰撞</p><h4 id="3-3-3-使用集线器的星型拓扑"><a href="#3-3-3-使用集线器的星型拓扑" class="headerlink" title="3.3.3 使用集线器的星型拓扑"></a>3.3.3 使用集线器的星型拓扑</h4><h5 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h5><p>10BASE-T标准</p><blockquote><p>10代表10Mbit/s的数据率   base代表信号是基带信号   T代表双绞线</p></blockquote><p>10BASS-F </p><blockquote><p>与10BASE-T类似，F代表光纤</p></blockquote><p>集线器</p><blockquote><p>位于星型拓扑以太网的中心，取代了单一的总线</p></blockquote><p>集线器工作在物理层，只进行转发，不负责碰撞检测。</p><h4 id="3-3-4-以太网的信道利用率"><a href="#3-3-4-以太网的信道利用率" class="headerlink" title="3.3.4 以太网的信道利用率"></a>3.3.4 以太网的信道利用率</h4><p>成功发送一个帧所经历的时间是 T0+τ</p><p>T0: 完整发送一个帧的时间</p><p>τ：从信道起点到终点传输过程中经历的时间</p><blockquote><p>a: 单程端到端时延 τ 与帧的发送时间 T0 之比</p></blockquote><p>a = τ/T0</p><p>a越小，信道利用率越高。 因为a趋近于0时，表示一旦发生碰撞，就能马上检测出来，并立即停止发送。因而信道资源被浪费的时间很少。</p><h4 id="3-3-5-以太网的mac层"><a href="#3-3-5-以太网的mac层" class="headerlink" title="3.3.5 以太网的mac层"></a>3.3.5 以太网的mac层</h4><p>MAC地址：单独表示每个适配器，每个MAC地址全球唯一</p><p>MAC帧的格式：</p><blockquote><p>后面补充</p></blockquote><p>适配器的过滤功能：</p><blockquote><p>适配器每从网络上收到一个mac帧，先用硬件检查帧中的目的地址。如果是发往本站的就收下，如果不是，那就丢弃。</p></blockquote><h3 id="3-4-拓展的以太网"><a href="#3-4-拓展的以太网" class="headerlink" title="3.4 拓展的以太网"></a>3.4 拓展的以太网</h3><h4 id="3-4-1-在物理层拓展以太网"><a href="#3-4-1-在物理层拓展以太网" class="headerlink" title="3.4.1 在物理层拓展以太网"></a>3.4.1 在物理层拓展以太网</h4><p>涉及到的设备：</p><ul><li>光纤和调制解调器：拓展主机和集线器之间的距离</li><li>集线器：代替总线</li></ul><p>涉及的概念：</p><blockquote><p>碰撞域： 又称为冲突域。在这个域内，同一时间只能有一个设备在发数据，否则就会冲突。</p></blockquote><blockquote><p>碰撞域的最大吞吐量： 假设三个系通过集线器连接起来，其中每个系的最大吞吐量都是10Mbit/s 那这个连接起来的碰撞域的最大吞吐量就是30Mbit/s</p></blockquote><p>注意： 如果不同的系使用不同的以太网技术（如：数据率不同），就不能用集线器将他们互联起来。</p><p>如果一个系使用10Mbit/s的适配器，另外的系使用10/100Mbit/s的适配器，连起来后，就只能支持10Mbit/s的工作速率。因为集线器只能转发，不能缓存。</p><h4 id="3-4-2-在数据链路层拓展以太网"><a href="#3-4-2-在数据链路层拓展以太网" class="headerlink" title="3.4.2 在数据链路层拓展以太网"></a>3.4.2 在数据链路层拓展以太网</h4><p>涉及到的设备：</p><ul><li>网桥：根据收到的帧根据其MAC帧目的地址进行转发和过滤。</li><li>交换机：工作在数据链路层，实质上是一个多端口的网桥，每个端口都与一台单独的主机或另一台交换机相连，工作在全双工模式。</li></ul><p>涉及到的概念：</p><blockquote><p>交换机的自学习： 当交换机收到一个帧时，先检测交换表里有没有这个帧目的地址设备的记录，如果有就可以确定需要转发的端口；如果没有，则先在交换表记录下发送这个帧的设备的MAC地址和帧的来源端口，再对除来源端口外的其他端口进行广播。这个过程一直循环，最后交换表里就会存储有连接这台交换机所有站的MAC地址和对应连接端口。</p><p>交换表： 交换机是一种即插即用的设备，其内部有张交换表（地址表），通过自学习，交换表里会存储连接这台交换机的所有站的MAC地址和连接的端口，以便在收到新的帧时，只需要检测帧的目的地址就能直接确定调用哪个端口</p><p>”兜圈子“问题：当网络中存在冗余链路（如：两台交换机存在一个环形回路）时，可能会导致以太网帧再某个环路中无线兜圈子，白白消耗了网络资源。</p><p>解决兜圈子问题的方案：在逻辑上切断环路。IEEE的802.1D标准制定的生成树协议STP</p></blockquote><h4 id="3-4-2-虚拟局域网"><a href="#3-4-2-虚拟局域网" class="headerlink" title="3.4.2 虚拟局域网"></a>3.4.2 虚拟局域网</h4><p>虚拟局域网的作用：</p><blockquote><p>缩小广播域，把一个大的以太网，在逻辑上分割成几个小的以太网，每个小的以太网各自成为新的广播域</p></blockquote><h3 id="3-5-高速以太网"><a href="#3-5-高速以太网" class="headerlink" title="3.5 高速以太网"></a>3.5 高速以太网</h3><p>100BASE-T 以太网</p><blockquote><p>Fast Ethernet快速以太网   在双绞线上传输 100Mbit/s基带信号的星型拓扑以太网，仍使用IEEE802.3的 CSMA/CD 协议。</p></blockquote><p>吉比特以太网</p><blockquote><p>使用802.3z标准，具有以下特点：</p><ul><li>允许在1Gbit/s下以全双工和半双工两种方式工作。</li><li>使用IEEE802.3协议规定的帧格式</li><li>半双工下使用CSMA/CD协议，全双工下不使用</li><li>与10BASE-T和100BASE-T技术向后兼容</li></ul></blockquote><p>10吉比特以太网</p><blockquote><p>帧的格式没有变化。</p><p>只工作在全双工模式。因此不存在争用问题，不适用CSMA/CD协议。</p></blockquote><h3 id="3-6-使用以太网进行宽带接入"><a href="#3-6-使用以太网进行宽带接入" class="headerlink" title="3.6 使用以太网进行宽带接入"></a>3.6 使用以太网进行宽带接入</h3><p>把ppp协议中的ppp帧封装到以太网中来传输————PPPoE（PPP over Ethernet）</p><p>例： 使用光纤到大楼方案（FTTB），用光纤连接每栋大楼，在每栋大楼的楼梯口安装一个光网络单元ONU ，根据用户所申请的带宽，使用5类线接到用户家中。用户只需要用5类线把自己的个人电脑连接到墙上的RJ-45接口上，然后在PPPoE的弹出窗口输入自己在运营商处购买的用户名和密码，就可以进行宽带上网了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+          <category> 数据链路层 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>XSS漏洞基础</title>
       <link href="/2023/04/08/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/XSS%E6%BC%8F%E6%B4%9E%E5%9F%BA%E7%A1%80/"/>
       <url>/2023/04/08/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/XSS%E6%BC%8F%E6%B4%9E%E5%9F%BA%E7%A1%80/</url>
@@ -185,33 +212,6 @@
         <tags>
             
             <tag> c# </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>第三章 数据链路层</title>
-      <link href="/2023/04/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82_1/"/>
-      <url>/2023/04/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82_1/</url>
-      
-        <content type="html"><![CDATA[<h1 id="第三章-数据链路层"><a href="#第三章-数据链路层" class="headerlink" title="第三章 数据链路层"></a>第三章 数据链路层</h1><hr><h2 id="本章主要内容"><a href="#本章主要内容" class="headerlink" title="本章主要内容"></a>本章主要内容</h2><ol><li>点对点信道和广播信道的特点，以及对应协议（ppp）（CSMA/CD）的特点</li><li>三个基本问题：封装成帧、透明传输、差错检测</li><li>以太网mac层的硬件地址</li><li>适配器、转发器、集线器、网桥、以太网交换机的作用以及使用场合。</li></ol><h3 id="3-1-数据链路层的几个共同问题"><a href="#3-1-数据链路层的几个共同问题" class="headerlink" title="3.1 数据链路层的几个共同问题"></a>3.1 数据链路层的几个共同问题</h3><p>链路：</p><blockquote><p>从下一个节点到相邻结点的一段物理线路，中间无其他交换结点。</p></blockquote><p>数据链路：</p><blockquote><p>物理线路以及实现一些必要的通信协议的硬件和软件</p></blockquote><h4 id="1-封装成帧"><a href="#1-封装成帧" class="headerlink" title="1. 封装成帧"></a>1. 封装成帧</h4><p>给一段数据前后分别加上首部和尾部，便于接收端从比特流中辨认帧的开始和结束位置</p><h4 id="2-透明传输"><a href="#2-透明传输" class="headerlink" title="2. 透明传输"></a>2. 透明传输</h4><p>无论什么样的比特组合的数据，都能按照原样没有差错地通过数据链路层</p><p>也就是说：如果数据中出现了和帧界定符一样的比特组合时，就要采取有效的措施来解决这个问题。</p><h4 id="3-差错检测"><a href="#3-差错检测" class="headerlink" title="3. 差错检测"></a>3. 差错检测</h4><p>传输过程会出现差错（比特差错）难以避免。若判定有差错，那就简单地丢弃这个帧。</p><hr><h3 id="3-2-点对点协议PPP"><a href="#3-2-点对点协议PPP" class="headerlink" title="3.2 点对点协议PPP"></a>3.2 点对点协议PPP</h3><p>点对点协议：</p><blockquote><p>PPP (Point-to-Point Protocol)</p></blockquote><h4 id="ppp协议的特点"><a href="#ppp协议的特点" class="headerlink" title="ppp协议的特点"></a>ppp协议的特点</h4><blockquote><p>互联网用户只有连接某个ISP才能接入互联网。PPP协议就是用户计算机和ISP进行通信时所使用的 <em>数据链路层</em> 协议</p></blockquote><p>PPP协议的组成：</p><ul><li><p>一个将IP数据报封装到串行链路的方法。</p></li><li><p>一个用于建立、配置、测试链路连接的 <strong>链路控制协议</strong> LCP(Link Control Protocol)</p></li><li><p>一套<strong>网络控制协议</strong>，这些协议用于支持不同的网络层协议，如IP</p></li></ul><h5 id="1-各字段的意义"><a href="#1-各字段的意义" class="headerlink" title="1. 各字段的意义"></a>1. 各字段的意义</h5><h5 id="2-字节填充"><a href="#2-字节填充" class="headerlink" title="2. 字节填充"></a>2. 字节填充</h5><h5 id="3-零比特填充"><a href="#3-零比特填充" class="headerlink" title="3. 零比特填充"></a>3. 零比特填充</h5><h4 id="ppp协议的工作状态"><a href="#ppp协议的工作状态" class="headerlink" title="ppp协议的工作状态"></a>ppp协议的工作状态</h4><hr><h3 id="3-3-使用广播信道的数据链路层"><a href="#3-3-使用广播信道的数据链路层" class="headerlink" title="3.3 使用广播信道的数据链路层"></a>3.3 使用广播信道的数据链路层</h3><p>关键词：以太网、局域网</p><p>局域网使用的就是广播信道。</p><h4 id="3-3-1-局域网的数据链路层"><a href="#3-3-1-局域网的数据链路层" class="headerlink" title="3.3.1 局域网的数据链路层"></a>3.3.1 局域网的数据链路层</h4><p>局域网具以下优点：</p><blockquote><ul><li><p>具有广播功能</p></li><li><p>便于系统拓展和逐渐地演变</p></li><li><p>提高了系统的可靠性、可用性、生存性</p></li></ul></blockquote><p>共享信道要解决用户合理共享信道的问题，解决方法如下：</p><blockquote><ul><li><p>静态划分信道</p><p> 频分复用、时分复用、波分复用、码分复用</p></li><li><p>动态媒体接入控制</p><p> 又称为多点接入，信道并非时在用户通信时固定分配给用户</p><ul><li>随机接入：所有用户随机发送信息，可能会产生碰撞。</li><li>受控接入：用户不能随机发送信息，必须服从一定的控制。</li></ul></li></ul></blockquote><h5 id="1-以太网的两个重要标准"><a href="#1-以太网的两个重要标准" class="headerlink" title="1. 以太网的两个重要标准"></a>1. 以太网的两个重要标准</h5><h5 id="2-适配器的作用"><a href="#2-适配器的作用" class="headerlink" title="2. 适配器的作用"></a>2. 适配器的作用</h5><h4 id="3-3-2-CSMA-DC协议"><a href="#3-3-2-CSMA-DC协议" class="headerlink" title="3.3.2 CSMA/DC协议"></a>3.3.2 CSMA/DC协议</h4><h4 id="3-3-3-使用集线器的星型拓扑"><a href="#3-3-3-使用集线器的星型拓扑" class="headerlink" title="3.3.3 使用集线器的星型拓扑"></a>3.3.3 使用集线器的星型拓扑</h4>]]></content>
-      
-      
-      <categories>
-          
-          <category> 计算机网络 </category>
-          
-          <category> 第三章数据链路层 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 计算机网络 </tag>
             
         </tags>
       
