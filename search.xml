@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>实用姿势总结</title>
+      <link href="/2023/04/20/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/XSS%E7%9A%84%E7%BB%95%E8%BF%87%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+      <url>/2023/04/20/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/XSS%E7%9A%84%E7%BB%95%E8%BF%87%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h1 id="XSS实用绕过姿势总结"><a href="#XSS实用绕过姿势总结" class="headerlink" title="XSS实用绕过姿势总结"></a>XSS实用绕过姿势总结</h1><h2 id="1-嵌套字符以应对字符删除型过滤"><a href="#1-嵌套字符以应对字符删除型过滤" class="headerlink" title="1.  嵌套字符以应对字符删除型过滤"></a>1.  嵌套字符以应对字符删除型过滤</h2><p>如：xss-labs-master  level7</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230418113233600.png" alt="image-20230418113233600"></p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230418113429060.png" alt="image-20230418113429060"></p><p>此处直接删除了字符script和href</p><p>可以采用嵌套的方式绕过</p><blockquote><ul><li>hhrefref</li><li>sscriptcript</li></ul></blockquote><p>此时，只会删除掉特定的连续字符串，但是剩下的字符又会重新组合成这个字符串，达成绕过的目的。</p><hr><h2 id="2-尝试使用锚点注入的方式绕过（不一定会成功）"><a href="#2-尝试使用锚点注入的方式绕过（不一定会成功）" class="headerlink" title="2.  尝试使用锚点注入的方式绕过（不一定会成功）"></a>2.  尝试使用锚点注入的方式绕过（不一定会成功）</h2><blockquote><p>锚点注入： 在URL的井号后面添加JavaScript脚本是一种称为“锚点注入”的技术，它可以实现在页面加载时执行JavaScript代码。但是，这种技术并不是所有浏览器都支持，而且也存在一些安全风险。</p><p>如果浏览器支持锚点注入，那么在URL的井号后面添加JavaScript脚本是可以运行的。例如，以下URL会在页面加载时弹出一个警告框：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://example.com/page.html#&lt;script&gt;alert(&#x27;Hello, world!&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure><p>但是，为了保证网站的安全性，大多数现代浏览器已经禁止了锚点注入这种技术。因此，不建议在URL中使用锚点注入来执行JavaScript代码，而应该使用更安全的方法，如在HTML文档中嵌入JavaScript代码或在外部JavaScript文件中编写代码。</p></blockquote><p>例：dvwa  DOM型XSS  level high</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230413193725293.png" alt="image-20230413193725293"></p><p>这里对url中的字符进行了严密的过滤，但是没有过滤掉  ‘#‘</p><p>在URL最后添加上#和脚本语句</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230413204911747.png" alt="image-20230413204911747"></p><p>发现弹窗了</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230413205049632.png" alt="image-20230413205049632"></p><p>检查网页，发现选项English部分的下面多了script标签（）</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230420231507666.png"></p><h2 id="3-script标签被截断的应对方法-如截断成s-cript"><a href="#3-script标签被截断的应对方法-如截断成s-cript" class="headerlink" title="3. script标签被截断的应对方法 如截断成s_cript"></a>3. script标签被截断的应对方法 如截断成s_cript</h2><p>比较简单，不放图举例了</p><blockquote><ul><li>大小写绕过</li><li>使用img标签</li><li>使用a标签</li><li>给该文本框或下拉列表添加事件属性</li></ul></blockquote><hr><h2 id="4-存储型XSS限制输入字符个数的应对方法"><a href="#4-存储型XSS限制输入字符个数的应对方法" class="headerlink" title="4.  存储型XSS限制输入字符个数的应对方法"></a>4.  存储型XSS限制输入字符个数的应对方法</h2><p>存储型，目的是把脚本存入服务器数据库里</p><p>此时可以通过用浏览器检查功能修改标签的限制属性，再往里边写代码</p><p>例：dvwa存储型XSS</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230416153751520.png" alt="image-20230416153751520"></p><blockquote><p>存储型，注意到有两个文本框，一个是姓名，一个是评论消息。</p><p>可能只对评论信息做了过滤，名字通过前端限制了输入字长，但没做过滤。</p><p>尝试修改名字的限制长度，然后在名字的文本框发脚本。</p></blockquote><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230416154209736.png" alt="image-20230416154209736"></p><blockquote><p>改成100，然后痛快地写脚本</p></blockquote><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230416154853881.png" alt="image-20230416154853881"></p><hr><h2 id="5-页面回显的字符被转义，而输入框内容未被清空"><a href="#5-页面回显的字符被转义，而输入框内容未被清空" class="headerlink" title="5.  页面回显的字符被转义，而输入框内容未被清空"></a>5.  页面回显的字符被转义，而输入框内容未被清空</h2><p>此时可以推断出输入框value属性的值未被清空，可以使用双引号或单引号闭合value，再添加属性</p><p>例：xss-labs-master  level2</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230416163152800.png" alt="image-20230416163152800"></p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230416164148387.png" alt="image-20230416164148387"></p><hr><h2 id="6-使用unicode编码绕过"><a href="#6-使用unicode编码绕过" class="headerlink" title="6. 使用unicode编码绕过"></a>6. 使用unicode编码绕过</h2><p>当URL中 script、onclick、href  等特殊字符串被过滤掉时，可以将脚本部分使用unicode编码，再将编码后的字符串填入达成目的。</p><p>例： xss-labs-master  level8</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230420163308647.png" alt="image-20230420163308647"></p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230420163537287.png" alt="image-20230420163537287"></p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230420163557363.png" alt="image-20230420163557363"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网安基础 </category>
+          
+          <category> XSS跨站脚本攻击 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网安基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>XSS的绕过姿势（四）</title>
       <link href="/2023/04/20/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/XSS%E7%9A%84%E7%BB%95%E8%BF%87%E5%A7%BF%E5%8A%BF%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
       <url>/2023/04/20/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/XSS%E7%9A%84%E7%BB%95%E8%BF%87%E5%A7%BF%E5%8A%BF%EF%BC%88%E5%9B%9B%EF%BC%89/</url>
