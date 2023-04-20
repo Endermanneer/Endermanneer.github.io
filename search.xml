@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>关于锚点注入的深入探讨</title>
+      <link href="/2023/04/21/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/XSS%E5%85%B3%E4%BA%8E%E9%94%9A%E7%82%B9%E6%B3%A8%E5%85%A5%E7%9A%84%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8/"/>
+      <url>/2023/04/21/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/XSS%E5%85%B3%E4%BA%8E%E9%94%9A%E7%82%B9%E6%B3%A8%E5%85%A5%E7%9A%84%E6%B7%B1%E5%85%A5%E6%8E%A2%E8%AE%A8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="关于锚点注入的深入探讨"><a href="#关于锚点注入的深入探讨" class="headerlink" title="关于锚点注入的深入探讨"></a>关于锚点注入的深入探讨</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>dvwa靶场  high难度下的 dom型XSS关卡的解法很有意思</p><p>这关使用了锚点注入的方式，通过在URL后面添加#和script标签，就能使浏览器执行脚本</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230413204911747.png" alt="image-20230413204911747"></p><p>以下是chatGPT对锚点注入的解释：</p><blockquote><p>锚点注入： 在URL的井号后面添加JavaScript脚本是一种称为“锚点注入”的技术，它可以实现在页面加载时执行JavaScript代码。但是，这种技术并不是所有浏览器都支持，而且也存在一些安全风险。</p><p>如果浏览器支持锚点注入，那么在URL的井号后面添加JavaScript脚本是可以运行的。例如，以下URL会在页面加载时弹出一个警告框：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://example.com/page.html#&lt;script&gt;alert(&#x27;Hello, world!&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure><p>但是，为了保证网站的安全性，大多数现代浏览器已经禁止了锚点注入这种技术。因此，不建议在URL中使用锚点注入来执行JavaScript代码，而应该使用更安全的方法，如在HTML文档中嵌入JavaScript代码或在外部JavaScript文件中编写代码。</p></blockquote><p>关键： 在井号后面添加javascript脚本</p><p>我当时心想，这么有意思？那么是不是在其他地方也能这么弄? 只需要在URL后面添加上# 和script标签，就能简单实现XSS攻击</p><p>后来，我在反射型的XSS靶场试了一遍，不成功。在存储型的XSS靶场也试了一遍，照样不成功。</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230421001044917.png" alt="image-20230421001044917"></p><p>没有任何反应。。。。</p><h2 id="问题解决过程"><a href="#问题解决过程" class="headerlink" title="问题解决过程"></a>问题解决过程</h2><p>注意到只有DOM型的XSS靶场才可能用这种方法成功通关，而反射型和存储型的全部失败</p><p>那么问题可能就出在不同类型XSS的原理上</p><p>回顾DOM型XSS和反射型XSS攻击原理</p><p>DOM型XSS:</p><blockquote><p>DOM型XSS漏洞是由于JavaScript代码直接操作了DOM（文档对象模型）而导致的漏洞</p></blockquote><p>反射型XSS:</p><blockquote><p>在反射型XSS攻击中，攻击者需要诱导受害者点击一个带有恶意代码的链接，然后受害者的浏览器会向服务器发送请求，将恶意代码作为参数传递给服务器，服务器再将恶意代码反射回受害者的浏览器执行。</p></blockquote><p>也就是说：</p><p>DOM型XSS攻击是客户端通过JavaScript脚本直接将恶意代码插入html页面中的。</p><p>而反射型XSS是等待服务端对请求进行处理，在发送回响应页面。恶意代码实际上是由服务器端插入到html页面中的。</p><p>STFW</p><blockquote><p>由于反射型XSS漏洞是在后端执行的，因此使用锚点来实现攻击可能会失败，因为浏览器可能会对URL中的锚点进行过滤或忽略，而不会执行其中的JavaScript代码。</p></blockquote><p>至此，问题解决</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>锚点注入是个好东西，但是只能运用在存在DOM型XSS漏洞的场景。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网安基础 </category>
+          
+          <category> XSS跨站脚本攻击 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网安基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>实用姿势总结</title>
       <link href="/2023/04/20/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/XSS%E7%9A%84%E7%BB%95%E8%BF%87%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89/"/>
       <url>/2023/04/20/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/XSS%E7%9A%84%E7%BB%95%E8%BF%87%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89/</url>
