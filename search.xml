@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>正则表达式初学</title>
+      <link href="/2023/05/08/%E5%B0%8F%E5%AF%84%E5%B7%A7/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%88%9D%E5%AD%A6/"/>
+      <url>/2023/05/08/%E5%B0%8F%E5%AF%84%E5%B7%A7/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%88%9D%E5%AD%A6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="正则表达式初学"><a href="#正则表达式初学" class="headerlink" title="正则表达式初学"></a>正则表达式初学</h1><p>正则表达式在线测试工具：<a href="https://regex101.com/">https://regex101.com/</a></p><hr><h2 id="常用限定符"><a href="#常用限定符" class="headerlink" title="常用限定符"></a>常用限定符</h2><h3 id=""><a href="#" class="headerlink" title="?"></a>?</h3><blockquote><p>前面的字符出现0次或1次</p></blockquote><h3 id="-1"><a href="#-1" class="headerlink" title="*"></a>*</h3><blockquote><p>前面的字符出现包括0次的任意次</p></blockquote><h3 id="-2"><a href="#-2" class="headerlink" title="+"></a>+</h3><blockquote><p>前面的字符出现一次以上</p></blockquote><h3 id="-3"><a href="#-3" class="headerlink" title="{ }"></a>{ }</h3><blockquote><p>精确匹配</p></blockquote><blockquote><p>例：</p><p>{6}：前面的字符出现6次</p><p>{3,6}: 前面的字符出现3到6次</p><p>{3,}: 前面的字符出现3次以上</p></blockquote><hr><h2 id="原子组"><a href="#原子组" class="headerlink" title="原子组"></a>原子组</h2><p>我的理解是配合限定符修饰使用。</p><p>原子即不可分割，限定符的限定作用对对应的一个原子组生效。</p><p>如</p><blockquote><p>(ab){3,6}</p></blockquote><p>这里原子组为(a,b)，限定符为{3,6}  匹配连续出现一次及以上的“ab”</p><p>如：ab、ababab、ababab…….</p><h3 id="常见原子组："><a href="#常见原子组：" class="headerlink" title="常见原子组："></a>常见原子组：</h3><h4 id="一、用括号括起来的部分"><a href="#一、用括号括起来的部分" class="headerlink" title="一、用括号括起来的部分"></a>一、用括号括起来的部分</h4><blockquote><ul><li>(ab)</li><li>(cat|dog)   表示匹配cat或者dog    注：a(cat|dog){3}这里的限定符{3}只对(cat|dog)作限制。</li><li>…诸如此类</li></ul></blockquote><h4 id="二、用方括号括起来的部分"><a href="#二、用方括号括起来的部分" class="headerlink" title="二、用方括号括起来的部分"></a>二、用方括号括起来的部分</h4><p>方括号括起来的部分表示字符的范围</p><blockquote><p>[abc] ：要求匹配的字符只能取自于a、b、c其中任意一个</p><p>[a-z]：表示匹配小写字母（从a到z）</p><p>[a-zA-Z1-9]：表示匹配大小写字母和数字</p></blockquote><p>在方括号内字符前加上尖括号表示不匹配的字符</p><blockquote><p>[^1-9]：表示所有非数字字符（包括换行符）</p></blockquote><hr><h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><p>预先定义好的一系列常用字符类型</p><h3 id="常用元字符"><a href="#常用元字符" class="headerlink" title="常用元字符"></a>常用元字符</h3><blockquote><p>\d：数字字符</p><p>\D：非数字字符</p></blockquote><blockquote><p>\w：单词字符（所有的英文字符数字上下划线）</p><p>\W：非单词字符</p></blockquote><blockquote><p>\s：空白字符（包含tab字符（制表符）以及所有的换行符）</p><p>\S：非空白字符</p></blockquote><blockquote><p>. ：代表任意字符（不包括换行符）</p><p>^：匹配行首</p><p>$：匹配行尾</p></blockquote><blockquote><p>\b：代表单词字符的边界</p></blockquote><hr><h2 id="贪婪-懒惰匹配"><a href="#贪婪-懒惰匹配" class="headerlink" title="贪婪/懒惰匹配"></a>贪婪/懒惰匹配</h2><h3 id="“-”-能将正则表达式的贪婪匹配转换成懒惰匹配"><a href="#“-”-能将正则表达式的贪婪匹配转换成懒惰匹配" class="headerlink" title="“?” 能将正则表达式的贪婪匹配转换成懒惰匹配"></a>“?” 能将正则表达式的贪婪匹配转换成懒惰匹配</h3><p>正则表达式默认会尽可能匹配更多的字符——贪婪匹配</p><p>如当我们想匹配某个html标签</p><blockquote><p>&lt;.+&gt;</p></blockquote><p>默认会把以下整个字符串全部匹配</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&gt;<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure><p>而加上一个  “?”</p><blockquote><p>&lt;.+?&gt;</p></blockquote><p>则只会匹配其中的标签——懒惰匹配</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小寄巧 </category>
+          
+          <category> 正则表达式初学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 正则 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>安全术语</title>
       <link href="/2023/04/22/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86_%E5%AE%89%E5%85%A8%E6%9C%AF%E8%AF%AD/"/>
       <url>/2023/04/22/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86_%E5%AE%89%E5%85%A8%E6%9C%AF%E8%AF%AD/</url>
