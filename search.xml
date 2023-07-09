@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>免杀基础</title>
+      <link href="/2023/07/09/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/%E5%85%8D%E6%9D%80%E5%9F%BA%E7%A1%80/"/>
+      <url>/2023/07/09/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/%E5%85%8D%E6%9D%80%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[<h1 id="免杀基础"><a href="#免杀基础" class="headerlink" title="免杀基础"></a>免杀基础</h1><h2 id="免杀的概念"><a href="#免杀的概念" class="headerlink" title="免杀的概念"></a>免杀的概念</h2><blockquote><p>免杀，也就是反病毒(AntiVirus)与反间谍(AntiSpyware)的对立面，英文为Anti-AntiVirus（简写Virus AV），逐字翻译为“反-反病毒”，翻译为“反杀毒技术”。 也就是我们常说的bypass AV</p></blockquote><h2 id="杀毒软件分类"><a href="#杀毒软件分类" class="headerlink" title="杀毒软件分类"></a>杀毒软件分类</h2><h3 id="免费版"><a href="#免费版" class="headerlink" title="免费版"></a>免费版</h3><p>360安全卫士、火绒、电脑管家等等</p><h3 id="收费版"><a href="#收费版" class="headerlink" title="收费版"></a>收费版</h3><p>也称为企业版（EDR）。对比免费版，企业版的查杀更为严格，特别是针对内存的查杀，比如：卡巴斯基、ESET(NOD32)等等</p><h2 id="杀软检测的方式"><a href="#杀软检测的方式" class="headerlink" title="杀软检测的方式"></a>杀软检测的方式</h2><h3 id="扫描技术"><a href="#扫描技术" class="headerlink" title="扫描技术"></a>扫描技术</h3><ul><li>扫描压缩包，对压缩包文件进行分析检查</li><li>程序防篡改，避免程序或文件被恶意程序篡改</li><li>修复技术，对恶意程序所破坏的文件进行还原</li><li>智能扫描，扫描常用磁盘，系统关键位置，时间短</li><li>全盘扫描，扫描电脑全盘文件，时间长</li><li>勒索软件防护，保护电脑不受勒索软件的攻击</li><li>开机扫描，电脑开机时自动扫描，可以扫描压缩文档和不需要的程序</li></ul><h3 id="监控技术"><a href="#监控技术" class="headerlink" title="监控技术"></a>监控技术</h3><ul><li>内存监控，监控内存中的数据，监控所有进程，当发现内存中存在病毒的时候，就会主动报警</li><li>文件监控，当发现写到磁盘上的文件中存在病毒，或者是被病毒感染，就会主动报警</li><li>邮件监控，当发现邮件的附件存在病毒时进行拦截</li><li>网页防护，阻止网络攻击和不安全下载</li><li>行为防护，提醒用户可疑的应用程序行为</li></ul><h2 id="常见术语介绍"><a href="#常见术语介绍" class="headerlink" title="常见术语介绍"></a>常见术语介绍</h2><ul><li>漏洞 vulnerability</li><li>渗透测试 penatration test</li><li>利用 exploit 渗透攻击</li><li>提权 privilege escalation</li><li>攻击载荷 payload</li><li>免杀 anti-antivirus</li><li>后渗透 post-exploitation</li></ul><h2 id="检测能否免杀"><a href="#检测能否免杀" class="headerlink" title="检测能否免杀"></a>检测能否免杀</h2><p>如果怀疑一个文件或软件是否是病毒或存在后门（可以用于检测自制文件是否会被杀），可以使用的在线检测工具：</p><blockquote><p>virustotal.com</p><p> s.threatbook.com</p></blockquote><h2 id="渗透测试流程"><a href="#渗透测试流程" class="headerlink" title="渗透测试流程"></a>渗透测试流程</h2><ul><li>确定目标<ul><li>资产范围</li><li>测试方法</li><li>要求</li><li>限制</li></ul></li><li>信息收集<ul><li>域名</li><li>子域名</li><li>ip</li><li>端口</li><li>网站目录</li><li>旁站</li><li>c段</li><li>网站架构</li><li>软件版本</li></ul></li><li>漏洞分析（威胁建模）<ul><li>根据软件版本</li><li>基于漏洞数据库</li><li>根据已挖掘的新漏洞</li></ul></li><li>漏洞利用<ul><li>获得权限或者文件数据</li></ul></li><li>提权（渗透测试报告）<ul><li>提升至管理员权限</li></ul></li><li>后渗透（清理痕迹）<ul><li>扩大战果，维持权限</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 免杀技术 </category>
+          
+          <category> 免杀基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 免杀技术 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>业务逻辑漏洞基础</title>
       <link href="/2023/06/07/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E%E5%9F%BA%E7%A1%80/"/>
       <url>/2023/06/07/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E%E5%9F%BA%E7%A1%80/</url>
