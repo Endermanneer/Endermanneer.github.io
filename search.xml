@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>msf工具基础</title>
+      <link href="/2023/07/12/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/msf%E5%B7%A5%E5%85%B7%E5%9F%BA%E7%A1%80/"/>
+      <url>/2023/07/12/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/msf%E5%B7%A5%E5%85%B7%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[<h2 id="MSF工具"><a href="#MSF工具" class="headerlink" title="MSF工具"></a>MSF工具</h2><blockquote><p>msf：metasploit（MSF）是一个免费的、可下载的框架，通过它可以很容易地获取、开发并对计算机软件漏洞实施攻击。</p></blockquote><p>它本身附带数百个已知软件漏洞，是一款专业级漏洞攻击工具</p><p>一般kali里面就集成了msf工具，安装了kali就会带有它</p><p>我打算通过借助msf工具来初步学习免杀</p><h3 id="msf自带的核心模块"><a href="#msf自带的核心模块" class="headerlink" title="msf自带的核心模块"></a>msf自带的核心模块</h3><ul><li>exploit 利用模块</li><li>payload 攻击载荷模块</li><li>auxiliary 辅助模块</li><li>post 后渗透模块</li><li>encoders 编码模块</li><li>evasion 免杀模块</li><li>nops 空模块</li></ul><h3 id="kali-下msf常用模块所在目录"><a href="#kali-下msf常用模块所在目录" class="headerlink" title="kali 下msf常用模块所在目录"></a>kali 下msf常用模块所在目录</h3><blockquote><p>kali 下msf默认安装目录    /usr/share/metasploit-framework</p><p>模块所在目录    /usr/share/metasploit-framework/modules</p><p>​    例如exploits模块所在目录    /usr/share/metasploit-framework/modules/exploits</p></blockquote><p>每个模块对应的文件都能在对应的目录下找到</p><h4 id="exploits利用模块"><a href="#exploits利用模块" class="headerlink" title="exploits利用模块"></a>exploits利用模块</h4><ul><li>active exploit 直接攻击，适用于服务端</li><li>passive exploit 放置攻击代码运行，适用于客户端</li></ul><p>目录: /usr/share/metasploit-framework/modules/exploits</p><p>命令: show exploits</p><h4 id="payloads攻击载荷"><a href="#payloads攻击载荷" class="headerlink" title="payloads攻击载荷"></a>payloads攻击载荷</h4><ul><li>single: 完整独立的payload</li><li>stager: 用于建立连接和下载</li><li>stage: stager连接后下载的payload</li></ul><p>目录：/usr/share/metasploit-framework/modules/payloads</p><p>命令：show payloads</p><h4 id="auxiliary辅助模块"><a href="#auxiliary辅助模块" class="headerlink" title="auxiliary辅助模块"></a>auxiliary辅助模块</h4><ul><li>用于辅助渗透，如扫描、口令猜解、敏感信息嗅探等等。主要用于信息收集阶段。</li></ul><p>目录： /usr/share/metasploit-framework/modules/auxiliary</p><p>命令： show auxiliary</p><h4 id="encoders编码器模块"><a href="#encoders编码器模块" class="headerlink" title="encoders编码器模块"></a>encoders编码器模块</h4><ul><li>对payload进行编码加密，可以绕过部分杀毒软件（效果差）</li></ul><h4 id="evasion免杀模块"><a href="#evasion免杀模块" class="headerlink" title="evasion免杀模块"></a>evasion免杀模块</h4><ul><li>用于生成（windows平台）免杀的木马（效果差）</li></ul><h4 id="nops空模块"><a href="#nops空模块" class="headerlink" title="nops空模块"></a>nops空模块</h4><ul><li>用于填充空格、产生延迟、干扰验证等</li></ul><h3 id="msf常用命令"><a href="#msf常用命令" class="headerlink" title="msf常用命令"></a>msf常用命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">show + 模块名字展示信息</span><br><span class="line">help /? 查看所有命令帮助，help+命令</span><br><span class="line">search 搜索漏洞和利用数据库</span><br><span class="line">info    信息</span><br><span class="line">use 使用模块</span><br><span class="line">show options查看所使用模块需要配置的参数</span><br><span class="line">set设置参数值</span><br><span class="line">run执行模块</span><br></pre></td></tr></table></figure><h4 id="常用命令search"><a href="#常用命令search" class="headerlink" title="常用命令search"></a>常用命令search</h4><ul><li>查找永恒之蓝漏洞：search ms17_010</li><li>查找08年漏洞： search cve:2008</li></ul><h4 id="searchsploit"><a href="#searchsploit" class="headerlink" title="searchsploit"></a>searchsploit</h4><p>搜索数据库网站的内容</p><p>​    例：searchsploit “Spring Cloud Gateway 3.1.0”</p><h4 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h4><h5 id="选择一个模块使用"><a href="#选择一个模块使用" class="headerlink" title="选择一个模块使用"></a>选择一个模块使用</h5><p>例：use auxiliary/admin/smb/ms17_010_command</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230712162330302.png" alt="image-20230712162330302"></p><p>红色部分代表当前已经在使用这个模块了</p><h5 id="可以使用show-options命令查看必填参数"><a href="#可以使用show-options命令查看必填参数" class="headerlink" title="可以使用show options命令查看必填参数"></a>可以使用show options命令查看必填参数</h5><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230712162531913.png" alt="image-20230712162531913"></p><p>显示当前参数的表格</p><h5 id="设置参数，以设置rhosts为例："><a href="#设置参数，以设置rhosts为例：" class="headerlink" title="设置参数，以设置rhosts为例："></a>设置参数，以设置rhosts为例：</h5><p>set rhosts 192.168.3.18</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230712163304586.png" alt="image-20230712163304586"></p><h5 id="取消设置，以取消rhost的设置为例"><a href="#取消设置，以取消rhost的设置为例" class="headerlink" title="取消设置，以取消rhost的设置为例"></a>取消设置，以取消rhost的设置为例</h5><p>unset rhosts</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230712163427227.png" alt="image-20230712163427227"></p><h5 id="使用模块进行攻击"><a href="#使用模块进行攻击" class="headerlink" title="使用模块进行攻击"></a>使用模块进行攻击</h5><p>设置好模块所需要的参数以后，直接run（演示）</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230712164101598.png" alt="image-20230712164101598"></p><h5 id="回到msf主界面"><a href="#回到msf主界面" class="headerlink" title="回到msf主界面"></a>回到msf主界面</h5><p>使用back回到msf主界面</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230712164150155.png" alt="image-20230712164150155"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 免杀技术 </category>
+          
+          <category> msf工具基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 免杀技术 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>msf模块使用</title>
+      <link href="/2023/07/12/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/msf%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/"/>
+      <url>/2023/07/12/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/msf%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="msf模块使用"><a href="#msf模块使用" class="headerlink" title="msf模块使用"></a>msf模块使用</h1><h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><h3 id="所使用的模块"><a href="#所使用的模块" class="headerlink" title="所使用的模块"></a>所使用的模块</h3><p>msf下用于做主机发现的模块：auxiliary/scanner/discovery/arp_sweep</p><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>设置ip网段，run</p><p>例：</p><p>查看当前参数： show options</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230712165830969.png" alt="image-20230712165830969"></p><p>设置ip网段： set RHOSTS 192.168.3.1/24</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230712170216820.png" alt="image-20230712170216820"></p><p>润！：run（线程数太少会很慢，先设置成50最好）</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230712170533325.png" alt="image-20230712170533325"></p><h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><h3 id="所使用的模块（这里扫描tcp）"><a href="#所使用的模块（这里扫描tcp）" class="headerlink" title="所使用的模块（这里扫描tcp）"></a>所使用的模块（这里扫描tcp）</h3><p>auxiliary/scanner/portscan/tcp </p><h3 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h3><p>show option查看待设置的参数（待扫描的ip），设置好就能润了</p><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230712171547382.png" alt="image-20230712171547382"></p><h2 id="目录扫描"><a href="#目录扫描" class="headerlink" title="目录扫描"></a>目录扫描</h2><h3 id="所使用模块"><a href="#所使用模块" class="headerlink" title="所使用模块"></a>所使用模块</h3><p>auxiliary/scanner/http/dir_scanner</p><h3 id="使用方法-2"><a href="#使用方法-2" class="headerlink" title="使用方法"></a>使用方法</h3><ul><li>设置待扫描主机ip</li><li>设置默认端口号</li><li>设置线程数</li><li>润</li></ul><p><img src="https://enderman-blog.oss-cn-guangzhou.aliyuncs.com/image-20230712172441692.png" alt="image-20230712172441692"></p><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>将默认字典里的常用字段（如bank、code）拼接到根目录url的后面，并逐个进行访问，访问成功则说明有这个目录。</p><p>在实际使用过程中可以修改所使用的字典达到更好的扫描效果。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>msf模块使用通用流程：</p><ol><li>search 命令查找要使用的模块</li><li>use 命令使用这个模块</li><li>show options 命令查看这个模块待设置的参数</li><li>set 命令设置好参数</li><li>run 命令运行</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 免杀技术 </category>
+          
+          <category> msf模块使用 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 免杀技术 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>免杀基础</title>
       <link href="/2023/07/09/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/%E5%85%8D%E6%9D%80%E5%9F%BA%E7%A1%80/"/>
       <url>/2023/07/09/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/%E5%85%8D%E6%9D%80%E5%9F%BA%E7%A1%80/</url>
