@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>第一讲 密码学概述 | Enderman_1's blog</title><meta name="author" content="Enderman_1"><meta name="copyright" content="Enderman_1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第一讲 密码学概述密码技术的发展古典密码时期：从古代到19世纪末。 近代密码时期20世纪初到20世纪50年代 手工密码，转轮密码机。 现代密码时期1949年香农提出奠基性论文：《保密系统的通信理论》 首次将信息论引入密码技术的研究，利用统计学观点，对信源、密码源、密文进行数学描述和定量分析，引入不确定性、多余度、唯一解距离等安全性测度概念和计算方法。把密码学推向了科学的轨道，使密码学成为了一门真正">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一讲 密码学概述">
+<meta property="og:url" content="https://endermanneer.github.io/2023/12/23/%E5%AF%86%E7%A0%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E8%AE%B2%20%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="Enderman_1&#39;s blog">
+<meta property="og:description" content="第一讲 密码学概述密码技术的发展古典密码时期：从古代到19世纪末。 近代密码时期20世纪初到20世纪50年代 手工密码，转轮密码机。 现代密码时期1949年香农提出奠基性论文：《保密系统的通信理论》 首次将信息论引入密码技术的研究，利用统计学观点，对信源、密码源、密文进行数学描述和定量分析，引入不确定性、多余度、唯一解距离等安全性测度概念和计算方法。把密码学推向了科学的轨道，使密码学成为了一门真正">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg">
+<meta property="article:published_time" content="2023-12-23T14:24:48.813Z">
+<meta property="article:modified_time" content="2023-12-23T14:23:55.372Z">
+<meta property="article:author" content="Enderman_1">
+<meta property="article:tag" content="密码学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://endermanneer.github.io/2023/12/23/%E5%AF%86%E7%A0%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E8%AE%B2%20%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '第一讲 密码学概述',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-23 22:23:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">49</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Enderman_1's blog"><span class="site-name">Enderman_1's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">第一讲 密码学概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-23T14:24:48.813Z" title="发表于 2023-12-23 22:24:48">2023-12-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-23T14:23:55.372Z" title="更新于 2023-12-23 22:23:55">2023-12-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0/">密码学概述</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="第一讲 密码学概述"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="第一讲-密码学概述"><a href="#第一讲-密码学概述" class="headerlink" title="第一讲 密码学概述"></a>第一讲 密码学概述</h1><h2 id="密码技术的发展"><a href="#密码技术的发展" class="headerlink" title="密码技术的发展"></a>密码技术的发展</h2><h3 id="古典密码时期："><a href="#古典密码时期：" class="headerlink" title="古典密码时期："></a>古典密码时期：</h3><p>从古代到19世纪末。</p>
+<h3 id="近代密码时期"><a href="#近代密码时期" class="headerlink" title="近代密码时期"></a>近代密码时期</h3><p>20世纪初到20世纪50年代</p>
+<p>手工密码，转轮密码机。</p>
+<h3 id="现代密码时期"><a href="#现代密码时期" class="headerlink" title="现代密码时期"></a>现代密码时期</h3><p>1949年香农提出奠基性论文：《保密系统的通信理论》</p>
+<p>首次将信息论引入密码技术的研究，利用统计学观点，对信源、密码源、密文进行数学描述和定量分析，引入不确定性、多余度、唯一解距离等安全性测度概念和计算方法。把密码学推向了科学的轨道，使密码学成为了一门真正的科学。</p>
+<p>迪菲，赫尔曼：《密码学新方向》</p>
+<p>首次提出公钥密码体制的概念和设计思想，开辟了公开密钥密码学的新领域。</p>
+<h2 id="密码学的主要任务"><a href="#密码学的主要任务" class="headerlink" title="密码学的主要任务"></a>密码学的主要任务</h2><ul>
+<li>加密——密码编码</li>
+<li>解密——密码分析</li>
+</ul>
+<h2 id="密码学要保障的几个性质"><a href="#密码学要保障的几个性质" class="headerlink" title="密码学要保障的几个性质"></a>密码学要保障的几个性质</h2><ol>
+<li>机密性</li>
+<li>数据完整性</li>
+<li>鉴别</li>
+<li>抗抵赖性</li>
+</ol>
+<h2 id="密码系统的安全性"><a href="#密码系统的安全性" class="headerlink" title="密码系统的安全性"></a>密码系统的安全性</h2><p>一个密码系统的安全性主要与两个方面的因素有关。一个是所使用的密码算法本身的安全强度。另一个方面就是密码算法之外的不安全因素（管理密码系统的人之类的）。</p>
+<h2 id="评估密码系统安全性的三种方法："><a href="#评估密码系统安全性的三种方法：" class="headerlink" title="评估密码系统安全性的三种方法："></a>评估密码系统安全性的三种方法：</h2><ol>
+<li>无条件安全性：即使拥有无限的计算资源也无法破译密码</li>
+<li>可证明安全性：密码系统的安全性依靠某个难以解决的数学难题（大整数因子分解、计算离散对数等）</li>
+<li>计算安全性：又称为实际安全性，指使用目前最好的方法攻破该密码系统所需要的计算远远超出攻击者的计算资源水平，则可以定义这个密码系统是安全的。</li>
+</ol>
+<h2 id="密码系统设计的基本原则"><a href="#密码系统设计的基本原则" class="headerlink" title="密码系统设计的基本原则"></a>密码系统设计的基本原则</h2><p>应遵循公开设计原则：</p>
+<blockquote>
+<p>即使密码系统中的算法为密码分析者所知，也难以从截获的密文推导出明文或密钥。</p>
+<p>密码体制的安全性不依赖于对算法的保密，只依赖于对密钥的保密。</p>
+</blockquote>
+<h3 id="针对密码系统的被动攻击和主动攻击"><a href="#针对密码系统的被动攻击和主动攻击" class="headerlink" title="针对密码系统的被动攻击和主动攻击"></a>针对密码系统的被动攻击和主动攻击</h3><p>被动攻击：指截获密文进而进行分析。</p>
+<p>主动攻击：主动采用删除、修改、增加、填入等方法向密码系统注入假消息，破坏密码系统提供的信息完整性、真实性、抗抵赖性。</p>
+<h2 id="密码体制的分类及特点"><a href="#密码体制的分类及特点" class="headerlink" title="密码体制的分类及特点"></a>密码体制的分类及特点</h2><p>对密码体制的分类通常有以下三种。</p>
+<h3 id="根据密码算法使用的密钥数量"><a href="#根据密码算法使用的密钥数量" class="headerlink" title="根据密码算法使用的密钥数量"></a>根据密码算法使用的密钥数量</h3><p>根据加解密使用的密钥是否相同，是否能简单地由加密密钥导出解密密钥，将密码体制分为：</p>
+<p>对称密码体制（单密钥密码体制）</p>
+<p>非对称密码体制（双密钥密码体制、公开密钥密码体制）</p>
+<h3 id="根据对明文信息的处理方式"><a href="#根据对明文信息的处理方式" class="headerlink" title="根据对明文信息的处理方式"></a>根据对明文信息的处理方式</h3><p>根据密码算法对明文信息的处理方式，分为：</p>
+<p>分组密码：将消息进行分组，一次处理一个数据块。</p>
+<p>序列密码：连续地处理输入元素，并随着处理过程的进行，一次产生一个元素的输入。</p>
+<h3 id="根据是否进行可逆的加密变换"><a href="#根据是否进行可逆的加密变换" class="headerlink" title="根据是否进行可逆的加密变换"></a>根据是否进行可逆的加密变换</h3><p>根据密码算法是否能进行可逆的加密变换，又可以分为单向函数密码体制和双向变换密码体制。</p>
+<p>单向函数密码体制：很容易把明文转换成密文，而很难把密文转换成正确的明文。</p>
+<p>双向变换密码体制：能进行可逆的加解密变换，绝大多数算法都属于这一类。</p>
+<h2 id="对称密码体制的优缺点"><a href="#对称密码体制的优缺点" class="headerlink" title="对称密码体制的优缺点"></a>对称密码体制的优缺点</h2><p>优点：</p>
+<ol>
+<li>加解密速度快，算法安全性高</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li><p>密钥分发过程复杂，代价高。对称密码保密通信模型要求在通信前建立安全信道。</p>
+</li>
+<li><p>密码管理困难，在实现多用户的保密通信时，密码系统的密钥数量会急剧增大。</p>
+</li>
+<li><p>难以实现数字签名。</p>
+</li>
+</ol>
+<h2 id="非对称密码体制的优缺点"><a href="#非对称密码体制的优缺点" class="headerlink" title="非对称密码体制的优缺点"></a>非对称密码体制的优缺点</h2><p>优点：</p>
+<ol>
+<li>密钥分配简单</li>
+<li>系统密钥量少，易于管理</li>
+<li>系统开放性好</li>
+<li>可以实现数字签名</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>加解密运算复杂，处理速度慢，同等安全强度下，非对称密码体制的密钥位数较多</li>
+<li>存在”可能报文攻击“的威胁，公钥是公开发布的，攻击者可以尝试截获密文后，尝试遍历所有可能的明文，利用公钥进行加密，再与截获的密文进行比对。据此暴力破解出明文的信息。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://endermanneer.github.io">Enderman_1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://endermanneer.github.io/2023/12/23/%E5%AF%86%E7%A0%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E8%AE%B2%20%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0/">https://endermanneer.github.io/2023/12/23/%E5%AF%86%E7%A0%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E8%AE%B2%20%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://endermanneer.github.io" target="_blank">Enderman_1's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></div><div class="post_share"><div class="social-share" data-image="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/12/12/%E5%B0%8F%E5%AF%84%E5%B7%A7/linux%E8%87%AA%E5%8A%A8%E6%A3%80%E6%9F%A5%E8%84%9A%E6%9C%AC/" title="linux自动检查脚本"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">linux自动检查脚本</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Enderman_1</div><div class="author-info__description">A fictional character not yet born...</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">49</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Endermanneer"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">尚处于摸爬带滚阶段</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%AE%B2-%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">第一讲 密码学概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E7%9A%84%E5%8F%91%E5%B1%95"><span class="toc-number">1.1.</span> <span class="toc-text">密码技术的发展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E6%97%B6%E6%9C%9F%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">古典密码时期：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%91%E4%BB%A3%E5%AF%86%E7%A0%81%E6%97%B6%E6%9C%9F"><span class="toc-number">1.1.2.</span> <span class="toc-text">近代密码时期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E6%97%B6%E6%9C%9F"><span class="toc-number">1.1.3.</span> <span class="toc-text">现代密码时期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.2.</span> <span class="toc-text">密码学的主要任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E8%A6%81%E4%BF%9D%E9%9A%9C%E7%9A%84%E5%87%A0%E4%B8%AA%E6%80%A7%E8%B4%A8"><span class="toc-number">1.3.</span> <span class="toc-text">密码学要保障的几个性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">1.4.</span> <span class="toc-text">密码系统的安全性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E6%80%A7%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-number">1.5.</span> <span class="toc-text">评估密码系统安全性的三种方法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-number">1.6.</span> <span class="toc-text">密码系统设计的基本原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%A2%AB%E5%8A%A8%E6%94%BB%E5%87%BB%E5%92%8C%E4%B8%BB%E5%8A%A8%E6%94%BB%E5%87%BB"><span class="toc-number">1.6.1.</span> <span class="toc-text">针对密码系统的被动攻击和主动攻击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6%E7%9A%84%E5%88%86%E7%B1%BB%E5%8F%8A%E7%89%B9%E7%82%B9"><span class="toc-number">1.7.</span> <span class="toc-text">密码体制的分类及特点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%AF%86%E7%A0%81%E7%AE%97%E6%B3%95%E4%BD%BF%E7%94%A8%E7%9A%84%E5%AF%86%E9%92%A5%E6%95%B0%E9%87%8F"><span class="toc-number">1.7.1.</span> <span class="toc-text">根据密码算法使用的密钥数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%AF%B9%E6%98%8E%E6%96%87%E4%BF%A1%E6%81%AF%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">1.7.2.</span> <span class="toc-text">根据对明文信息的处理方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E6%98%AF%E5%90%A6%E8%BF%9B%E8%A1%8C%E5%8F%AF%E9%80%86%E7%9A%84%E5%8A%A0%E5%AF%86%E5%8F%98%E6%8D%A2"><span class="toc-number">1.7.3.</span> <span class="toc-text">根据是否进行可逆的加密变换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.8.</span> <span class="toc-text">对称密码体制的优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.9.</span> <span class="toc-text">非对称密码体制的优缺点</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/23/%E5%AF%86%E7%A0%81%E5%AD%A6/%E7%AC%AC%E4%B8%80%E8%AE%B2%20%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0/" title="第一讲 密码学概述">第一讲 密码学概述</a><time datetime="2023-12-23T14:24:48.813Z" title="发表于 2023-12-23 22:24:48">2023-12-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/12/%E5%B0%8F%E5%AF%84%E5%B7%A7/linux%E8%87%AA%E5%8A%A8%E6%A3%80%E6%9F%A5%E8%84%9A%E6%9C%AC/" title="linux自动检查脚本">linux自动检查脚本</a><time datetime="2023-12-12T07:50:55.228Z" title="发表于 2023-12-12 15:50:55">2023-12-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/09/CTF/%E7%BB%95%E8%BF%87%E6%AD%A3%E5%88%99/" title="绕过正则">绕过正则</a><time datetime="2023-12-08T17:41:08.194Z" title="发表于 2023-12-09 01:41:08">2023-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/08/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/%E7%BC%96%E7%A0%81%E3%80%81%E8%BF%9B%E5%88%B6%E3%80%81%E5%8A%A0%E5%AF%86/" title="编码、进制、加密">编码、进制、加密</a><time datetime="2023-12-08T12:13:34.384Z" title="发表于 2023-12-08 20:13:34">2023-12-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/28/%E7%BD%91%E5%AE%89%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/phpmyadmin%E6%97%A5%E5%BF%97getshell/" title="phpmyadmin 日志getshell">phpmyadmin 日志getshell</a><time datetime="2023-11-27T16:23:15.848Z" title="发表于 2023-11-28 00:23:15">2023-11-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Enderman_1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>
